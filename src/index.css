@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+:root {
+  /* Modern Neutral Palette */
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-900: #0f172a;
+  
+  /* Primary Branding - Deep Pink Theme */
+  --primary: #d81b60; /* Vibrant Pink */
+  --primary-dark: #ad1457;
+  --secondary: #ec407a; /* Medium Pink */
+  --accent: #f8bbd0; /* Soft Pink */
+  
+  /* UI Context */
+  --bg-main: #ffffff;
+  --bg-pink: #fffdfd; /* Extremely subtle pink */
+  --bg-section: #fff5f8;
+  --text-dark: #1e293b; /* Premium slate dark */
+  --text-muted: #64748b;
+  --text-pink: #d81b60;
+  
+  /* Effects */
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(216, 27, 96, 0.15);
+  --shadow-premium: 0 25px 50px -12px rgba(216, 27, 96, 0.1);
+  --shadow-hover: 0 40px 60px -12px rgba(216, 27, 96, 0.2);
+  
+  /* Typography */
+  --font-main: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  
+  --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bouncy: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  transition: var(--transition-smooth);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  section {
+    padding: 10rem 0;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark), #e91e63);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 2.5rem;
+  padding: 2rem;
+  box-shadow: var(--shadow-premium);
+  transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary);
+}
+
+/* Typography Fluidity */
+h1 { font-size: clamp(3rem, 10vw, 7.5rem); }
+h2 { font-size: clamp(2.25rem, 6vw, 4.5rem); }
+h3 { font-size: clamp(1.75rem, 4vw, 3rem); }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 6.25rem;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 10px 25px -5px rgba(216, 27, 96, 0.4);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: var(--transition-bouncy);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 30px -10px rgba(216, 27, 96, 0.5);
+  color: white;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 1rem 2.5rem;
+  border-radius: 6.25rem;
+  font-weight: 700;
+  text-align: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: transparent;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--slate-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  border: 3px solid var(--slate-50);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scroll-line-progress {
+  height: 4px;
+  background: var(--primary);
+  width: 0%;
+  transition: width 0.1s linear;
+}

@@ -465,45 +465,16 @@ const Home = () => {
                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
                 className="relative z-10 max-w-4xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide rounded-[2.5rem] md:rounded-[3.5rem] border border-white/20 shadow-2xl bg-slate-900"
               >
-                <div className="sticky top-0 right-0 p-6 flex justify-end z-20 pointer-events-none">
-                  <button 
-                    onClick={() => setShowPoster(false)}
-                    className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-all pointer-events-auto shadow-xl"
-                  >
-                    <X size={24} />
-                  </button>
-                </div>
-                
-                <div className="px-6 pb-20 md:px-12 flex flex-col gap-12 text-center">
-                   <div className="mb-4">
-                     <h3 className="text-4xl md:text-5xl font-serif text-[#f8bbd0] mb-4 tracking-tight">Our Premium Offers</h3>
-                     <p className="text-white/60 text-lg">Special courses crafted for your creative growth.</p>
-                   </div>
-
-                   {[
-                     'WhatsApp Image 2026-04-07 at 8.04.05 PM.jpeg',
-                     'WhatsApp Image 2026-04-07 at 8.04.05 PM (1).jpeg',
-                     'WhatsApp Image 2026-04-07 at 8.04.05 PM (2).jpeg',
-                     'WhatsApp Image 2026-04-07 at 8.04.06 PM.jpeg'
-                   ].map((img, idx) => (
-                     <SectionReveal key={idx} delay={idx * 0.15}>
-                        <img 
-                          src={getAsset(`course/${img}`)} 
-                          alt={`Offer ${idx + 1}`} 
-                          className="w-full h-auto rounded-[2rem] shadow-2xl border-4 border-white/10" 
-                        />
-                     </SectionReveal>
-                   ))}
-                   
-                   <div className="mt-8 pt-8 border-t border-white/10">
-                      <Link 
-                        to="/join" 
-                        onClick={() => setShowPoster(false)}
-                        className="btn-primary px-10 py-4 text-xs font-black tracking-widest inline-flex items-center gap-3"
-                      >
-                        Enroll Now <ArrowRight size={16} />
-                      </Link>
-                   </div>
+                <div className="px-6 pb-12 md:px-12">
+                   <img 
+                    src={getAsset('poster_summer.jpg')} 
+                    alt="Summer Offer Poster" 
+                    className="w-full h-auto rounded-[2rem] shadow-2xl border-4 border-white/10" 
+                  />
+                  <div className="mt-8 text-center">
+                    <h3 className="text-3xl font-serif text-[#f8bbd0] mb-2 tracking-tight">Special Summer Classes</h3>
+                    <p className="text-white/60 text-sm">Join RSA this summer to ignite your artistic potential!</p>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
@@ -928,16 +899,16 @@ const Commission = () => {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="flex flex-col gap-4">
-                                <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Full Name *</label>
+                                <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Full Name *</label>
                                 <input name="from_name" required type="text" className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm" placeholder="Enter full name" />
                             </div>
                             <div className="flex flex-col gap-4">
-                                <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Contact Phone *</label>
+                                <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Contact Phone *</label>
                                 <input name="phone" required type="text" className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm" placeholder="+91 ..." />
                             </div>
                         </div>
                         <div className="flex flex-col gap-4">
-                            <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Vision & Requirements</label>
+                            <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Vision & Requirements</label>
                             <textarea name="message" className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all h-40 resize-none shadow-sm" placeholder="Describe size, medium and timeline..."></textarea>
                         </div>
                         <div className="flex flex-col gap-4">
@@ -1154,7 +1125,7 @@ const JoinNow = () => {
                 {/* Row 1: Name + Phone */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Full Name *</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Full Name *</label>
                     <input 
                       required 
                       type="text" 
@@ -1165,7 +1136,7 @@ const JoinNow = () => {
                     />
                   </div>
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Phone Number *</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Phone Number *</label>
                     <input 
                       required 
                       type="tel" 
@@ -1180,7 +1151,7 @@ const JoinNow = () => {
                 {/* Row 2: Age Group + Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Age Group *</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Age Group *</label>
                     <select required className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm">
                       <option value="">Select age group...</option>
                       <option>Kids (5–10 yrs)</option>
@@ -1189,7 +1160,7 @@ const JoinNow = () => {
                     </select>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Email Address</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Email Address</label>
                     <input 
                       type="email" 
                       value={formData.email}
@@ -1203,7 +1174,7 @@ const JoinNow = () => {
                 {/* Row 3: Course + Duration side by side */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Select Course *</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Select Course *</label>
                     <select 
                       required 
                       className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm"
@@ -1215,7 +1186,7 @@ const JoinNow = () => {
                     </select>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Select Duration *</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Select Duration *</label>
                     <div className="flex flex-wrap gap-3">
                       {formData.course && feesMap[formData.course] ? (
                         Object.keys(feesMap[formData.course]).map(dur => (
@@ -1242,7 +1213,7 @@ const JoinNow = () => {
 
                 {/* Mode */}
                 <div className="flex flex-col gap-3">
-                  <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Preferred Mode *</label>
+                  <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Preferred Mode *</label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {['Online', 'Offline (Studio)'].map(mode => (
                       <label key={mode} className="flex items-center gap-4 bg-[#fff5f8]/50 px-6 py-4 rounded-2xl cursor-pointer hover:bg-[#fff5f8] transition-all border-2 border-[#ec407a]/10 has-[:checked]:border-[#d81b60] has-[:checked]:bg-[#fff5f8] shadow-sm">

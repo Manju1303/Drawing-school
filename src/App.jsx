@@ -381,7 +381,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.4em] mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.1em] mb-8"
             >
               <Sparkles size={12} className="text-[#f8bbd0]" /> MSME Certified Art Institute
             </motion.div>
@@ -395,7 +395,7 @@ const Home = () => {
               >
                 Elevate Your <br />
                 <span className="italic font-normal text-[#f8bbd0]">Artistic</span><br />
-                <span className="gradient-text drop-shadow-2xl">Vision.</span>
+                <span className="gradient-text drop-shadow-2xl text-5xl sm:text-6xl md:text-8xl">Vision.</span>
               </motion.h1>
             </div>
 
@@ -527,7 +527,7 @@ const Home = () => {
         <div className="container relative z-10">
           <SectionReveal>
             <div className="text-center mb-16">
-              <h4 className="text-sm uppercase tracking-[0.4em] font-bold text-[#d81b60] mb-4 flex items-center justify-center gap-2">
+              <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4 flex items-center justify-center gap-2">
                 <Sparkles size={14} /> Comprehensive Programs <Sparkles size={14} />
               </h4>
               <h2 className="text-5xl text-[#ad1457] font-serif">What We Offer</h2>
@@ -618,8 +618,8 @@ const Home = () => {
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-6 mb-16 text-center md:text-left">
             <div>
-              <h4 className="text-sm uppercase tracking-[0.4em] font-bold text-[#d81b60] mb-4">Our Portfolio</h4>
-              <h2 className="text-5xl text-[#ad1457] font-serif">Already Done Works</h2>
+              <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Our Portfolio</h4>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl text-[#ad1457] font-serif">Already Done Works</h2>
             </div>
             <Link to="/gallery" className="text-[#d81b60] hover:underline flex items-center gap-2 font-bold text-sm tracking-widest uppercase mb-2 transition-all">View Full Gallery <ArrowRight size={16} /></Link>
           </div>
@@ -713,7 +713,7 @@ const About = () => (
              </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <h4 className="text-sm uppercase tracking-[0.4em] font-bold text-[#d81b60] mb-4">Our Heritage</h4>
+            <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Our Heritage</h4>
             <h2 className="text-4xl md:text-6xl mb-8 leading-snug text-[#ad1457] font-serif">Mastery in <br /><span className="italic font-normal">Every Stroke</span></h2>
             <p className="text-lg text-[#2d3436]/80 mb-6 leading-relaxed">RIVYA SCHOOL OF ARTS is an MSME approved institute dedicated to providing professional drawing and painting training. Founded by our lead artist at Oeuvre World, we specialize in teaching students how to transform their imagination into masterpieces.</p>
             <p className="text-lg text-[#2d3436]/80 mb-10 leading-relaxed">Located in Perumanallur, Tiruppur, we offer both offline and online classes for all age groups, from kids to adults. Our curriculum covers everything from basic sketching to specialized courses like Mandala and Pot Painting.</p>
@@ -817,7 +817,7 @@ const Gallery = () => {
                                     className="w-full h-auto object-cover transition-transform duration-[1.5s] group-hover:scale-110" 
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-8 text-center backdrop-blur-[2px]">
-                                    <span className="text-[11px] uppercase tracking-[0.4em] font-black text-white mb-4 bg-[#d81b60] px-4 py-1 rounded-full">{img.cat}</span>
+                                    <span className="text-[11px] uppercase tracking-[0.1em] font-black text-white mb-4 bg-[#d81b60] px-4 py-1 rounded-full">{img.cat}</span>
                                     <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 transform scale-50 group-hover:scale-100 transition-transform">
                                         <ExternalLink size={20} />
                                     </div>
@@ -895,7 +895,7 @@ const Commission = () => {
                         });
                       }}>
                         <div className="flex flex-col gap-4">
-                            <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Artwork Category</label>
+                            <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em] ml-4">Artwork Category</label>
                             <select name="artwork_type" className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm">
                                 <option>Fine Art Portrait (Oil/Acrylic)</option>
                                 <option>Sketch Portrait (Pencil/Charcoal)</option>
@@ -907,20 +907,20 @@ const Commission = () => {
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="flex flex-col gap-4">
-                                <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Full Name *</label>
+                                <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Full Name *</label>
                                 <input name="from_name" required type="text" className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm" placeholder="Enter full name" />
                             </div>
                             <div className="flex flex-col gap-4">
-                                <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Contact Phone *</label>
+                                <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Contact Phone *</label>
                                 <input name="phone" required type="text" className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm" placeholder="+91 ..." />
                             </div>
                         </div>
                         <div className="flex flex-col gap-4">
-                            <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Vision & Requirements</label>
+                            <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Vision & Requirements</label>
                             <textarea name="message" className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all h-40 resize-none shadow-sm" placeholder="Describe size, medium and timeline..."></textarea>
                         </div>
                         <div className="flex flex-col gap-4">
-                            <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Reference Image (Optional)</label>
+                            <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em] ml-4">Reference Image (Optional)</label>
                             <label className={`flex flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed cursor-pointer transition-all px-6 py-6 ${
                                 refPreview ? 'border-[#d81b60] bg-[#fff5f8]' : 'border-[#ec407a]/20 bg-[#fff5f8]/50 hover:border-[#d81b60] hover:bg-[#fff5f8]'
                             } shadow-sm`}>
@@ -959,7 +959,7 @@ const Contact = () => (
     <div className="pt-32 bg-[#fff5f8] min-h-screen">
         <section className="container pb-24">
             <div className="text-center mb-20 max-w-2xl mx-auto">
-                <h4 className="text-sm uppercase tracking-[0.4em] font-bold text-[#d81b60] mb-4">Get In Touch</h4>
+                <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Get In Touch</h4>
                 <h2 className="text-6xl mb-6 text-[#ad1457] font-serif">Let's Talk Art</h2>
                 <p className="text-lg text-[#2d3436]/60">Have questions about courses or commissions? We're just a message away.</p>
             </div>
@@ -1103,10 +1103,10 @@ const JoinNow = () => {
     <div className="pt-32 bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen">
       <section className="container pb-24">
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <h4 className="text-sm uppercase tracking-[0.4em] font-bold text-[#d81b60] mb-4 flex items-center justify-center gap-2">
+          <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4 flex items-center justify-center gap-2">
             <Sparkles size={14}/> Enrollment
           </h4>
-          <h2 className="text-5xl md:text-7xl mb-6 text-[#ad1457] font-serif leading-tight">Join <span className="italic font-normal">RSA</span> Today</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-7xl mb-6 text-[#ad1457] font-serif leading-tight">Join <span className="italic font-normal">RSA</span> Today</h2>
           <p className="text-lg text-slate-500 leading-relaxed">Take the first step on your artistic journey. Fill in your details below and our team will get back to you within 24 hours.</p>
         </div>
 
@@ -1133,7 +1133,7 @@ const JoinNow = () => {
                 {/* Row 1: Name + Phone */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Full Name *</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Full Name *</label>
                     <input 
                       required 
                       type="text" 
@@ -1144,7 +1144,7 @@ const JoinNow = () => {
                     />
                   </div>
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Phone Number *</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Phone Number *</label>
                     <input 
                       required 
                       type="tel" 
@@ -1159,7 +1159,7 @@ const JoinNow = () => {
                 {/* Row 2: Age Group + Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Age Group *</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Age Group *</label>
                     <select required className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm">
                       <option value="">Select age group...</option>
                       <option>Kids (5–10 yrs)</option>
@@ -1168,7 +1168,7 @@ const JoinNow = () => {
                     </select>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Email Address</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Email Address</label>
                     <input 
                       type="email" 
                       value={formData.email}
@@ -1182,7 +1182,7 @@ const JoinNow = () => {
                 {/* Row 3: Course + Duration side by side */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Select Course *</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Select Course *</label>
                     <select 
                       required 
                       className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm"
@@ -1194,7 +1194,7 @@ const JoinNow = () => {
                     </select>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Select Duration *</label>
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Select Duration *</label>
                     <div className="flex flex-wrap gap-3">
                       {formData.course && feesMap[formData.course] ? (
                         Object.keys(feesMap[formData.course]).map(dur => (
@@ -1221,7 +1221,7 @@ const JoinNow = () => {
 
                 {/* Mode */}
                 <div className="flex flex-col gap-3">
-                  <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em]">Preferred Mode *</label>
+                  <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Preferred Mode *</label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {['Online', 'Offline (Studio)'].map(mode => (
                       <label key={mode} className="flex items-center gap-4 bg-[#fff5f8]/50 px-6 py-4 rounded-2xl cursor-pointer hover:bg-[#fff5f8] transition-all border-2 border-[#ec407a]/10 has-[:checked]:border-[#d81b60] has-[:checked]:bg-[#fff5f8] shadow-sm">

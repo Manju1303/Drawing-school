@@ -465,6 +465,14 @@ const Home = () => {
                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
                 className="relative z-10 max-w-4xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide rounded-[2.5rem] md:rounded-[3.5rem] border border-white/20 shadow-2xl bg-slate-900"
               >
+                <div className="absolute top-6 right-6 z-20">
+                  <button 
+                    onClick={() => setShowPoster(false)}
+                    className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-all shadow-xl"
+                  >
+                    <X size={24} />
+                  </button>
+                </div>
                 <div className="px-6 pb-12 md:px-12">
                    <img 
                     src={getAsset('poster_summer.jpg')} 
@@ -584,11 +592,11 @@ const Home = () => {
                   <div className="p-8 flex-grow">
                     <ul className="space-y-4 flex flex-col items-center">
                       {domain.courses.map((course, j) => (
-                        <li key={j} className="flex flex-col items-center gap-2 text-sm font-medium text-slate-600 group/item text-center">
-                          <div className="w-6 h-6 rounded-full bg-[#d81b60]/10 flex items-center justify-center text-[#d81b60] group-hover/item:bg-[#d81b60] group-hover/item:text-white transition-colors">
+                        <li key={j} className="flex items-center justify-center gap-3 text-sm font-medium text-slate-600 group/item text-center">
+                          <div className="w-5 h-5 rounded-full bg-[#d81b60]/10 flex items-center justify-center text-[#d81b60] group-hover/item:bg-[#d81b60] group-hover/item:text-white transition-colors shrink-0">
                             <Star size={10} fill="currentColor" />
                           </div>
-                          {course}
+                          <span>{course}</span>
                         </li>
                       ))}
                     </ul>

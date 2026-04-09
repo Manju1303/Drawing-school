@@ -974,8 +974,8 @@ const Contact = () => (
                 <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
                     <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><MapPin size={32} /></div>
                     <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Our Studio</h4>
-                    <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">Visit us at Perumanallur for offline drawing and painting classes.</p>
-                    <a href="https://jsdl.in/RSL-EUI1775137878" target="_blank" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">Find Us <ExternalLink size={12} className="inline ml-1" /></a>
+                    <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">KRK COMPLEX, Bus Stop, Perumanallur, Tiruppur, Tamil Nadu 641666.</p>
+                    <a href="https://maps.app.goo.gl/wS22D68S899A6" target="_blank" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">Find Us <ExternalLink size={12} className="inline ml-1" /></a>
                 </motion.div>
                 <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
                     <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><Phone size={32} /></div>
@@ -994,7 +994,7 @@ const Contact = () => (
             <div className="mt-20 h-[500px] rounded-[4rem] overflow-hidden border-8 border-white shadow-2xl relative">
                 <iframe 
                     title="Google Maps"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15655.776634563884!2d77.34863378715818!3d11.19172420000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba900e572d4b79b%3A0xc31cb8668516b23b!2sRivya%20School%20of%20Arts!5e0!3m2!1sen!2sin!4v1712398000000!5m2!1sen!2sin" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.738488458704!2d77.35672057504823!3d11.206974388969199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba9059712892205%3A0x4c23f6fb17d1d67a!2sRIVYA%20SCHOOL%20OF%20ARTS!5e0!3m2!1sen!2sin!4v1712398000000!5m2!1sen!2sin" 
                     className="w-full h-full grayscale hover:grayscale-0 transition-all duration-1000 border-none"
                     allowFullScreen="" 
                     loading="lazy">

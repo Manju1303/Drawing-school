@@ -578,21 +578,22 @@ const Home = () => {
                   whileHover={{ y: -5 }}
                   className="bg-white rounded-[2rem] overflow-hidden shadow-xl border border-[#ec407a]/10 flex flex-col h-full group"
                 >
-                  <div className="flex items-center gap-4 px-8 py-7 text-white group-hover:scale-[1.02] transition-transform min-h-[90px]" style={{ backgroundColor: domain.color }}>
-                    <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+                  <div className="flex flex-col items-center gap-3 px-8 py-7 text-white group-hover:scale-[1.02] transition-transform min-h-[140px] text-center justify-center" style={{ backgroundColor: domain.color }}>
+                    <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center shrink-0 mb-1">
                       {domain.icon}
                     </div>
                     <h5 className="text-base font-black tracking-widest uppercase !font-sans leading-tight">{domain.title}</h5>
                   </div>
-                  <div className="bg-[#fffde7]/50 px-8 py-3 border-b border-yellow-100 flex items-center justify-between">
+                  <div className="bg-[#fffde7]/50 px-8 py-3 border-b border-yellow-100 flex items-center justify-center gap-2">
+                    <Star size={10} className="text-yellow-500" fill="currentColor" />
                     <span className="text-[10px] font-black uppercase tracking-widest text-[#ad1457]">Skill-Based learning</span>
                     <Star size={10} className="text-yellow-500" fill="currentColor" />
                   </div>
                   <div className="p-8 flex-grow">
-                    <ul className="space-y-4">
+                    <ul className="space-y-4 flex flex-col items-center">
                       {domain.courses.map((course, j) => (
-                        <li key={j} className="flex items-center gap-3 text-sm font-medium text-slate-600 group/item">
-                          <div className="w-5 h-5 rounded-full bg-[#d81b60]/10 flex items-center justify-center text-[#d81b60] group-hover/item:bg-[#d81b60] group-hover/item:text-white transition-colors">
+                        <li key={j} className="flex flex-col items-center gap-2 text-sm font-medium text-slate-600 group/item text-center">
+                          <div className="w-6 h-6 rounded-full bg-[#d81b60]/10 flex items-center justify-center text-[#d81b60] group-hover/item:bg-[#d81b60] group-hover/item:text-white transition-colors">
                             <Star size={10} fill="currentColor" />
                           </div>
                           {course}
@@ -600,7 +601,7 @@ const Home = () => {
                       ))}
                     </ul>
                   </div>
-                  <div className="px-8 py-6 border-t border-slate-50 mt-auto bg-slate-50/50">
+                  <div className="px-8 py-6 border-t border-slate-50 mt-auto bg-slate-50/50 flex justify-center">
                     <Link to="/courses" className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#d81b60] hover:gap-4 transition-all">
                       View All Courses <ArrowRight size={14} />
                     </Link>
@@ -875,7 +876,7 @@ const Commission = () => {
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="bg-white p-8 md:p-12 lg:p-16 rounded-[3rem] md:rounded-[4rem] border border-slate-100 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] sticky top-32"
+                    className="bg-white p-6 sm:p-10 md:p-12 lg:p-16 rounded-[2.5rem] md:rounded-[4rem] border border-slate-100 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] mb-10 lg:mb-0 lg:sticky lg:top-32"
                   >
                     <h3 className="text-4xl mb-10 text-[#ad1457] font-serif">Custom Order Request</h3>
                     <form className="flex flex-col gap-8" onSubmit={(e) => {
@@ -1126,7 +1127,7 @@ const JoinNow = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white p-10 md:p-16 rounded-[4rem] border border-[#ec407a]/10 shadow-2xl"
+              className="bg-white p-6 sm:p-10 md:p-16 rounded-[2.5rem] sm:rounded-[4rem] border border-[#ec407a]/10 shadow-2xl"
             >
               <form className="flex flex-col gap-10" onSubmit={handleSubmit}>
                 {/* Row 1: Name + Phone */}
@@ -1221,7 +1222,7 @@ const JoinNow = () => {
                 {/* Mode */}
                 <div className="flex flex-col gap-3">
                   <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.4em] ml-4">Preferred Mode *</label>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {['Online', 'Offline (Studio)'].map(mode => (
                       <label key={mode} className="flex items-center gap-4 bg-[#fff5f8]/50 px-6 py-4 rounded-2xl cursor-pointer hover:bg-[#fff5f8] transition-all border-2 border-[#ec407a]/10 has-[:checked]:border-[#d81b60] has-[:checked]:bg-[#fff5f8] shadow-sm">
                         <input type="radio" name="mode" value={mode} className="accent-[#d81b60] w-5 h-5" />

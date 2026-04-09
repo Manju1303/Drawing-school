@@ -449,7 +449,7 @@ const Home = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-12 pointer-events-auto"
+              className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-8 pointer-events-auto"
             >
               <motion.div 
                 initial={{ opacity: 0 }}
@@ -463,26 +463,47 @@ const Home = () => {
                 initial={{ scale: 0.9, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                className="relative z-10 max-w-4xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide rounded-[3rem] border border-white/20 shadow-2xl bg-slate-900"
+                className="relative z-10 max-w-4xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide rounded-[2.5rem] md:rounded-[3.5rem] border border-white/20 shadow-2xl bg-slate-900"
               >
-                <div className="sticky top-0 right-0 p-6 flex justify-end z-20">
+                <div className="sticky top-0 right-0 p-6 flex justify-end z-20 pointer-events-none">
                   <button 
                     onClick={() => setShowPoster(false)}
-                    className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-all"
+                    className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-all pointer-events-auto shadow-xl"
                   >
                     <X size={24} />
                   </button>
                 </div>
-                <div className="px-6 pb-12 md:px-12">
-                   <img 
-                    src={getAsset('poster_summer.jpg')} 
-                    alt="Summer Offer Poster" 
-                    className="w-full h-auto rounded-[2rem] shadow-2xl border-4 border-white/10" 
-                  />
-                  <div className="mt-8 text-center">
-                    <h3 className="text-3xl font-serif text-[#f8bbd0] mb-2 tracking-tight">Special Summer Classes</h3>
-                    <p className="text-white/60 text-sm">Join RSA this summer to ignite your artistic potential!</p>
-                  </div>
+                
+                <div className="px-6 pb-20 md:px-12 flex flex-col gap-12 text-center">
+                   <div className="mb-4">
+                     <h3 className="text-4xl md:text-5xl font-serif text-[#f8bbd0] mb-4 tracking-tight">Our Premium Offers</h3>
+                     <p className="text-white/60 text-lg">Special courses crafted for your creative growth.</p>
+                   </div>
+
+                   {[
+                     'WhatsApp Image 2026-04-07 at 8.04.05 PM.jpeg',
+                     'WhatsApp Image 2026-04-07 at 8.04.05 PM (1).jpeg',
+                     'WhatsApp Image 2026-04-07 at 8.04.05 PM (2).jpeg',
+                     'WhatsApp Image 2026-04-07 at 8.04.06 PM.jpeg'
+                   ].map((img, idx) => (
+                     <SectionReveal key={idx} delay={idx * 0.15}>
+                        <img 
+                          src={getAsset(`course/${img}`)} 
+                          alt={`Offer ${idx + 1}`} 
+                          className="w-full h-auto rounded-[2rem] shadow-2xl border-4 border-white/10" 
+                        />
+                     </SectionReveal>
+                   ))}
+                   
+                   <div className="mt-8 pt-8 border-t border-white/10">
+                      <Link 
+                        to="/join" 
+                        onClick={() => setShowPoster(false)}
+                        className="btn-primary px-10 py-4 text-xs font-black tracking-widest inline-flex items-center gap-3"
+                      >
+                        Enroll Now <ArrowRight size={16} />
+                      </Link>
+                   </div>
                 </div>
               </motion.div>
             </motion.div>

@@ -55,7 +55,7 @@ const GlitterCursor = () => {
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
       setPosition({ x: clientX, y: clientY });
-      
+
       const newParticle = {
         id: Math.random(),
         x: clientX,
@@ -90,14 +90,14 @@ const GlitterCursor = () => {
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden hidden md:block">
       {/* Main Cursor Dot */}
-      <motion.div 
-        initial={{ 
-          backgroundColor: 'rgba(216, 27, 96, 0.4)', 
+      <motion.div
+        initial={{
+          backgroundColor: 'rgba(216, 27, 96, 0.4)',
           borderColor: 'rgb(255, 255, 255)',
           scale: 1
         }}
-        animate={{ 
-          x: position.x - (isHovering ? 20 : 6), 
+        animate={{
+          x: position.x - (isHovering ? 20 : 6),
           y: position.y - (isHovering ? 20 : 6),
           width: isHovering ? 40 : 12,
           height: isHovering ? 40 : 12,
@@ -105,23 +105,23 @@ const GlitterCursor = () => {
           borderColor: isHovering ? 'rgb(236, 64, 122)' : 'rgb(255, 255, 255)',
           borderWidth: 2,
           scale: isHovering ? 1.5 : 1
-        }} 
-        transition={{ type: 'spring', damping: 25, stiffness: 200, mass: 0.6 }} 
-        className="border-2 rounded-full absolute backdrop-blur-[2px] flex items-center justify-center overflow-hidden" 
+        }}
+        transition={{ type: 'spring', damping: 25, stiffness: 200, mass: 0.6 }}
+        className="border-2 rounded-full absolute backdrop-blur-[2px] flex items-center justify-center overflow-hidden"
       >
         {isHovering && hoverType === 'link' && (
-           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[6px] font-black uppercase text-[#d81b60]">View</motion.div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[6px] font-black uppercase text-[#d81b60]">View</motion.div>
         )}
       </motion.div>
-      
+
       {/* Glitters Trail */}
       {trail.map((p) => (
-        <motion.div 
-          key={p.id} 
-          initial={{ x: p.x, y: p.y, scale: p.scale, opacity: 1 }} 
-          animate={{ opacity: 0, scale: 0, y: p.y + (Math.random() * 40 - 20) }} 
-          transition={{ duration: 1.2, ease: "easeOut" }} 
-          className="absolute w-2 h-2 bg-[#ec407a] rounded-full blur-[0.5px] shadow-[0_0_15px_#ec407a]" 
+        <motion.div
+          key={p.id}
+          initial={{ x: p.x, y: p.y, scale: p.scale, opacity: 1 }}
+          animate={{ opacity: 0, scale: 0, y: p.y + (Math.random() * 40 - 20) }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="absolute w-2 h-2 bg-[#ec407a] rounded-full blur-[0.5px] shadow-[0_0_15px_#ec407a]"
         />
       ))}
     </div>
@@ -137,7 +137,7 @@ const ScrollProgress = () => {
   });
 
   return (
-    <motion.div 
+    <motion.div
       className="fixed top-0 left-0 right-0 h-[3px] bg-[#d81b60] origin-[0%] z-[1000] shadow-[0_0_10px_#d81b60]"
       style={{ scaleX }}
     />
@@ -151,11 +151,11 @@ const SectionReveal = ({ children, delay = 0 }) => (
 );
 
 const FloatingParticles = () => (
-    <div className="fixed inset-0 pointer-events-none z-0 opacity-40">
-        {[...Array(30)].map((_, i) => (
-            <motion.div key={i} initial={{ x: Math.random() * 100 + "%", y: Math.random() * 100 + "%" }} animate={{ y: [null, "-20%", "20%"], x: [null, "10%", "-10%"], opacity: [0.2, 0.8, 0.2] }} transition={{ duration: Math.random() * 10 + 20, repeat: Infinity, ease: "linear" }} className="absolute w-1.5 h-1.5 bg-[#d81b60]/20 rounded-full blur-sm shadow-xl" />
-        ))}
-    </div>
+  <div className="fixed inset-0 pointer-events-none z-0 opacity-40">
+    {[...Array(30)].map((_, i) => (
+      <motion.div key={i} initial={{ x: Math.random() * 100 + "%", y: Math.random() * 100 + "%" }} animate={{ y: [null, "-20%", "20%"], x: [null, "10%", "-10%"], opacity: [0.2, 0.8, 0.2] }} transition={{ duration: Math.random() * 10 + 20, repeat: Infinity, ease: "linear" }} className="absolute w-1.5 h-1.5 bg-[#d81b60]/20 rounded-full blur-sm shadow-xl" />
+    ))}
+  </div>
 );
 
 // Components
@@ -198,16 +198,15 @@ const Navbar = () => {
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
             const useDark = isScrolled || (location.pathname !== '/' && location.pathname !== '');
-            
+
             return (
-              <Link 
-                key={link.name} 
-                to={link.path} 
-                className={`relative text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105 ${
-                  isActive 
-                    ? (useDark ? 'text-[#d81b60]' : 'text-white') 
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`relative text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105 ${isActive
+                    ? (useDark ? 'text-[#d81b60]' : 'text-white')
                     : (useDark ? 'text-slate-800 hover:text-[#d81b60]' : 'text-white/70 hover:text-white')
-                }`}
+                  }`}
               >
                 {link.name}
                 {isActive && (
@@ -230,28 +229,28 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, x: '100%' }} 
-            animate={{ opacity: 1, x: 0 }} 
-            exit={{ opacity: 0, x: '100%' }} 
+          <motion.div
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="fixed inset-0 bg-white z-[120] flex flex-col justify-between items-center py-20 lg:hidden"
           >
             <div className="flex flex-col items-center gap-2">
-               <div className="w-20 h-20 rounded-2xl bg-[#fff5f8] p-2 flex items-center justify-center mb-4">
-                  <img src={logo} alt="Logo" className="w-full h-full object-contain" />
-               </div>
-               <span className="text-3xl font-black text-[#d81b60] font-serif italic">RSA</span>
-               <span className="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-bold mb-10">Rivya School of Arts</span>
+              <div className="w-20 h-20 rounded-2xl bg-[#fff5f8] p-2 flex items-center justify-center mb-4">
+                <img src={logo} alt="Logo" className="w-full h-full object-contain" />
+              </div>
+              <span className="text-3xl font-black text-[#d81b60] font-serif italic">RSA</span>
+              <span className="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-bold mb-10">Rivya School of Arts</span>
             </div>
 
-            <button 
+            <button
               onClick={() => setIsMenuOpen(false)}
               className="absolute top-8 right-8 p-3 bg-slate-50 text-slate-400 rounded-full hover:bg-slate-100 transition-all border border-slate-100"
             >
               <X size={28} />
             </button>
-            
+
             <div className="flex flex-col items-center gap-8 w-full px-12">
               {navLinks.map((link, i) => (
                 <motion.div
@@ -260,9 +259,9 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
                 >
-                  <Link 
-                    to={link.path} 
-                    onClick={() => setIsMenuOpen(false)} 
+                  <Link
+                    to={link.path}
+                    onClick={() => setIsMenuOpen(false)}
                     className={`text-2xl md:text-3xl font-black tracking-tight uppercase ${location.pathname === link.path ? 'text-[#d81b60]' : 'text-slate-400 hover:text-slate-600'}`}
                   >
                     {link.name}
@@ -270,11 +269,11 @@ const Navbar = () => {
                 </motion.div>
               ))}
             </div>
-            
+
             <motion.div
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               transition={{ delay: 0.5 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
             >
               <Link to="/join" onClick={() => setIsMenuOpen(false)} className="btn-primary mt-8 px-10 py-4 text-xs font-black tracking-widest">Enroll Now</Link>
             </motion.div>
@@ -347,7 +346,7 @@ const Home = () => {
   useEffect(() => {
     // Show the summer poster only once per session
     const hasSeenPoster = sessionStorage.getItem('hasSeenSummerPoster');
-    
+
     if (!hasSeenPoster) {
       const timer = setTimeout(() => {
         setShowPoster(true);
@@ -356,7 +355,7 @@ const Home = () => {
       return () => clearTimeout(timer);
     }
   }, []);
-  
+
   return (
     <div className="home">
       {/* Hero Section */}
@@ -364,10 +363,10 @@ const Home = () => {
         <div className="absolute inset-0 z-0 overflow-hidden">
           {/* Enhanced Background Gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-[#1a0b12] to-[#2d0a18] z-0" />
-          
+
           {/* Animated Background Mesh/Glow */}
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               scale: [1, 1.2, 1],
               opacity: [0.3, 0.5, 0.3],
               rotate: [0, 45, 0]
@@ -375,8 +374,8 @@ const Home = () => {
             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
             className="absolute top-[-20%] right-[-10%] w-[80%] h-[80%] bg-[#d81b60]/10 rounded-full blur-[120px]"
           />
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               scale: [1.2, 1, 1.2],
               opacity: [0.2, 0.4, 0.2],
               rotate: [0, -45, 0]
@@ -387,17 +386,17 @@ const Home = () => {
         </div>
         <div className="container relative z-20">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="max-w-3xl">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} 
-              animate={{ opacity: 1, y: 0 }} 
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.1em] mb-8"
             >
               <Sparkles size={12} className="text-[#f8bbd0]" /> MSME Certified Art Institute
             </motion.div>
-            
+
             <div className="overflow-hidden mb-4 md:mb-6">
-              <motion.h1 
+              <motion.h1
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0.5 }}
@@ -409,17 +408,17 @@ const Home = () => {
               </motion.h1>
             </div>
 
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
               className="text-xl md:text-2xl text-white/70 mb-12 leading-relaxed font-light max-w-xl"
             >
-              From curious beginners to skilled artists, 
+              From curious beginners to skilled artists,
               <span className="text-white font-medium"> RSA</span> provides the canvas for your imagination to flourish with world-class mentorship.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
@@ -432,16 +431,16 @@ const Home = () => {
               </Magnetic>
               <Magnetic strength={0.3}>
                 <Link to="/join" className="btn-primary w-full sm:w-auto justify-center flex items-center gap-2 px-6 py-2.5 md:px-10 md:py-4 text-[10px] md:text-xs font-black tracking-widest uppercase">
-                   Enroll Now
+                  Enroll Now
                 </Link>
               </Magnetic>
               <Magnetic strength={0.3}>
                 <Link to="/commission" className="btn-primary w-full sm:w-auto justify-center flex items-center gap-2 px-6 py-2.5 md:px-10 md:py-4 text-[10px] md:text-xs font-black tracking-widest uppercase !bg-slate-900 border-2 border-white/20">
-                   Order Now
+                  Order Now
                 </Link>
               </Magnetic>
               <Magnetic strength={0.3}>
-                <button 
+                <button
                   onClick={() => setShowPoster(true)}
                   className="btn-secondary w-full sm:w-auto justify-center !border-white !text-white hover:!bg-white hover:!text-slate-950 flex items-center gap-2 px-6 py-2.5 md:px-10 md:py-4 text-[10px] md:text-xs font-black tracking-widest uppercase"
                 >
@@ -455,20 +454,20 @@ const Home = () => {
         {/* Poster Pop-up Modal */}
         <AnimatePresence>
           {showPoster && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-8 pointer-events-auto"
             >
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setShowPoster(false)}
                 className="absolute inset-0 bg-slate-950/90 backdrop-blur-xl"
               />
-              
+
               <motion.div
                 initial={{ scale: 0.9, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -476,7 +475,7 @@ const Home = () => {
                 className="relative z-10 max-w-4xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide rounded-[2.5rem] md:rounded-[3.5rem] border border-white/20 shadow-2xl bg-slate-900"
               >
                 <div className="absolute top-6 right-6 z-20">
-                  <button 
+                  <button
                     onClick={() => setShowPoster(false)}
                     className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-all shadow-xl"
                   >
@@ -484,10 +483,10 @@ const Home = () => {
                   </button>
                 </div>
                 <div className="px-6 pb-12 md:px-12">
-                   <img 
-                    src={getAsset('poster_summer.jpg')} 
-                    alt="Summer Offer Poster" 
-                    className="w-full h-auto rounded-[2rem] shadow-2xl border-4 border-white/10" 
+                  <img
+                    src={getAsset('poster_summer.jpg')}
+                    alt="Summer Offer Poster"
+                    className="w-full h-auto rounded-[2rem] shadow-2xl border-4 border-white/10"
                   />
                   <div className="mt-8 text-center">
                     <h3 className="text-3xl font-serif text-[#f8bbd0] mb-2 tracking-tight">Special Summer Classes</h3>
@@ -499,7 +498,7 @@ const Home = () => {
           )}
         </AnimatePresence>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
@@ -507,10 +506,10 @@ const Home = () => {
         >
           <span className="text-xs uppercase tracking-[0.5em] font-black text-white">Explore</span>
           <div className="w-[1px] h-16 bg-gradient-to-b from-white to-transparent rounded-full overflow-hidden relative">
-            <motion.div 
-              animate={{ y: [0, 64] }} 
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} 
-              className="absolute top-0 left-0 w-full h-1/2 bg-[#d81b60]" 
+            <motion.div
+              animate={{ y: [0, 64] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-0 left-0 w-full h-1/2 bg-[#d81b60]"
             />
           </div>
         </motion.div>
@@ -543,7 +542,7 @@ const Home = () => {
               <h2 className="text-5xl text-[#ad1457] font-serif">What We Offer</h2>
             </div>
           </SectionReveal>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
               {
@@ -584,7 +583,7 @@ const Home = () => {
               }
             ].map((domain, i) => (
               <SectionReveal key={i} delay={i * 0.1}>
-                <motion.div 
+                <motion.div
                   whileHover={{ y: -8 }}
                   className="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#ec407a]/15 flex flex-col h-full group transition-all duration-500 hover:shadow-[#ec407a]/20"
                 >
@@ -634,41 +633,41 @@ const Home = () => {
             </div>
             <Link to="/gallery" className="text-[#d81b60] hover:underline flex items-center gap-2 font-bold text-sm tracking-widest uppercase mb-2 transition-all">View Full Gallery <ArrowRight size={16} /></Link>
           </div>
- 
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             <SectionReveal delay={0.2}>
               <motion.div whileHover={{ y: -20 }} className="group relative overflow-hidden rounded-[4rem] aspect-[4/5] shadow-2xl">
-                 <img src={getAsset('portrait_women.jpg')} alt="Pencil Portrait" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 p-12 flex flex-col justify-end transform translate-y-10 group-hover:translate-y-0">
-                    <span className="text-pink-400 text-[10px] font-black uppercase tracking-widest mb-4">Commissions</span>
-                    <h3 className="text-3xl text-white mb-2 leading-snug">Pencil <br />Portraits</h3>
-                    <p className="text-sm text-white/60 mb-8 max-w-[200px]">Hyper-realistic custom commissions created with soul.</p>
-                    <Link to="/gallery" className="text-xs font-black text-white uppercase tracking-[0.3em] flex items-center gap-3 group/link">View Work <div className="w-8 h-[1px] bg-white group-hover/link:w-12 transition-all"></div></Link>
-                 </div>
+                <img src={getAsset('portrait_women.jpg')} alt="Pencil Portrait" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 p-12 flex flex-col justify-end transform translate-y-10 group-hover:translate-y-0">
+                  <span className="text-pink-400 text-[10px] font-black uppercase tracking-widest mb-4">Commissions</span>
+                  <h3 className="text-3xl text-white mb-2 leading-snug">Pencil <br />Portraits</h3>
+                  <p className="text-sm text-white/60 mb-8 max-w-[200px]">Hyper-realistic custom commissions created with soul.</p>
+                  <Link to="/gallery" className="text-xs font-black text-white uppercase tracking-[0.3em] flex items-center gap-3 group/link">View Work <div className="w-8 h-[1px] bg-white group-hover/link:w-12 transition-all"></div></Link>
+                </div>
               </motion.div>
             </SectionReveal>
 
             <SectionReveal delay={0.4}>
               <motion.div whileHover={{ y: -20 }} className="group relative overflow-hidden rounded-[4rem] aspect-[4/5] shadow-2xl lg:translate-y-20">
-                 <img src={getAsset('painting_justice.jpg')} alt="Acrylic Painting" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-[#ad1457] via-[#ad1457]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 p-12 flex flex-col justify-end transform translate-y-10 group-hover:translate-y-0">
-                    <span className="text-white/60 text-[10px] font-black uppercase tracking-widest mb-4">Oil & Acrylic</span>
-                    <h3 className="text-3xl text-white mb-2 leading-snug">Artistic <br />Visions</h3>
-                    <p className="text-sm text-white/80 mb-8 max-w-[200px]">Professional paintings that breathe life into spaces.</p>
-                    <Link to="/gallery" className="text-xs font-black text-white uppercase tracking-[0.3em] flex items-center gap-3 group/link">Explore <div className="w-8 h-[1px] bg-white group-hover/link:w-12 transition-all"></div></Link>
-                 </div>
+                <img src={getAsset('painting_justice.jpg')} alt="Acrylic Painting" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#ad1457] via-[#ad1457]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 p-12 flex flex-col justify-end transform translate-y-10 group-hover:translate-y-0">
+                  <span className="text-white/60 text-[10px] font-black uppercase tracking-widest mb-4">Oil & Acrylic</span>
+                  <h3 className="text-3xl text-white mb-2 leading-snug">Artistic <br />Visions</h3>
+                  <p className="text-sm text-white/80 mb-8 max-w-[200px]">Professional paintings that breathe life into spaces.</p>
+                  <Link to="/gallery" className="text-xs font-black text-white uppercase tracking-[0.3em] flex items-center gap-3 group/link">Explore <div className="w-8 h-[1px] bg-white group-hover/link:w-12 transition-all"></div></Link>
+                </div>
               </motion.div>
             </SectionReveal>
 
             <SectionReveal delay={0.6}>
               <motion.div whileHover={{ y: -20 }} className="group relative overflow-hidden rounded-[4rem] aspect-[4/5] shadow-2xl">
-                 <img src={getAsset('portrait_couple.jpg')} alt="Couple Art" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 p-12 flex flex-col justify-end transform translate-y-10 group-hover:translate-y-0">
-                    <span className="text-pink-400 text-[10px] font-black uppercase tracking-widest mb-4">Charcoal Art</span>
-                    <h3 className="text-3xl text-white mb-2 leading-snug">Couple <br />Masterpieces</h3>
-                    <p className="text-sm text-white/60 mb-8 max-w-[200px]">Detailed textures capturing emotions forever.</p>
-                    <Link to="/gallery" className="text-xs font-black text-white uppercase tracking-[0.3em] flex items-center gap-3 group/link">Gallery <div className="w-8 h-[1px] bg-white group-hover/link:w-12 transition-all"></div></Link>
-                 </div>
+                <img src={getAsset('portrait_couple.jpg')} alt="Couple Art" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 p-12 flex flex-col justify-end transform translate-y-10 group-hover:translate-y-0">
+                  <span className="text-pink-400 text-[10px] font-black uppercase tracking-widest mb-4">Charcoal Art</span>
+                  <h3 className="text-3xl text-white mb-2 leading-snug">Couple <br />Masterpieces</h3>
+                  <p className="text-sm text-white/60 mb-8 max-w-[200px]">Detailed textures capturing emotions forever.</p>
+                  <Link to="/gallery" className="text-xs font-black text-white uppercase tracking-[0.3em] flex items-center gap-3 group/link">Gallery <div className="w-8 h-[1px] bg-white group-hover/link:w-12 transition-all"></div></Link>
+                </div>
               </motion.div>
             </SectionReveal>
           </div>
@@ -680,31 +679,31 @@ const Home = () => {
         <div className="container text-center max-w-4xl">
           <h4 className="text-sm uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-4">Student Life</h4>
           <h2 className="text-6xl mb-16 text-[#ad1457]">Nurturing Creativity</h2>
-          
+
           <div className="grid lg:grid-cols-2 gap-20 items-center mt-24 max-w-6xl mx-auto text-left">
-              <SectionReveal>
-                <div className="relative rounded-[4rem] overflow-hidden shadow-[0_50px_80px_-20px_rgba(216,27,96,0.3)] border-8 border-white bg-slate-100 aspect-[4/3] flex items-center justify-center">
-                   <motion.img 
-                      whileHover={{ scale: 1.05 }}
-                      src={getAsset('group_students.jpg')} 
-                      alt="Students" 
-                      className="w-full h-full object-cover" 
-                   />
-                </div>
-              </SectionReveal>
-             <SectionReveal delay={0.2}>
-               <div className="glass-card !p-12 md:!p-20 relative overflow-hidden">
-                  <div className="absolute -top-6 -right-6 w-24 h-24 bg-[#d81b60]/10 rounded-full flex items-center justify-center text-[#d81b60] text-6xl font-serif italic">"</div>
-                  <p className="text-xl md:text-3xl italic leading-relaxed mb-12 text-slate-700 font-light font-serif relative z-10">"Every canvas is a journey, and every stroke tells a story. At RSA, we don't just teach art; we nurture the creator within you."</p>
-                  <div className="flex items-center gap-6 relative z-10">
-                    <div className="w-16 h-1 bg-gradient-to-r from-[#d81b60] to-transparent"></div>
-                    <div>
-                      <h5 className="text-2xl font-black text-slate-900 tracking-tight">Thrinethraa D S</h5>
-                      <p className="text-xs font-black text-[#d81b60] uppercase tracking-[0.3em] mt-1">Lead Artist & Founder</p>
-                    </div>
+            <SectionReveal>
+              <div className="relative rounded-[4rem] overflow-hidden shadow-[0_50px_80px_-20px_rgba(216,27,96,0.3)] border-8 border-white bg-slate-100 aspect-[4/3] flex items-center justify-center">
+                <motion.img
+                  whileHover={{ scale: 1.05 }}
+                  src={getAsset('group_students.jpg')}
+                  alt="Students"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </SectionReveal>
+            <SectionReveal delay={0.2}>
+              <div className="glass-card !p-12 md:!p-20 relative overflow-hidden">
+                <div className="absolute -top-6 -right-6 w-24 h-24 bg-[#d81b60]/10 rounded-full flex items-center justify-center text-[#d81b60] text-6xl font-serif italic">"</div>
+                <p className="text-xl md:text-3xl italic leading-relaxed mb-12 text-slate-700 font-light font-serif relative z-10">"Every canvas is a journey, and every stroke tells a story. At RSA, we don't just teach art; we nurture the creator within you."</p>
+                <div className="flex items-center gap-6 relative z-10">
+                  <div className="w-16 h-1 bg-gradient-to-r from-[#d81b60] to-transparent"></div>
+                  <div>
+                    <h5 className="text-2xl font-black text-slate-900 tracking-tight">Thrinethraa D S</h5>
+                    <p className="text-xs font-black text-[#d81b60] uppercase tracking-[0.3em] mt-1">Lead Artist & Founder</p>
                   </div>
-               </div>
-             </SectionReveal>
+                </div>
+              </div>
+            </SectionReveal>
           </div>
         </div>
       </section>
@@ -718,10 +717,10 @@ const About = () => (
       <SectionReveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>
-             <div className="relative group">
-                <div className="absolute -inset-4 bg-[#d81b60]/10 rounded-[5rem] blur-2xl group-hover:bg-[#d81b60]/20 transition-all"></div>
-                <img src={getAsset('founder.jpg')} alt="Founder" className="relative rounded-[4.5rem] shadow-2xl border-[16px] border-white z-10" />
-             </div>
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-[#d81b60]/10 rounded-[5rem] blur-2xl group-hover:bg-[#d81b60]/20 transition-all"></div>
+              <img src={getAsset('founder.jpg')} alt="Founder" className="relative rounded-[4.5rem] shadow-2xl border-[16px] border-white z-10" />
+            </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Our Heritage</h4>
@@ -730,12 +729,12 @@ const About = () => (
             <p className="text-base md:text-lg text-[#2d3436]/80 mb-10 leading-relaxed">Located in Perumanallur, Tiruppur, we offer both offline and online classes for all age groups, from kids to adults. Our curriculum covers everything from basic sketching to specialized courses like Mandala and Pot Painting.</p>
             <div className="grid grid-cols-2 gap-4 md:gap-8 border-t border-[#ec407a]/10 pt-10">
               <div>
-                 <h3 className="text-xl md:text-2xl font-bold mb-1 text-[#ad1457] font-serif">MSME Certified</h3>
-                  <p className="text-[9px] md:text-[11px] text-[#d81b60] font-bold uppercase tracking-widest opacity-60">Regd. Govt Institute</p>
+                <h3 className="text-xl md:text-2xl font-bold mb-1 text-[#ad1457] font-serif">MSME Certified</h3>
+                <p className="text-[9px] md:text-[11px] text-[#d81b60] font-bold uppercase tracking-widest opacity-60">Regd. Govt Institute</p>
               </div>
               <div>
-                 <h3 className="text-xl md:text-2xl font-bold mb-1 text-[#ad1457] font-serif">6 PM - 8 PM</h3>
-                  <p className="text-[9px] md:text-[11px] text-[#d81b60] font-bold uppercase tracking-widest opacity-60">Class Timings</p>
+                <h3 className="text-xl md:text-2xl font-bold mb-1 text-[#ad1457] font-serif">6 PM - 8 PM</h3>
+                <p className="text-[9px] md:text-[11px] text-[#d81b60] font-bold uppercase tracking-widest opacity-60">Class Timings</p>
               </div>
             </div>
           </motion.div>
@@ -764,34 +763,32 @@ const Courses = () => {
 
   return (
     <div className="bg-[#fff5f8]" style={{ paddingTop: '220px' }}>
-      <section className="container pb-24">
-        <div className="text-center mb-20 max-w-3xl mx-auto">
-          <h4 className="text-sm uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-4">Enroll Today</h4>
-          <h2 className="text-6xl mb-6 text-[#ad1457]">Our Courses</h2>
-          <p className="text-lg text-[#2d3436]/60">Offline & Online modes available. Certificates provided upon successful completion.</p>
+      <section className="container px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20 max-w-3xl mx-auto px-4">
+          <h4 className="text-xs sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.3em] font-bold text-[#d81b60] mb-3 sm:mb-4">Enroll Today</h4>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6 text-[#ad1457] leading-tight">Our Courses</h2>
+          <p className="text-sm sm:text-base md:text-lg text-[#2d3436]/60 leading-relaxed">Offline & Online modes available. Certificates provided upon successful completion.</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
           {coursesList.map((course, i) => (
-            <motion.div 
-              key={i} 
-              whileHover={{ y: -10 }} 
-              className="bg-white border border-[#ec407a]/15 rounded-[2.5rem] shadow-xl hover:shadow-[#ec407a]/20 transition-all flex flex-col overflow-hidden group"
+            <motion.div
+              key={i}
+              whileHover={{ y: -10 }}
+              className="h-full bg-white border border-[#ec407a]/15 rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] shadow-lg sm:shadow-xl hover:shadow-[#ec407a]/20 transition-all flex flex-col overflow-hidden group"
             >
-              <div className="p-10 flex-grow text-left flex flex-col items-start">
-                <div className="w-16 h-16 rounded-2xl bg-[#fff0f6] text-[#d81b60] flex items-center justify-center mb-8 border border-[#ec407a]/10 group-hover:bg-[#d81b60] group-hover:text-white transition-all transform group-hover:rotate-6">
+              <div className="p-5 sm:p-6 md:p-8 lg:p-10 flex-grow flex flex-col gap-4 sm:gap-5 h-full">
+                <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-xl sm:rounded-2xl bg-[#fff0f6] text-[#d81b60] flex items-center justify-center flex-shrink-0 border border-[#ec407a]/10 group-hover:bg-[#d81b60] group-hover:text-white transition-all transform group-hover:rotate-6">
                   {course.icon}
                 </div>
-                <h3 className="text-2xl font-black mb-3 text-[#ad1457] leading-tight">{course.name}</h3>
-                <div className="flex items-center gap-3 mb-6 bg-[#fff5f8] px-4 py-2 rounded-full">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-[#d81b60]">{course.duration}</span>
-                  <div className="w-1 h-1 bg-[#d81b60]/30 rounded-full"></div>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-[#d81b60]">{course.level}</span>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-black text-[#ad1457] leading-snug line-clamp-3">{course.name}</h3>
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 bg-[#fff5f8] px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full w-fit">
+                  <span className="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-widest text-[#d81b60] whitespace-nowrap">{course.duration}</span>
+                  <div className="w-0.5 h-0.5 bg-[#d81b60]/30 rounded-full shrink-0"></div>
+                  <span className="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-widest text-[#d81b60] whitespace-nowrap">{course.level}</span>
                 </div>
-                <p className="text-slate-600 mb-8 leading-relaxed text-[15px]">{course.desc}</p>
-                <div className="mt-auto w-full">
-                  <Link to="/join" className="btn-primary w-full py-4 text-[10px] font-black tracking-widest transition-all">ENROLL NOW</Link>
-                </div>
+                <p className="text-slate-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] flex-grow">{course.desc}</p>
+                <Link to="/join" className="btn-primary w-full py-2.5 sm:py-3 md:py-3.5 lg:py-4 text-[8px] sm:text-[9px] md:text-[10px] font-black tracking-widest transition-all mt-auto">ENROLL NOW</Link>
               </div>
             </motion.div>
           ))}
@@ -802,50 +799,50 @@ const Courses = () => {
 };
 
 const Gallery = () => {
-    const galleryImages = [
-        { src: 'portrait_women.jpg', cat: 'Pencil' },
-        { src: 'painting_justice.jpg', cat: 'Artistic' },
-        { src: 'portrait_couple.jpg', cat: 'Portrait' },
-        { src: 'poster_summer.jpg', cat: 'Events' },
-        { src: 'poster_regular.jpg', cat: 'Courses' },
-        { src: 'commission_delivery.jpg', cat: 'Commissions' },
-        { src: 'group_students.jpg', cat: 'Studio' },
-        { src: 'founder.jpg', cat: 'Artist' }
-    ];
-    return (
-        <div className="bg-white" style={{ paddingTop: '220px' }}>
-            <section className="container pb-24">
-                <div className="text-center mb-16 max-w-2xl mx-auto">
-                    <h4 className="text-sm uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-4">Visual Story</h4>
-                    <h2 className="text-6xl mb-4 text-[#ad1457]">Our Gallery</h2>
-                    <p className="text-lg text-[#2d3436]/60">Explore our collection of commissioned works and student achievements across all age groups.</p>
-                </div>
-
-                <div className="columns-1 sm:columns-2 lg:columns-4 gap-6 space-y-6">
-                    {galleryImages.map((img, i) => (
-                        <SectionReveal key={i} delay={i * 0.05}>
-                            <motion.div 
-                                whileHover={{ y: -10 }} 
-                                className="break-inside-avoid relative overflow-hidden rounded-[2.5rem] group cursor-pointer border border-slate-100 shadow-xl"
-                            >
-                                <img 
-                                    src={getAsset(img.src)} 
-                                    alt={`Art ${i}`} 
-                                    className="w-full h-auto object-cover transition-transform duration-[1.5s] group-hover:scale-110" 
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-8 text-center backdrop-blur-[2px]">
-                                    <span className="text-[11px] uppercase tracking-[0.1em] font-black text-white mb-4 bg-[#d81b60] px-4 py-1 rounded-full">{img.cat}</span>
-                                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 transform scale-50 group-hover:scale-100 transition-transform">
-                                        <ExternalLink size={20} />
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </SectionReveal>
-                    ))}
-                </div>
-            </section>
+  const galleryImages = [
+    { src: 'portrait_women.jpg', cat: 'Pencil' },
+    { src: 'painting_justice.jpg', cat: 'Artistic' },
+    { src: 'portrait_couple.jpg', cat: 'Portrait' },
+    { src: 'poster_summer.jpg', cat: 'Events' },
+    { src: 'poster_regular.jpg', cat: 'Courses' },
+    { src: 'commission_delivery.jpg', cat: 'Commissions' },
+    { src: 'group_students.jpg', cat: 'Studio' },
+    { src: 'founder.jpg', cat: 'Artist' }
+  ];
+  return (
+    <div className="bg-white" style={{ paddingTop: '220px' }}>
+      <section className="container pb-24">
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <h4 className="text-sm uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-4">Visual Story</h4>
+          <h2 className="text-6xl mb-4 text-[#ad1457]">Our Gallery</h2>
+          <p className="text-lg text-[#2d3436]/60">Explore our collection of commissioned works and student achievements across all age groups.</p>
         </div>
-    );
+
+        <div className="columns-1 sm:columns-2 lg:columns-4 gap-6 space-y-6">
+          {galleryImages.map((img, i) => (
+            <SectionReveal key={i} delay={i * 0.05}>
+              <motion.div
+                whileHover={{ y: -10 }}
+                className="break-inside-avoid relative overflow-hidden rounded-[2.5rem] group cursor-pointer border border-slate-100 shadow-xl"
+              >
+                <img
+                  src={getAsset(img.src)}
+                  alt={`Art ${i}`}
+                  className="w-full h-auto object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-8 text-center backdrop-blur-[2px]">
+                  <span className="text-[11px] uppercase tracking-[0.1em] font-black text-white mb-4 bg-[#d81b60] px-4 py-1 rounded-full">{img.cat}</span>
+                  <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 transform scale-50 group-hover:scale-100 transition-transform">
+                    <ExternalLink size={20} />
+                  </div>
+                </div>
+              </motion.div>
+            </SectionReveal>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
 }
 
 const Commission = () => {
@@ -860,165 +857,173 @@ const Commission = () => {
   };
   return (
     <div className="bg-[#fffdfd]" style={{ paddingTop: '220px' }}>
-        <section className="container pb-24">
-            <div className="grid lg:grid-cols-2 gap-24">
-                <div>
-                  <SectionReveal>
-                    <h4 className="text-sm uppercase tracking-[0.5em] font-black text-[#d81b60] mb-6">Custom Orders</h4>
-                    <h2 className="text-5xl md:text-7xl mb-10 text-slate-900 leading-tight">Bring Your <span className="italic font-normal serif">Vision</span> To Life.</h2>
-                    <p className="text-2xl text-slate-500 mb-12 leading-relaxed font-light">Looking for a personalized gift or a stunning wall painting? We accept commissions for high-quality custom artworks tailored to your exact desires.</p>
-                    
-                    <div className="relative group mb-16">
-                        <div className="absolute -inset-6 bg-[#d81b60]/5 rounded-[4rem] blur-3xl"></div>
-                        <img src={getAsset('commission_delivery.jpg')} className="relative rounded-[4rem] shadow-2xl border-8 border-white z-10 w-full object-cover" alt="Commission Delivery" />
-                    </div>
+      <section className="container pb-24">
+        <div className="grid lg:grid-cols-2 gap-24">
+          <div>
+            <SectionReveal>
+              <h4 className="text-sm uppercase tracking-[0.5em] font-black text-[#d81b60] mb-6">Custom Orders</h4>
+              <h2 className="text-5xl md:text-7xl mb-10 text-slate-900 leading-tight">Bring Your <span className="italic font-normal serif">Vision</span> To Life.</h2>
+              <p className="text-2xl text-slate-500 mb-12 leading-relaxed font-light">Looking for a personalized gift or a stunning wall painting? We accept commissions for high-quality custom artworks tailored to your exact desires.</p>
 
-                    <div className="grid sm:grid-cols-2 gap-8 mb-12">
-                        <div className="glass-card !p-8 !rounded-[3rem]">
-                            <div className="h-16 w-16 bg-[#d81b60]/10 rounded-2xl flex items-center justify-center text-3xl mb-6">🎨</div>
-                            <h4 className="font-black text-xl text-slate-900 mb-2">Portrait Art</h4>
-                            <p className="text-sm text-slate-500">Realistic oil or pencil portraits that capture more than just a likeness.</p>
-                        </div>
-                        <div className="glass-card !p-8 !rounded-[3rem]">
-                            <div className="h-16 w-16 bg-[#d81b60]/10 rounded-2xl flex items-center justify-center text-3xl mb-6">🏠</div>
-                            <h4 className="font-black text-xl text-slate-900 mb-2">Wall Murals</h4>
-                            <p className="text-sm text-slate-500">Transform your living spaces with elite, custom-painted wall murals.</p>
-                        </div>
-                    </div>
-                  </SectionReveal>
+              <div className="relative group mb-16">
+                <div className="absolute -inset-6 bg-[#d81b60]/5 rounded-[4rem] blur-3xl"></div>
+                <img src={getAsset('commission_delivery.jpg')} className="relative rounded-[4rem] shadow-2xl border-8 border-white z-10 w-full object-cover" alt="Commission Delivery" />
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-8 mb-12">
+                <div className="glass-card !p-8 !rounded-[3rem]">
+                  <div className="h-16 w-16 bg-[#d81b60]/10 rounded-2xl flex items-center justify-center text-3xl mb-6">🎨</div>
+                  <h4 className="font-black text-xl text-slate-900 mb-2">Portrait Art</h4>
+                  <p className="text-sm text-slate-500">Realistic oil or pencil portraits that capture more than just a likeness.</p>
+                </div>
+                <div className="glass-card !p-8 !rounded-[3rem]">
+                  <div className="h-16 w-16 bg-[#d81b60]/10 rounded-2xl flex items-center justify-center text-3xl mb-6">🏠</div>
+                  <h4 className="font-black text-xl text-slate-900 mb-2">Wall Murals</h4>
+                  <p className="text-sm text-slate-500">Transform your living spaces with elite, custom-painted wall murals.</p>
+                </div>
+              </div>
+            </SectionReveal>
+          </div>
+
+          <div className="relative">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-4 sm:p-8 md:p-12 lg:p-16 pb-12 sm:pb-16 md:pb-20 lg:pb-24 rounded-2xl sm:rounded-3xl md:rounded-4xl border border-slate-100 shadow-[0_40px_80px_-10px_rgba(0,0,0,0.08)] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] mb-6 sm:mb-8 md:mb-10"
+            >
+              <h3 className="text-xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-10 text-[#ad1457] font-serif">Custom Order Request</h3>
+              <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.target;
+                emailjs.sendForm(
+                  'service_rivyaarts',
+                  'template_commission',
+                  form,
+                  'Gg0xDxs9IK_aQQegv'
+                ).then(() => {
+                  alert('Commission request sent! We will contact you soon.');
+                  form.reset();
+                }).catch(() => {
+                  alert('Failed to send. Please call us directly at +91 95669 51629.');
+                });
+              }}>
+                {/* Artwork Category */}
+                <div className="flex flex-col gap-2.5 w-full">
+                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Artwork Category</label>
+                  <select name="artwork_type" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm">
+                    <option>Fine Art Portrait (Oil/Acrylic)</option>
+                    <option>Sketch Portrait (Pencil/Charcoal)</option>
+                    <option>Wall Mural Project</option>
+                    <option>Modern Abstract Canvas</option>
+                    <option>Wedding Pair Painting</option>
+                    <option>Custom Gift Collection</option>
+                  </select>
                 </div>
 
-                <div className="relative">
-                  <motion.div 
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="bg-white p-6 sm:p-10 md:p-12 lg:p-16 pb-20 md:pb-24 rounded-[2rem] md:rounded-[4rem] border border-slate-100 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] mb-10"
-                  >
-                    <h3 className="text-2xl md:text-4xl mb-8 md:mb-10 text-[#ad1457] font-serif">Custom Order Request</h3>
-                    <form className="flex flex-col gap-8" onSubmit={(e) => {
-                        e.preventDefault();
-                        const form = e.target;
-                        emailjs.sendForm(
-                          'service_rivyaarts',
-                          'template_commission',
-                          form,
-                          'Gg0xDxs9IK_aQQegv'
-                        ).then(() => {
-                          alert('Commission request sent! We will contact you soon.');
-                          form.reset();
-                        }).catch(() => {
-                          alert('Failed to send. Please call us directly at +91 95669 51629.');
-                        });
-                      }}>
-                        <div className="flex flex-col gap-4">
-                            <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em] ml-4">Artwork Category</label>
-                            <select name="artwork_type" className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm">
-                                <option>Fine Art Portrait (Oil/Acrylic)</option>
-                                <option>Sketch Portrait (Pencil/Charcoal)</option>
-                                <option>Wall Mural Project</option>
-                                <option>Modern Abstract Canvas</option>
-                                <option>Wedding Pair Painting</option>
-                                <option>Custom Gift Collection</option>
-                            </select>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="flex flex-col gap-4">
-                                <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Full Name *</label>
-                                <input name="from_name" required type="text" className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm" placeholder="Enter full name" />
-                            </div>
-                            <div className="flex flex-col gap-4">
-                                <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Contact Phone *</label>
-                                <input name="phone" required type="text" className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm" placeholder="+91 ..." />
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-4">
-                            <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Vision & Requirements</label>
-                            <textarea name="message" className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all h-40 resize-none shadow-sm" placeholder="Describe size, medium and timeline..."></textarea>
-                        </div>
-                        <div className="flex flex-col gap-4">
-                            <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em] ml-4">Reference Image (Optional)</label>
-                            <label className={`flex flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed cursor-pointer transition-all px-6 py-6 ${
-                                refPreview ? 'border-[#d81b60] bg-[#fff5f8]' : 'border-[#ec407a]/20 bg-[#fff5f8]/50 hover:border-[#d81b60] hover:bg-[#fff5f8]'
-                            } shadow-sm`}>
-                              <input type="file" accept="image/*" className="hidden" onChange={handleRefImage} />
-                              {refPreview ? (
-                                <div className="relative w-full">
-                                  <img src={refPreview} alt="Reference preview" className="w-full max-h-64 object-contain rounded-2xl" />
-                                  <p className="text-xs text-[#d81b60] font-bold mt-4 text-center">{refImage?.name}</p>
-                                </div>
-                              ) : (
-                                <>
-                                  <div className="w-16 h-16 bg-[#d81b60]/10 rounded-2xl flex items-center justify-center text-[#d81b60] mb-2">
-                                    <Sparkles size={28} />
-                                  </div>
-                                  <div className="text-center px-4">
-                                    <p className="font-bold text-slate-700 text-sm">Upload reference drawing</p>
-                                    <p className="text-xs text-slate-400 mt-2">JPG, PNG or WEBP (Max 10MB)</p>
-                                  </div>
-                                </>
-                              )}
-                            </label>
-                        </div>
-                        <div className="flex flex-col sm:flex-row gap-6 mt-8">
-                          <button type="submit" className="btn-primary w-full py-6 text-[11px] font-black tracking-[0.3em] shadow-[0_20px_40px_-10px_rgba(216,27,96,0.4)] hover:shadow-[0_30px_50px_-10px_rgba(216,27,96,0.5)] transition-all">SUBMIT REQUEST →</button>
-                        </div>
-                    </form>
-                  </motion.div>
+                {/* Name + Phone */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
+                  <div className="flex flex-col gap-2.5 w-full">
+                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Full Name *</label>
+                    <input name="from_name" required type="text" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400" placeholder="Enter full name" />
+                  </div>
+                  <div className="flex flex-col gap-2.5 w-full">
+                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Contact Phone *</label>
+                    <input name="phone" required type="text" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400" placeholder="+91 ..." />
+                  </div>
                 </div>
-            </div>
-        </section>
+
+                {/* Vision & Requirements */}
+                <div className="flex flex-col gap-2.5 w-full">
+                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Vision & Requirements</label>
+                  <textarea name="message" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all h-32 sm:h-40 resize-none shadow-sm placeholder:text-slate-400" placeholder="Describe size, medium and timeline..."></textarea>
+                </div>
+
+                {/* Reference Image */}
+                <div className="flex flex-col gap-2.5 w-full">
+                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Reference Image (Optional)</label>
+                  <label className={`flex flex-col items-center justify-center gap-3 sm:gap-4 rounded-2xl border-2 border-dashed cursor-pointer transition-all px-4 sm:px-6 py-6 sm:py-8 w-full ${refPreview ? 'border-[#d81b60] bg-[#fff5f8]' : 'border-[#ec407a]/20 bg-[#fff5f8]/50 hover:border-[#d81b60] hover:bg-[#fff5f8]'
+                    } shadow-sm`}>
+                    <input type="file" accept="image/*" className="hidden" onChange={handleRefImage} />
+                    {refPreview ? (
+                      <div className="relative w-full">
+                        <img src={refPreview} alt="Reference preview" className="w-full max-h-64 object-contain rounded-2xl mx-auto" />
+                        <p className="text-xs text-[#d81b60] font-bold mt-4 text-center">{refImage?.name}</p>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="w-16 h-16 bg-[#d81b60]/10 rounded-2xl flex items-center justify-center text-[#d81b60]">
+                          <Sparkles size={28} />
+                        </div>
+                        <div className="text-center px-4">
+                          <p className="font-bold text-slate-700 text-sm">Upload reference drawing</p>
+                          <p className="text-xs text-slate-400 mt-2">JPG, PNG or WEBP (Max 10MB)</p>
+                        </div>
+                      </>
+                    )}
+                  </label>
+                </div>
+
+                {/* Submit Button */}
+                <div className="mt-4 sm:mt-6 md:mt-8 lg:mt-10">
+                  <button type="submit" className="btn-primary w-full py-4 sm:py-5 md:py-6 text-[9px] sm:text-[10px] md:text-[11px] font-black tracking-[0.2em] sm:tracking-[0.3em] shadow-[0_20px_40px_-10px_rgba(216,27,96,0.4)] hover:shadow-[0_30px_50px_-10px_rgba(216,27,96,0.5)] transition-all rounded-[2rem]">SUBMIT REQUEST →</button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
 
 const Contact = () => (
-    <div className="bg-[#fff5f8] min-h-screen" style={{ paddingTop: '220px' }}>
-        <section className="container pb-24">
-            <div className="text-center mb-20 max-w-2xl mx-auto">
-                <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Get In Touch</h4>
-                <h2 className="text-6xl mb-6 text-[#ad1457] font-serif">Let's Talk Art</h2>
-                <p className="text-lg text-[#2d3436]/60">Have questions about courses or commissions? We're just a message away.</p>
-            </div>
+  <div className="bg-[#fff5f8] min-h-screen" style={{ paddingTop: '220px' }}>
+    <section className="container pb-24">
+      <div className="text-center mb-20 max-w-2xl mx-auto">
+        <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Get In Touch</h4>
+        <h2 className="text-6xl mb-6 text-[#ad1457] font-serif">Let's Talk Art</h2>
+        <p className="text-lg text-[#2d3436]/60">Have questions about courses or commissions? We're just a message away.</p>
+      </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
-                    <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><Instagram size={32} /></div>
-                    <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Instagram</h4>
-                    <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">Follow us for daily artworks, student progress and school updates.</p>
-                    <a href="https://www.instagram.com/_oeuvre_world_?igsh=MXBpMXludzM2dm16dg==" target="_blank" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">Portfolio <ExternalLink size={12} className="inline ml-1" /></a>
-                </motion.div>
-                <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
-                    <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><MapPin size={32} /></div>
-                    <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Our Studio</h4>
-                    <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">KRK COMPLEX, Bus Stop, Perumanallur, Tiruppur, Tamil Nadu 641666.</p>
-                    <a href="https://maps.app.goo.gl/wS22D68S899A6" target="_blank" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">Find Us <ExternalLink size={12} className="inline ml-1" /></a>
-                </motion.div>
-                <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
-                    <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><Phone size={32} /></div>
-                    <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Call Us</h4>
-                    <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">Direct call for detailed enrollments and inquiries.</p>
-                    <a href="tel:+919566951629" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">+91 95669 51629</a>
-                </motion.div>
-                <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
-                    <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><Mail size={32} /></div>
-                    <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Email Us</h4>
-                    <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">Send us your queries and we'll respond within 24 hours.</p>
-                    <a href="mailto:rivyaartsschool17@gmail.com" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">Email <ExternalLink size={12} className="inline ml-1" /></a>
-                </motion.div>
-            </div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
+          <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><Instagram size={32} /></div>
+          <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Instagram</h4>
+          <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">Follow us for daily artworks, student progress and school updates.</p>
+          <a href="https://www.instagram.com/_oeuvre_world_?igsh=MXBpMXludzM2dm16dg==" target="_blank" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">Portfolio <ExternalLink size={12} className="inline ml-1" /></a>
+        </motion.div>
+        <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
+          <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><MapPin size={32} /></div>
+          <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Our Studio</h4>
+          <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">KRK COMPLEX, Bus Stop, Perumanallur, Tiruppur, Tamil Nadu 641666.</p>
+          <a href="https://maps.app.goo.gl/wS22D68S899A6" target="_blank" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">Find Us <ExternalLink size={12} className="inline ml-1" /></a>
+        </motion.div>
+        <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
+          <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><Phone size={32} /></div>
+          <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Call Us</h4>
+          <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">Direct call for detailed enrollments and inquiries.</p>
+          <a href="tel:+919566951629" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">+91 95669 51629</a>
+        </motion.div>
+        <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
+          <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><Mail size={32} /></div>
+          <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Email Us</h4>
+          <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">Send us your queries and we'll respond within 24 hours.</p>
+          <a href="mailto:rivyaartsschool17@gmail.com" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">Email <ExternalLink size={12} className="inline ml-1" /></a>
+        </motion.div>
+      </div>
 
-            <div className="mt-20 h-[500px] rounded-[4rem] overflow-hidden border-8 border-white shadow-2xl relative">
-                <iframe 
-                    title="Google Maps"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.738488458704!2d77.35672057504823!3d11.206974388969199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba9059712892205%3A0x4c23f6fb17d1d67a!2sRIVYA%20SCHOOL%20OF%20ARTS!5e0!3m2!1sen!2sin!4v1712398000000!5m2!1sen!2sin" 
-                    className="w-full h-full grayscale hover:grayscale-0 transition-all duration-1000 border-none"
-                    allowFullScreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
-        </section>
-    </div>
+      <div className="mt-20 h-[500px] rounded-[4rem] overflow-hidden border-8 border-white shadow-2xl relative">
+        <iframe
+          title="Google Maps"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.738488458704!2d77.35672057504823!3d11.206974388969199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba9059712892205%3A0x4c23f6fb17d1d67a!2sRIVYA%20SCHOOL%20OF%20ARTS!5e0!3m2!1sen!2sin!4v1712398000000!5m2!1sen!2sin"
+          className="w-full h-full grayscale hover:grayscale-0 transition-all duration-1000 border-none"
+          allowFullScreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+  </div>
 );
 
 function ScrollToTop() {
@@ -1083,7 +1088,7 @@ const JoinNow = () => {
   const handleUpdate = (field, value) => {
     const updated = { ...formData, [field]: value };
     setFormData(updated);
-    
+
     if (updated.course && updated.duration && feesMap[updated.course]) {
       const fee = feesMap[updated.course][updated.duration] || 0;
       setTotalFees(fee);
@@ -1121,16 +1126,16 @@ const JoinNow = () => {
 
   return (
     <div className="bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen" style={{ paddingTop: '220px' }}>
-      <section className="container pb-16 md:pb-24">
-        <div className="text-center mb-10 md:mb-16 max-w-2xl mx-auto px-4">
-          <h4 className="text-[10px] md:text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-3 md:mb-4 flex items-center justify-center gap-2">
-            <Sparkles size={14}/> Enrollment
+      <section className="container px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 md:pb-24">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 max-w-2xl mx-auto px-2 sm:px-4">
+          <h4 className="text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold text-[#d81b60] mb-2 sm:mb-3 md:mb-4 flex items-center justify-center gap-2">
+            <Sparkles size={12} className="sm:w-[16px] sm:h-[16px]" /> Enrollment
           </h4>
-          <h2 className="text-3xl md:text-7xl mb-4 md:mb-6 text-[#ad1457] font-serif leading-tight">Join <span className="italic font-normal">RSA</span> Today</h2>
-          <p className="text-sm md:text-lg text-slate-500 leading-relaxed">Take the first step on your artistic journey. Fill in your details below and our team will get back to you within 24 hours.</p>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl mb-3 sm:mb-4 md:mb-6 text-[#ad1457] font-serif leading-tight">Join <span className="italic font-normal">RSA</span> Today</h2>
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-500 leading-relaxed">Take the first step on your artistic journey. Fill in your details below and our team will get back to you within 24 hours.</p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto px-2 sm:px-4">
           {submitted ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -1147,112 +1152,112 @@ const JoinNow = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white p-6 sm:p-12 md:p-20 pb-20 md:pb-28 rounded-[3rem] sm:rounded-[5rem] border border-[#ec407a]/15 shadow-[0_60px_100px_-20px_rgba(216,27,96,0.15)] overflow-visible relative"
+              className="bg-white p-4 sm:p-8 md:p-12 lg:p-16 pb-16 sm:pb-20 md:pb-24 lg:pb-28 rounded-2xl sm:rounded-3xl md:rounded-4xl lg:rounded-5xl border border-[#ec407a]/15 shadow-[0_40px_80px_-10px_rgba(216,27,96,0.1)] md:shadow-[0_60px_100px_-20px_rgba(216,27,96,0.15)] overflow-visible relative"
             >
-              <form className="flex flex-col gap-6 md:gap-10" onSubmit={handleSubmit}>
+              <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={handleSubmit}>
                 {/* Row 1: Name + Phone */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Full Name *</label>
-                    <input 
-                      required 
-                      type="text" 
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
+                  <div className="flex flex-col gap-2.5 w-full">
+                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Full Name *</label>
+                    <input
+                      required
+                      type="text"
                       value={formData.name}
                       onChange={(e) => handleUpdate('name', e.target.value)}
-                      className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm" 
-                      placeholder="Your full name" 
+                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400"
+                      placeholder="Your full name"
                     />
                   </div>
-                  <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Phone Number *</label>
-                    <input 
-                      required 
-                      type="tel" 
+                  <div className="flex flex-col gap-2.5 w-full">
+                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Phone Number *</label>
+                    <input
+                      required
+                      type="tel"
                       value={formData.phone}
                       onChange={(e) => handleUpdate('phone', e.target.value)}
-                      className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm" 
-                      placeholder="+91 XXXXX XXXXX" 
+                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400"
+                      placeholder="+91 XXXXX XXXXX"
                     />
                   </div>
                 </div>
 
                 {/* Row 2: Age Group + Email */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Age Group *</label>
-                    <select required className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
+                  <div className="flex flex-col gap-2.5 w-full">
+                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Age Group *</label>
+                    <select required className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm">
                       <option value="">Select age group...</option>
                       <option>Kids (5–10 yrs)</option>
                       <option>Teens (11–17 yrs)</option>
                       <option>Adults (18+ yrs)</option>
                     </select>
                   </div>
-                  <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Email Address</label>
-                    <input 
-                      type="email" 
+                  <div className="flex flex-col gap-2.5 w-full">
+                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Email Address</label>
+                    <input
+                      type="email"
                       value={formData.email}
                       onChange={(e) => handleUpdate('email', e.target.value)}
-                      className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm" 
-                      placeholder="Enter your email (optional)" 
+                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400"
+                      placeholder="Enter your email (optional)"
                     />
                   </div>
                 </div>
 
-                {/* Row 3: Course + Duration side by side */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="flex flex-col gap-4">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.2em] ml-2">Select Course *</label>
-                    <div className="relative">
-                      <select 
-                        required 
-                        className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-8 py-5 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12"
-                        value={formData.course}
-                        onChange={(e) => handleUpdate('course', e.target.value)}
-                      >
-                        <option value="">Choose your art course...</option>
-                        {Object.keys(feesMap).map(course => <option key={course} value={course}>{course}</option>)}
-                      </select>
-                      <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
-                        <ArrowRight size={18} className="rotate-90" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.2em] ml-2">Select Duration *</label>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                      {formData.course && feesMap[formData.course] ? (
-                        Object.keys(feesMap[formData.course]).map(dur => (
-                          <label key={dur} className="relative group cursor-pointer">
-                            <input 
-                              type="radio" 
-                              name="duration" 
-                              value={dur} 
-                              className="hidden peer" 
-                              onChange={() => handleUpdate('duration', dur)} 
-                              checked={formData.duration === dur}
-                            />
-                            <div className="px-4 py-4 rounded-2xl border-2 border-[#ec407a]/10 bg-white peer-checked:border-[#d81b60] peer-checked:bg-[#fff5f8] text-center transition-all shadow-sm group-hover:border-[#d81b60]/50">
-                              <span className="text-[11px] font-black uppercase tracking-widest text-[#ad1457] peer-checked:text-[#d81b60]">{dur}</span>
-                            </div>
-                          </label>
-                        ))
-                      ) : (
-                        <div className="col-span-full py-4 text-center border-2 border-dashed border-[#ec407a]/20 rounded-2xl bg-slate-50">
-                          <p className="text-xs text-slate-400 italic">Please select a course first</p>
-                        </div>
-                      )}
+                {/* Row 3: Course Selection */}
+                <div className="flex flex-col gap-2.5 w-full">
+                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Select Course *</label>
+                  <div className="relative w-full">
+                    <select
+                      required
+                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12"
+                      value={formData.course}
+                      onChange={(e) => handleUpdate('course', e.target.value)}
+                    >
+                      <option value="">Choose your art course...</option>
+                      {Object.keys(feesMap).map(course => <option key={course} value={course}>{course}</option>)}
+                    </select>
+                    <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
+                      <ArrowRight size={18} className="rotate-90" />
                     </div>
                   </div>
                 </div>
 
-                {/* Mode */}
-                <div className="flex flex-col gap-3">
+                {/* Row 4: Duration Selection */}
+                <div className="flex flex-col gap-3 w-full">
+                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Select Duration *</label>
+                  {formData.course && feesMap[formData.course] ? (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-auto gap-2.5 md:gap-3 w-full">
+                      {Object.keys(feesMap[formData.course]).map(dur => (
+                        <label key={dur} className="relative group cursor-pointer flex-1 min-w-[100px]">
+                          <input
+                            type="radio"
+                            name="duration"
+                            value={dur}
+                            className="hidden peer"
+                            onChange={() => handleUpdate('duration', dur)}
+                            checked={formData.duration === dur}
+                          />
+                          <div className="w-full px-3 py-3 sm:py-3.5 rounded-2xl border-2 border-[#ec407a]/10 bg-white peer-checked:border-[#d81b60] peer-checked:bg-[#fff5f8] text-center transition-all shadow-sm group-hover:border-[#d81b60]/50">
+                            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-[#ad1457] peer-checked:text-[#d81b60] whitespace-nowrap block">{dur}</span>
+                          </div>
+                        </label>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="w-full py-3.5 text-center border-2 border-dashed border-[#ec407a]/20 rounded-2xl bg-slate-50">
+                      <p className="text-xs text-slate-400 italic">Please select a course first</p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Preferred Mode */}
+                <div className="flex flex-col gap-4 w-full">
                   <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Preferred Mode *</label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                     {['Online', 'Offline (Studio)'].map(mode => (
-                      <label key={mode} className="flex items-center gap-4 bg-[#fff5f8]/50 px-6 py-4 rounded-2xl cursor-pointer hover:bg-[#fff5f8] transition-all border-2 border-[#ec407a]/10 has-[:checked]:border-[#d81b60] has-[:checked]:bg-[#fff5f8] shadow-sm">
-                        <input type="radio" name="mode" value={mode} className="accent-[#d81b60] w-5 h-5" />
+                      <label key={mode} className="flex items-center gap-4 bg-[#fff5f8]/50 px-5 sm:px-6 py-4 rounded-2xl cursor-pointer hover:bg-[#fff5f8] transition-all border-2 border-[#ec407a]/10 has-[:checked]:border-[#d81b60] has-[:checked]:bg-[#fff5f8] shadow-sm">
+                        <input type="radio" name="mode" value={mode} className="accent-[#d81b60] w-5 h-5 shrink-0" required />
                         <span className="font-bold text-slate-700 text-sm">{mode}</span>
                       </label>
                     ))}
@@ -1261,37 +1266,37 @@ const JoinNow = () => {
 
                 {/* Inline Fee Summary */}
                 {totalFees > 0 && (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="bg-gradient-to-r from-[#fff5f8] to-[#fff0f6] p-6 md:p-8 rounded-3xl border border-[#d81b60]/15"
+                    className="bg-gradient-to-r from-[#fff5f8] to-[#fff0f6] p-6 md:p-8 rounded-3xl border border-[#d81b60]/15 w-full"
                   >
-                    <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-[#d81b60]/10 flex items-center justify-center">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5 pb-5 border-b border-[#d81b60]/10">
+                      <div className="flex items-start sm:items-center gap-4 flex-1">
+                        <div className="w-12 h-12 rounded-2xl bg-[#d81b60]/10 flex items-center justify-center shrink-0">
                           <Palette size={22} className="text-[#d81b60]" />
                         </div>
-                        <div>
-                          <p className="text-sm font-bold text-slate-700">{formData.course}</p>
-                          <p className="text-xs text-slate-400 font-medium">{formData.duration} • One-time Payment</p>
+                        <div className="min-w-0">
+                          <p className="text-sm font-bold text-slate-700 line-clamp-2">{formData.course}</p>
+                          <p className="text-xs text-slate-400 font-medium whitespace-nowrap">{formData.duration} • One-time Payment</p>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <span className="text-3xl md:text-4xl font-black text-[#d81b60]">₹{totalFees}</span>
+                      <div className="text-right shrink-0">
+                        <span className="text-2xl sm:text-3xl md:text-4xl font-black text-[#d81b60]">₹{totalFees}</span>
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-4 mt-5 pt-5 border-t border-[#d81b60]/10">
-                      <span className="flex items-center gap-2 text-[11px] font-bold text-slate-500"><Star size={12} className="text-[#d81b60]" /> Professional Mentorship</span>
-                      <span className="flex items-center gap-2 text-[11px] font-bold text-slate-500"><Star size={12} className="text-[#d81b60]" /> MSME Certificate</span>
-                      <span className="flex items-center gap-2 text-[11px] font-bold text-slate-500"><Star size={12} className="text-[#d81b60]" /> Art Kits Included</span>
+                    <div className="flex flex-wrap gap-3 md:gap-4">
+                      <span className="flex items-center gap-2 text-[10px] sm:text-[11px] font-bold text-slate-600"><Star size={12} className="text-[#d81b60] shrink-0" /> Professional Mentorship</span>
+                      <span className="flex items-center gap-2 text-[10px] sm:text-[11px] font-bold text-slate-600"><Star size={12} className="text-[#d81b60] shrink-0" /> MSME Certificate</span>
+                      <span className="flex items-center gap-2 text-[10px] sm:text-[11px] font-bold text-slate-600"><Star size={12} className="text-[#d81b60] shrink-0" /> Art Kits Included</span>
                     </div>
-                    <p className="text-[10px] text-slate-400 mt-4">* Fees may vary based on age group. Final pricing confirmed during intro call.</p>
+                    <p className="text-[9px] text-slate-400 mt-4 pt-4 border-t border-[#d81b60]/10">* Fees may vary based on age group. Final pricing confirmed during intro call.</p>
                   </motion.div>
                 )}
 
-                <div className="mt-10">
-                  <button type="submit" className="btn-primary w-full py-6 text-[11px] font-black tracking-[0.3em] shadow-[0_25px_50px_-12px_rgba(216,27,96,0.4)] hover:shadow-[0_40px_60px_-12px_rgba(216,27,96,0.5)] transition-all rounded-[2rem]">SUBMIT ENROLLMENT →</button>
+                <div className="mt-6 md:mt-10">
+                  <button type="submit" className="btn-primary w-full py-5 md:py-6 text-[10px] sm:text-[11px] font-black tracking-[0.3em] shadow-[0_25px_50px_-12px_rgba(216,27,96,0.4)] hover:shadow-[0_40px_60px_-12px_rgba(216,27,96,0.5)] transition-all rounded-[2rem]">SUBMIT ENROLLMENT →</button>
                 </div>
               </form>
             </motion.div>
@@ -1304,16 +1309,16 @@ const JoinNow = () => {
 
 
 const ParallaxHero = () => {
-    const { scrollY } = useScroll();
-    const y = useTransform(scrollY, [0, 800], [0, 400]);
-    const scale = useTransform(scrollY, [0, 800], [1.2, 1.4]);
-    
-    return (
-        <motion.img 
-            style={{ y, scale }}
-            src={getAsset('poster_main.jpg')} 
-            alt="Rivya School of Arts" 
-            className="w-full h-full object-cover opacity-60" 
-        />
-    );
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 800], [0, 400]);
+  const scale = useTransform(scrollY, [0, 800], [1.2, 1.4]);
+
+  return (
+    <motion.img
+      style={{ y, scale }}
+      src={getAsset('poster_main.jpg')}
+      alt="Rivya School of Arts"
+      className="w-full h-full object-cover opacity-60"
+    />
+  );
 };

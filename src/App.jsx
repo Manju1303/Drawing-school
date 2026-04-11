@@ -91,14 +91,19 @@ const GlitterCursor = () => {
     <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden hidden md:block">
       {/* Main Cursor Dot */}
       <motion.div 
+        initial={{ 
+          backgroundColor: 'rgba(216, 27, 96, 0.4)', 
+          borderColor: 'rgb(255, 255, 255)',
+          scale: 1
+        }}
         animate={{ 
           x: position.x - (isHovering ? 20 : 6), 
           y: position.y - (isHovering ? 20 : 6),
           width: isHovering ? 40 : 12,
           height: isHovering ? 40 : 12,
           backgroundColor: isHovering ? 'rgba(216, 27, 96, 0.2)' : 'rgba(216, 27, 96, 0.4)',
-          borderColor: isHovering ? '#ec407a' : 'white',
-          borderWidth: isHovering ? 2 : 2,
+          borderColor: isHovering ? 'rgb(236, 64, 122)' : 'rgb(255, 255, 255)',
+          borderWidth: 2,
           scale: isHovering ? 1.5 : 1
         }} 
         transition={{ type: 'spring', damping: 25, stiffness: 200, mass: 0.6 }} 
@@ -177,15 +182,15 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full top-0 z-[100] transition-all duration-700 ${isScrolled ? 'py-4 bg-white/80 backdrop-blur-2xl border-b border-[#ec407a]/10 shadow-xl' : 'py-8 bg-transparent'}`}>
+    <nav className={`fixed w-full top-0 z-[100] transition-all duration-700 ${(isScrolled || (location.pathname !== '/' && location.pathname !== '')) ? 'py-4 bg-white/80 backdrop-blur-2xl border-b border-[#ec407a]/10 shadow-xl' : 'py-8 bg-transparent'}`}>
       <div className="container flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3 group">
-          <motion.div whileHover={{ scale: 1.05 }} className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden shrink-0 transition-all">
+          <motion.div whileHover={{ scale: 1.05 }} className="w-10 h-10 md:w-14 md:h-14 rounded-full overflow-hidden shrink-0 transition-all">
             <img src={logo} alt="RSA Logo" className="w-full h-full object-contain" />
           </motion.div>
           <div className="flex flex-col">
-            <span className={`text-3xl md:text-4xl font-black font-serif italic tracking-normal transition-colors duration-500 leading-none ${isScrolled || location.pathname !== '/' ? 'text-[#d81b60]' : 'text-white'}`}>RSA</span>
-            <span className={`text-[8px] md:text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-500 ${isScrolled || location.pathname !== '/' ? 'text-[#ad1457]' : 'text-white/90'}`}>RIVYA SCHOOL OF ARTS</span>
+            <span className={`text-2xl md:text-4xl font-black font-serif italic tracking-normal transition-colors duration-500 leading-none ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#d81b60]' : 'text-white'}`}>RSA</span>
+            <span className={`text-[7px] md:text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-500 ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#ad1457]' : 'text-white/90'}`}>RIVYA SCHOOL OF ARTS</span>
           </div>
         </Link>
 
@@ -340,17 +345,22 @@ const Home = () => {
   const [showPoster, setShowPoster] = useState(false);
 
   useEffect(() => {
-    // Automatically show the summer poster pop-up on load
-    const timer = setTimeout(() => {
-      setShowPoster(true);
-    }, 1200);
-    return () => clearTimeout(timer);
+    // Show the summer poster only once per session
+    const hasSeenPoster = sessionStorage.getItem('hasSeenSummerPoster');
+    
+    if (!hasSeenPoster) {
+      const timer = setTimeout(() => {
+        setShowPoster(true);
+        sessionStorage.setItem('hasSeenSummerPoster', 'true');
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
   }, []);
   
   return (
     <div className="home">
       {/* Hero Section */}
-      <section className="relative h-[110vh] flex items-center overflow-hidden bg-slate-950">
+      <section className="relative min-h-screen py-32 flex items-center overflow-hidden bg-slate-950">
         <div className="absolute inset-0 z-0 overflow-hidden">
           {/* Enhanced Background Gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-[#1a0b12] to-[#2d0a18] z-0" />
@@ -386,16 +396,16 @@ const Home = () => {
               <Sparkles size={12} className="text-[#f8bbd0]" /> MSME Certified Art Institute
             </motion.div>
             
-            <div className="overflow-hidden mb-6">
+            <div className="overflow-hidden mb-4 md:mb-6">
               <motion.h1 
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0.5 }}
-                className="leading-[1.1] text-white"
+                className="leading-[1.1] text-white text-4xl sm:text-6xl md:text-8xl"
               >
                 Elevate Your <br />
                 <span className="italic font-normal text-[#f8bbd0]">Artistic</span><br />
-                <span className="gradient-text drop-shadow-2xl text-5xl sm:text-6xl md:text-8xl">Vision.</span>
+                <span className="gradient-text drop-shadow-2xl">Vision.</span>
               </motion.h1>
             </div>
 
@@ -413,29 +423,29 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row flex-wrap gap-4 items-center"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 items-center"
             >
               <Magnetic strength={0.3}>
-                <Link to="/courses" className="btn-primary group w-full sm:w-auto justify-center px-8 py-3 md:px-10 md:py-4 text-xs flex items-center">
-                  Begin Your Journey <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                <Link to="/courses" className="btn-primary group w-full sm:w-auto justify-center px-6 py-2.5 md:px-10 md:py-4 text-[10px] md:text-xs flex items-center">
+                  Begin Your Journey <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Magnetic>
               <Magnetic strength={0.3}>
-                <Link to="/join" className="btn-primary w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-10 md:py-4 text-xs font-black tracking-widest uppercase">
+                <Link to="/join" className="btn-primary w-full sm:w-auto justify-center flex items-center gap-2 px-6 py-2.5 md:px-10 md:py-4 text-[10px] md:text-xs font-black tracking-widest uppercase">
                    Enroll Now
                 </Link>
               </Magnetic>
               <Magnetic strength={0.3}>
-                <Link to="/commission" className="btn-primary w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-10 md:py-4 text-xs font-black tracking-widest uppercase !bg-slate-900 border-2 border-white/20">
+                <Link to="/commission" className="btn-primary w-full sm:w-auto justify-center flex items-center gap-2 px-6 py-2.5 md:px-10 md:py-4 text-[10px] md:text-xs font-black tracking-widest uppercase !bg-slate-900 border-2 border-white/20">
                    Order Now
                 </Link>
               </Magnetic>
               <Magnetic strength={0.3}>
                 <button 
                   onClick={() => setShowPoster(true)}
-                  className="btn-secondary w-full sm:w-auto justify-center !border-white !text-white hover:!bg-white hover:!text-slate-950 flex items-center gap-2 px-8 py-3 md:px-10 md:py-4 text-xs font-black tracking-widest uppercase"
+                  className="btn-secondary w-full sm:w-auto justify-center !border-white !text-white hover:!bg-white hover:!text-slate-950 flex items-center gap-2 px-6 py-2.5 md:px-10 md:py-4 text-[10px] md:text-xs font-black tracking-widest uppercase"
                 >
-                  <Sparkles size={16} /> Summer Offer
+                  <Sparkles size={14} /> Summer Offer
                 </button>
               </Magnetic>
             </motion.div>
@@ -702,7 +712,7 @@ const Home = () => {
 };
 
 const About = () => (
-  <div className="pt-32 bg-white min-h-screen">
+  <div className="bg-white min-h-screen" style={{ paddingTop: '180px' }}>
     <section className="container py-20 lg:py-32">
       <SectionReveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -714,17 +724,17 @@ const About = () => (
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Our Heritage</h4>
-            <h2 className="text-4xl md:text-6xl mb-8 leading-snug text-[#ad1457] font-serif">Mastery in <br /><span className="italic font-normal">Every Stroke</span></h2>
-            <p className="text-lg text-[#2d3436]/80 mb-6 leading-relaxed">RIVYA SCHOOL OF ARTS is an MSME approved institute dedicated to providing professional drawing and painting training. Founded by our lead artist at Oeuvre World, we specialize in teaching students how to transform their imagination into masterpieces.</p>
-            <p className="text-lg text-[#2d3436]/80 mb-10 leading-relaxed">Located in Perumanallur, Tiruppur, we offer both offline and online classes for all age groups, from kids to adults. Our curriculum covers everything from basic sketching to specialized courses like Mandala and Pot Painting.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-[#ec407a]/10 pt-10">
+            <h2 className="text-3xl md:text-6xl mb-6 md:mb-8 md:leading-snug text-[#ad1457] font-serif">Mastery in <br /><span className="italic font-normal">Every Stroke</span></h2>
+            <p className="text-base md:text-lg text-[#2d3436]/80 mb-6 leading-relaxed">RIVYA SCHOOL OF ARTS is an MSME approved institute dedicated to providing professional drawing and painting training. Founded by our lead artist at Oeuvre World, we specialize in teaching students how to transform their imagination into masterpieces.</p>
+            <p className="text-base md:text-lg text-[#2d3436]/80 mb-10 leading-relaxed">Located in Perumanallur, Tiruppur, we offer both offline and online classes for all age groups, from kids to adults. Our curriculum covers everything from basic sketching to specialized courses like Mandala and Pot Painting.</p>
+            <div className="grid grid-cols-2 gap-4 md:gap-8 border-t border-[#ec407a]/10 pt-10">
               <div>
-                 <h3 className="text-2xl font-bold mb-1 text-[#ad1457] font-serif">MSME Certified</h3>
-                  <p className="text-[11px] text-[#d81b60] font-bold uppercase tracking-widest opacity-60">Regd. Govt Institute</p>
+                 <h3 className="text-xl md:text-2xl font-bold mb-1 text-[#ad1457] font-serif">MSME Certified</h3>
+                  <p className="text-[9px] md:text-[11px] text-[#d81b60] font-bold uppercase tracking-widest opacity-60">Regd. Govt Institute</p>
               </div>
               <div>
-                 <h3 className="text-2xl font-bold mb-1 text-[#ad1457] font-serif">6 PM - 8 PM</h3>
-                  <p className="text-[11px] text-[#d81b60] font-bold uppercase tracking-widest opacity-60">Class Timings</p>
+                 <h3 className="text-xl md:text-2xl font-bold mb-1 text-[#ad1457] font-serif">6 PM - 8 PM</h3>
+                  <p className="text-[9px] md:text-[11px] text-[#d81b60] font-bold uppercase tracking-widest opacity-60">Class Timings</p>
               </div>
             </div>
           </motion.div>
@@ -752,7 +762,7 @@ const Courses = () => {
   ];
 
   return (
-    <div className="pt-32 bg-[#fff5f8]">
+    <div className="bg-[#fff5f8]" style={{ paddingTop: '180px' }}>
       <section className="container pb-24">
         <div className="text-center mb-20 max-w-3xl mx-auto">
           <h4 className="text-sm uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-4">Enroll Today</h4>
@@ -796,7 +806,7 @@ const Gallery = () => {
         { src: 'founder.jpg', cat: 'Artist' }
     ];
     return (
-        <div className="pt-32 bg-white">
+        <div className="bg-white" style={{ paddingTop: '180px' }}>
             <section className="container pb-24">
                 <div className="text-center mb-16 max-w-2xl mx-auto">
                     <h4 className="text-sm uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-4">Visual Story</h4>
@@ -842,7 +852,7 @@ const Commission = () => {
     }
   };
   return (
-    <div className="pt-32 bg-[#fffdfd]">
+    <div className="bg-[#fffdfd]" style={{ paddingTop: '180px' }}>
         <section className="container pb-24">
             <div className="grid lg:grid-cols-2 gap-24">
                 <div>
@@ -876,9 +886,9 @@ const Commission = () => {
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="bg-white p-6 sm:p-10 md:p-12 lg:p-16 rounded-[2.5rem] md:rounded-[4rem] border border-slate-100 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] mb-10 lg:mb-0 lg:sticky lg:top-32"
+                    className="bg-white p-6 sm:p-10 md:p-12 lg:p-16 rounded-[2rem] md:rounded-[4rem] border border-slate-100 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] mb-10 lg:mb-0 lg:sticky lg:top-32"
                   >
-                    <h3 className="text-4xl mb-10 text-[#ad1457] font-serif">Custom Order Request</h3>
+                    <h3 className="text-2xl md:text-4xl mb-8 md:mb-10 text-[#ad1457] font-serif">Custom Order Request</h3>
                     <form className="flex flex-col gap-8" onSubmit={(e) => {
                         e.preventDefault();
                         const form = e.target;
@@ -956,7 +966,7 @@ const Commission = () => {
 };
 
 const Contact = () => (
-    <div className="pt-32 bg-[#fff5f8] min-h-screen">
+    <div className="bg-[#fff5f8] min-h-screen" style={{ paddingTop: '180px' }}>
         <section className="container pb-24">
             <div className="text-center mb-20 max-w-2xl mx-auto">
                 <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Get In Touch</h4>
@@ -1015,7 +1025,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <ReactLenis root>
-      <Router>
+      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <ScrollToTop />
         <ScrollProgress />
         <GlitterCursor />
@@ -1040,6 +1050,9 @@ export default function App() {
 const JoinNow = () => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
     course: '',
     duration: '',
     mode: '',
@@ -1100,14 +1113,14 @@ const JoinNow = () => {
 
 
   return (
-    <div className="pt-32 bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen">
-      <section className="container pb-24">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
-          <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4 flex items-center justify-center gap-2">
+    <div className="bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen" style={{ paddingTop: '160px' }}>
+      <section className="container pb-16 md:pb-24">
+        <div className="text-center mb-10 md:mb-16 max-w-2xl mx-auto px-4">
+          <h4 className="text-[10px] md:text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-3 md:mb-4 flex items-center justify-center gap-2">
             <Sparkles size={14}/> Enrollment
           </h4>
-          <h2 className="text-3xl sm:text-4xl md:text-7xl mb-6 text-[#ad1457] font-serif leading-tight">Join <span className="italic font-normal">RSA</span> Today</h2>
-          <p className="text-lg text-slate-500 leading-relaxed">Take the first step on your artistic journey. Fill in your details below and our team will get back to you within 24 hours.</p>
+          <h2 className="text-3xl md:text-7xl mb-4 md:mb-6 text-[#ad1457] font-serif leading-tight">Join <span className="italic font-normal">RSA</span> Today</h2>
+          <p className="text-sm md:text-lg text-slate-500 leading-relaxed">Take the first step on your artistic journey. Fill in your details below and our team will get back to you within 24 hours.</p>
         </div>
 
         <div className="max-w-3xl mx-auto">
@@ -1127,9 +1140,9 @@ const JoinNow = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white p-6 sm:p-10 md:p-16 rounded-[2.5rem] sm:rounded-[4rem] border border-[#ec407a]/10 shadow-2xl"
+              className="bg-white p-5 sm:p-10 md:p-16 rounded-[2rem] sm:rounded-[4rem] border border-[#ec407a]/10 shadow-2xl"
             >
-              <form className="flex flex-col gap-10" onSubmit={handleSubmit}>
+              <form className="flex flex-col gap-6 md:gap-10" onSubmit={handleSubmit}>
                 {/* Row 1: Name + Phone */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="flex flex-col gap-3">

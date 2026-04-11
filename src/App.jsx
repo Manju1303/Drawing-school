@@ -585,35 +585,36 @@ const Home = () => {
             ].map((domain, i) => (
               <SectionReveal key={i} delay={i * 0.1}>
                 <motion.div 
-                  whileHover={{ y: -5 }}
-                  className="bg-white rounded-[2rem] overflow-hidden shadow-xl border border-[#ec407a]/10 flex flex-col h-full group"
+                  whileHover={{ y: -8 }}
+                  className="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#ec407a]/15 flex flex-col h-full group transition-all duration-500 hover:shadow-[#ec407a]/20"
                 >
-                  <div className="flex flex-col items-center gap-3 px-8 py-7 text-white group-hover:scale-[1.02] transition-transform min-h-[140px] text-center justify-center" style={{ backgroundColor: domain.color }}>
-                    <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center shrink-0 mb-1">
+                  <div className="flex flex-col items-center gap-3 px-10 py-10 text-white group-hover:scale-[1.02] transition-transform min-h-[160px] text-center justify-center relative overflow-hidden" style={{ backgroundColor: domain.color }}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50"></div>
+                    <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0 mb-2 border border-white/30 relative z-10">
                       {domain.icon}
                     </div>
-                    <h5 className="text-base font-black tracking-widest uppercase !font-sans leading-tight">{domain.title}</h5>
+                    <h5 className="text-xl font-black tracking-widest uppercase !font-sans leading-tight relative z-10">{domain.title}</h5>
                   </div>
-                  <div className="bg-[#fffde7]/50 px-8 py-3 border-b border-yellow-100 flex items-center justify-center gap-2">
-                    <Star size={10} className="text-yellow-500" fill="currentColor" />
-                    <span className="text-[10px] font-black uppercase tracking-widest text-[#ad1457]">Skill-Based learning</span>
-                    <Star size={10} className="text-yellow-500" fill="currentColor" />
+                  <div className="bg-[#fff9fc] px-8 py-4 border-b border-[#ec407a]/10 flex items-center justify-center gap-2">
+                    <Sparkles size={12} className="text-[#d81b60]" />
+                    <span className="text-[11px] font-black uppercase tracking-widest text-[#d81b60]">Professional Training</span>
+                    <Sparkles size={12} className="text-[#d81b60]" />
                   </div>
-                  <div className="p-8 flex-grow">
-                    <ul className="space-y-4 flex flex-col items-center">
+                  <div className="p-10 flex-grow bg-white">
+                    <ul className="space-y-5 flex flex-col items-start px-4">
                       {domain.courses.map((course, j) => (
-                        <li key={j} className="flex items-center justify-center gap-3 text-sm font-medium text-slate-600 group/item text-center">
-                          <div className="w-5 h-5 rounded-full bg-[#d81b60]/10 flex items-center justify-center text-[#d81b60] group-hover/item:bg-[#d81b60] group-hover/item:text-white transition-colors shrink-0">
-                            <Star size={10} fill="currentColor" />
+                        <li key={j} className="flex items-center gap-4 text-[15px] font-semibold text-slate-700 group/item transition-colors hover:text-[#d81b60]">
+                          <div className="w-6 h-6 rounded-lg bg-[#d81b60]/10 flex items-center justify-center text-[#d81b60] group-hover/item:bg-[#d81b60] group-hover/item:text-white transition-all shrink-0 shadow-sm">
+                            <Star size={12} fill="currentColor" />
                           </div>
-                          <span>{course}</span>
+                          <span className="leading-tight">{course}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="px-8 py-6 border-t border-slate-50 mt-auto bg-slate-50/50 flex justify-center">
-                    <Link to="/courses" className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#d81b60] hover:gap-4 transition-all">
-                      View All Courses <ArrowRight size={14} />
+                  <div className="px-10 py-8 border-t border-slate-50 mt-auto bg-slate-50/80 flex justify-center">
+                    <Link to="/courses" className="btn-primary !px-8 !py-3 !text-[10px] !rounded-2xl transition-all shadow-lg hover:shadow-[#d81b60]/30">
+                      View Details <ArrowRight size={14} className="ml-2" />
                     </Link>
                   </div>
                 </motion.div>
@@ -770,21 +771,27 @@ const Courses = () => {
           <p className="text-lg text-[#2d3436]/60">Offline & Online modes available. Certificates provided upon successful completion.</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {coursesList.map((course, i) => (
-            <motion.div key={i} whileHover={{ y: -10 }} className="bg-white p-10 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl hover:shadow-[#ec407a]/10 transition-all flex flex-col items-start text-left group">
-              <div className="w-16 h-16 rounded-3xl bg-[#fff0f6] text-[#d81b60] flex items-center justify-center mb-8 border border-[#ec407a]/10 group-hover:bg-[#d81b60] group-hover:text-white transition-all">
-                {course.icon}
-              </div>
-              <h3 className="text-2xl mb-2 text-[#ad1457]">{course.name}</h3>
-              <div className="flex gap-4 mb-6 text-[11px] font-bold uppercase tracking-widest text-[#2d3436]/40">
-                <span>{course.duration}</span>
-                <span className="w-1 h-1 bg-[#ec407a]/20 rounded-full mt-1.5"></span>
-                <span>{course.level}</span>
-              </div>
-              <p className="text-[#2d3436]/70 mb-10 flex-grow leading-relaxed">{course.desc}</p>
-              <div className="flex flex-col sm:flex-row gap-3 w-full">
-                <Link to="/join" className="btn-primary flex-1 text-center py-4">Enroll Now</Link>
+            <motion.div 
+              key={i} 
+              whileHover={{ y: -10 }} 
+              className="bg-white border border-[#ec407a]/15 rounded-[2.5rem] shadow-xl hover:shadow-[#ec407a]/20 transition-all flex flex-col overflow-hidden group"
+            >
+              <div className="p-10 flex-grow text-left flex flex-col items-start">
+                <div className="w-16 h-16 rounded-2xl bg-[#fff0f6] text-[#d81b60] flex items-center justify-center mb-8 border border-[#ec407a]/10 group-hover:bg-[#d81b60] group-hover:text-white transition-all transform group-hover:rotate-6">
+                  {course.icon}
+                </div>
+                <h3 className="text-2xl font-black mb-3 text-[#ad1457] leading-tight">{course.name}</h3>
+                <div className="flex items-center gap-3 mb-6 bg-[#fff5f8] px-4 py-2 rounded-full">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#d81b60]">{course.duration}</span>
+                  <div className="w-1 h-1 bg-[#d81b60]/30 rounded-full"></div>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#d81b60]">{course.level}</span>
+                </div>
+                <p className="text-slate-600 mb-8 leading-relaxed text-[15px]">{course.desc}</p>
+                <div className="mt-auto w-full">
+                  <Link to="/join" className="btn-primary w-full py-4 text-[10px] font-black tracking-widest transition-all">ENROLL NOW</Link>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -953,8 +960,8 @@ const Commission = () => {
                               )}
                             </label>
                         </div>
-                        <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                          <button type="submit" className="btn-primary flex-1 py-5 text-sm font-black tracking-[0.2em] shadow-2xl">Send Request →</button>
+                        <div className="flex flex-col sm:flex-row gap-6 mt-8">
+                          <button type="submit" className="btn-primary w-full py-6 text-[11px] font-black tracking-[0.3em] shadow-[0_20px_40px_-10px_rgba(216,27,96,0.4)] hover:shadow-[0_30px_50px_-10px_rgba(216,27,96,0.5)] transition-all">SUBMIT REQUEST →</button>
                         </div>
                     </form>
                   </motion.div>
@@ -1139,8 +1146,8 @@ const JoinNow = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white p-5 sm:p-10 md:p-16 pb-20 md:pb-24 rounded-[2rem] sm:rounded-[4rem] border border-[#ec407a]/10 shadow-2xl overflow-visible"
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-white p-6 sm:p-12 md:p-20 pb-20 md:pb-28 rounded-[3rem] sm:rounded-[5rem] border border-[#ec407a]/15 shadow-[0_60px_100px_-20px_rgba(216,27,96,0.15)] overflow-visible relative"
             >
               <form className="flex flex-col gap-6 md:gap-10" onSubmit={handleSubmit}>
                 {/* Row 1: Name + Phone */}
@@ -1194,24 +1201,29 @@ const JoinNow = () => {
 
                 {/* Row 3: Course + Duration side by side */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Select Course *</label>
-                    <select 
-                      required 
-                      className="bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-6 py-4 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm"
-                      value={formData.course}
-                      onChange={(e) => handleUpdate('course', e.target.value)}
-                    >
-                      <option value="">Select a course...</option>
-                      {Object.keys(feesMap).map(course => <option key={course} value={course}>{course}</option>)}
-                    </select>
+                  <div className="flex flex-col gap-4">
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.2em] ml-2">Select Course *</label>
+                    <div className="relative">
+                      <select 
+                        required 
+                        className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-8 py-5 rounded-2xl text-slate-900 text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12"
+                        value={formData.course}
+                        onChange={(e) => handleUpdate('course', e.target.value)}
+                      >
+                        <option value="">Choose your art course...</option>
+                        {Object.keys(feesMap).map(course => <option key={course} value={course}>{course}</option>)}
+                      </select>
+                      <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
+                        <ArrowRight size={18} className="rotate-90" />
+                      </div>
+                    </div>
                   </div>
                   <div className="flex flex-col gap-3">
-                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Select Duration *</label>
-                    <div className="flex flex-wrap gap-3">
+                    <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.2em] ml-2">Select Duration *</label>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                       {formData.course && feesMap[formData.course] ? (
                         Object.keys(feesMap[formData.course]).map(dur => (
-                          <label key={dur} className="flex-1 min-w-[100px]">
+                          <label key={dur} className="relative group cursor-pointer">
                             <input 
                               type="radio" 
                               name="duration" 
@@ -1220,13 +1232,15 @@ const JoinNow = () => {
                               onChange={() => handleUpdate('duration', dur)} 
                               checked={formData.duration === dur}
                             />
-                            <div className="px-5 py-4 rounded-2xl border-2 border-[#ec407a]/10 bg-[#fff5f8]/30 peer-checked:border-[#d81b60] peer-checked:bg-[#fff5f8] text-center font-bold text-slate-600 peer-checked:text-[#d81b60] cursor-pointer transition-all text-sm">
-                              {dur}
+                            <div className="px-4 py-4 rounded-2xl border-2 border-[#ec407a]/10 bg-white peer-checked:border-[#d81b60] peer-checked:bg-[#fff5f8] text-center transition-all shadow-sm group-hover:border-[#d81b60]/50">
+                              <span className="text-[11px] font-black uppercase tracking-widest text-[#ad1457] peer-checked:text-[#d81b60]">{dur}</span>
                             </div>
                           </label>
                         ))
                       ) : (
-                        <p className="text-xs text-slate-400 italic ml-2 py-4">Please select a course first</p>
+                        <div className="col-span-full py-4 text-center border-2 border-dashed border-[#ec407a]/20 rounded-2xl bg-slate-50">
+                          <p className="text-xs text-slate-400 italic">Please select a course first</p>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -1276,7 +1290,9 @@ const JoinNow = () => {
                   </motion.div>
                 )}
 
-                <button type="submit" className="btn-primary w-full py-5 text-sm font-black tracking-[0.2em] shadow-2xl">Submit Enrollment →</button>
+                <div className="mt-10">
+                  <button type="submit" className="btn-primary w-full py-6 text-[11px] font-black tracking-[0.3em] shadow-[0_25px_50px_-12px_rgba(216,27,96,0.4)] hover:shadow-[0_40px_60px_-12px_rgba(216,27,96,0.5)] transition-all rounded-[2rem]">SUBMIT ENROLLMENT →</button>
+                </div>
               </form>
             </motion.div>
           )}

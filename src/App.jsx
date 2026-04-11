@@ -182,7 +182,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full top-0 z-[100] transition-all duration-700 ${(isScrolled || (location.pathname !== '/' && location.pathname !== '')) ? 'py-4 bg-white/80 backdrop-blur-2xl border-b border-[#ec407a]/10 shadow-xl' : 'py-8 bg-transparent'}`}>
+    <nav className={`fixed w-full top-0 z-[1000] transition-all duration-700 ${(isScrolled || (location.pathname !== '/' && location.pathname !== '')) ? 'py-4 bg-white shadow-xl border-b border-[#ec407a]/10' : 'py-8 bg-transparent'}`}>
       <div className="container flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3 group">
           <motion.div whileHover={{ scale: 1.05 }} className="w-10 h-10 md:w-14 md:h-14 rounded-full overflow-hidden shrink-0 transition-all">
@@ -712,7 +712,7 @@ const Home = () => {
 };
 
 const About = () => (
-  <div className="bg-white min-h-screen" style={{ paddingTop: '180px' }}>
+  <div className="bg-white min-h-screen" style={{ paddingTop: '220px' }}>
     <section className="container py-20 lg:py-32">
       <SectionReveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -762,7 +762,7 @@ const Courses = () => {
   ];
 
   return (
-    <div className="bg-[#fff5f8]" style={{ paddingTop: '180px' }}>
+    <div className="bg-[#fff5f8]" style={{ paddingTop: '220px' }}>
       <section className="container pb-24">
         <div className="text-center mb-20 max-w-3xl mx-auto">
           <h4 className="text-sm uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-4">Enroll Today</h4>
@@ -806,7 +806,7 @@ const Gallery = () => {
         { src: 'founder.jpg', cat: 'Artist' }
     ];
     return (
-        <div className="bg-white" style={{ paddingTop: '180px' }}>
+        <div className="bg-white" style={{ paddingTop: '220px' }}>
             <section className="container pb-24">
                 <div className="text-center mb-16 max-w-2xl mx-auto">
                     <h4 className="text-sm uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-4">Visual Story</h4>
@@ -852,7 +852,7 @@ const Commission = () => {
     }
   };
   return (
-    <div className="bg-[#fffdfd]" style={{ paddingTop: '180px' }}>
+    <div className="bg-[#fffdfd]" style={{ paddingTop: '220px' }}>
         <section className="container pb-24">
             <div className="grid lg:grid-cols-2 gap-24">
                 <div>
@@ -886,7 +886,7 @@ const Commission = () => {
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="bg-white p-6 sm:p-10 md:p-12 lg:p-16 rounded-[2rem] md:rounded-[4rem] border border-slate-100 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] mb-10 lg:mb-0 lg:sticky lg:top-32"
+                    className="bg-white p-6 sm:p-10 md:p-12 lg:p-16 pb-20 md:pb-24 rounded-[2rem] md:rounded-[4rem] border border-slate-100 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] mb-10"
                   >
                     <h3 className="text-2xl md:text-4xl mb-8 md:mb-10 text-[#ad1457] font-serif">Custom Order Request</h3>
                     <form className="flex flex-col gap-8" onSubmit={(e) => {
@@ -966,7 +966,7 @@ const Commission = () => {
 };
 
 const Contact = () => (
-    <div className="bg-[#fff5f8] min-h-screen" style={{ paddingTop: '180px' }}>
+    <div className="bg-[#fff5f8] min-h-screen" style={{ paddingTop: '220px' }}>
         <section className="container pb-24">
             <div className="text-center mb-20 max-w-2xl mx-auto">
                 <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Get In Touch</h4>
@@ -1113,7 +1113,7 @@ const JoinNow = () => {
 
 
   return (
-    <div className="bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen" style={{ paddingTop: '160px' }}>
+    <div className="bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen" style={{ paddingTop: '220px' }}>
       <section className="container pb-16 md:pb-24">
         <div className="text-center mb-10 md:mb-16 max-w-2xl mx-auto px-4">
           <h4 className="text-[10px] md:text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-3 md:mb-4 flex items-center justify-center gap-2">
@@ -1140,7 +1140,7 @@ const JoinNow = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white p-5 sm:p-10 md:p-16 rounded-[2rem] sm:rounded-[4rem] border border-[#ec407a]/10 shadow-2xl"
+              className="bg-white p-5 sm:p-10 md:p-16 pb-20 md:pb-24 rounded-[2rem] sm:rounded-[4rem] border border-[#ec407a]/10 shadow-2xl overflow-visible"
             >
               <form className="flex flex-col gap-6 md:gap-10" onSubmit={handleSubmit}>
                 {/* Row 1: Name + Phone */}

@@ -158,63 +158,6 @@ const FloatingParticles = () => (
   </div>
 );
 
-const SummerPoster = () => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    className="relative w-full aspect-[4/5] md:aspect-[16/9] rounded-[2rem] overflow-hidden bg-slate-900 flex flex-col items-center justify-center p-8 md:p-12 text-center"
-  >
-    {/* Artistic background blur elements */}
-    <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#d81b60]/20 rounded-full blur-[100px]" />
-    <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#ad1457]/20 rounded-full blur-[100px]" />
-    
-    <div className="relative z-10 border-2 border-white/10 p-8 md:p-12 rounded-[2.5rem] bg-white/5 backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
-      <motion.div
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2 }}
-        className="mb-6"
-      >
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#d81b60]/10 border border-[#d81b60]/20 text-[#f8bbd0] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
-          <Sparkles size={14} /> Summer 2024
-        </div>
-        <h2 className="text-4xl md:text-7xl font-serif text-white mb-2 italic">Summer Art Classes</h2>
-        <p className="text-[#f8bbd0] text-sm md:text-lg font-black tracking-[0.3em] uppercase">Rivya School of Arts</p>
-      </motion.div>
-
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.4 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mt-8"
-      >
-        <div className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-[#d81b60]/30 transition-colors">
-          <Clock size={24} className="text-[#f8bbd0] mx-auto mb-4" />
-          <h4 className="text-xs font-black uppercase tracking-widest text-white/40 mb-2">Monday - Saturday</h4>
-          <p className="text-xl md:text-2xl font-bold text-white">6:00 PM - 9:00 PM</p>
-        </div>
-        <div className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-[#d81b60]/30 transition-colors">
-          <Clock size={24} className="text-[#f8bbd0] mx-auto mb-4" />
-          <h4 className="text-xs font-black uppercase tracking-widest text-white/40 mb-2">Sunday (Two Slots)</h4>
-          <p className="text-xl md:text-2xl font-bold text-white leading-snug">10 AM - 1 PM<br/>5 PM - 7 PM</p>
-        </div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
-        className="mt-12 flex items-center gap-8 opacity-60"
-      >
-        <span className="text-[10px] md:text-xs font-black text-white uppercase tracking-widest">MSME Certified</span>
-        <div className="w-1.5 h-1.5 rounded-full bg-[#d81b60]" />
-        <span className="text-[10px] md:text-xs font-black text-white uppercase tracking-widest">Ages 5 - Adults</span>
-        <div className="w-1.5 h-1.5 rounded-full bg-[#d81b60]" />
-        <span className="text-[10px] md:text-xs font-black text-white uppercase tracking-widest">Regd. Institute</span>
-      </motion.div>
-    </div>
-  </motion.div>
-);
 
 // Components
 const Navbar = () => {
@@ -552,9 +495,24 @@ const Home = () => {
                   </button>
                 </div>
                 <div className="px-6 pb-12 md:px-12">
-                  <SummerPoster />
-                  <div className="mt-8 text-center">
-                    <p className="text-white/60 text-sm italic">Join RSA this summer to ignite your artistic potential!</p>
+                  <img
+                    src={getAsset('poster_summer.jpg')}
+                    alt="Summer Offer Poster"
+                    className="w-full h-auto rounded-[2rem] shadow-2xl border-4 border-white/10"
+                  />
+                  <div className="mt-8 text-center bg-white/5 p-6 rounded-3xl border border-white/10 backdrop-blur-sm">
+                    <h3 className="text-3xl font-serif text-[#f8bbd0] mb-3 tracking-tight">Special Summer Classes</h3>
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-white/80 text-sm font-medium">
+                      <div className="flex items-center gap-2">
+                        <Clock size={14} className="text-[#f8bbd0]" />
+                        <span>Mon-Sat: <span className="text-white font-bold">6:00 PM - 9:00 PM</span></span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock size={14} className="text-[#f8bbd0]" />
+                        <span>Sunday: <span className="text-white font-bold">10:00 AM - 1 PM | 5:00 PM - 7 PM</span></span>
+                      </div>
+                    </div>
+                    <p className="text-white/40 text-xs mt-4 italic">Join RSA this summer to ignite your artistic potential!</p>
                   </div>
                 </div>
               </motion.div>

@@ -158,6 +158,64 @@ const FloatingParticles = () => (
   </div>
 );
 
+const SummerPoster = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    className="relative w-full aspect-[4/5] md:aspect-[16/9] rounded-[2rem] overflow-hidden bg-slate-900 flex flex-col items-center justify-center p-8 md:p-12 text-center"
+  >
+    {/* Artistic background blur elements */}
+    <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#d81b60]/20 rounded-full blur-[100px]" />
+    <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#ad1457]/20 rounded-full blur-[100px]" />
+    
+    <div className="relative z-10 border-2 border-white/10 p-8 md:p-12 rounded-[2.5rem] bg-white/5 backdrop-blur-xl w-full h-full flex flex-col items-center justify-center">
+      <motion.div
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="mb-6"
+      >
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#d81b60]/10 border border-[#d81b60]/20 text-[#f8bbd0] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+          <Sparkles size={14} /> Summer 2024
+        </div>
+        <h2 className="text-4xl md:text-7xl font-serif text-white mb-2 italic">Summer Art Classes</h2>
+        <p className="text-[#f8bbd0] text-sm md:text-lg font-black tracking-[0.3em] uppercase">Rivya School of Arts</p>
+      </motion.div>
+
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.4 }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mt-8"
+      >
+        <div className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-[#d81b60]/30 transition-colors">
+          <Clock size={24} className="text-[#f8bbd0] mx-auto mb-4" />
+          <h4 className="text-xs font-black uppercase tracking-widest text-white/40 mb-2">Monday - Saturday</h4>
+          <p className="text-xl md:text-2xl font-bold text-white">6:00 PM - 9:00 PM</p>
+        </div>
+        <div className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-[#d81b60]/30 transition-colors">
+          <Clock size={24} className="text-[#f8bbd0] mx-auto mb-4" />
+          <h4 className="text-xs font-black uppercase tracking-widest text-white/40 mb-2">Sunday (Two Slots)</h4>
+          <p className="text-xl md:text-2xl font-bold text-white leading-snug">10 AM - 1 PM<br/>5 PM - 7 PM</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+        className="mt-12 flex items-center gap-8 opacity-60"
+      >
+        <span className="text-[10px] md:text-xs font-black text-white uppercase tracking-widest">MSME Certified</span>
+        <div className="w-1.5 h-1.5 rounded-full bg-[#d81b60]" />
+        <span className="text-[10px] md:text-xs font-black text-white uppercase tracking-widest">Ages 5 - Adults</span>
+        <div className="w-1.5 h-1.5 rounded-full bg-[#d81b60]" />
+        <span className="text-[10px] md:text-xs font-black text-white uppercase tracking-widest">Regd. Institute</span>
+      </motion.div>
+    </div>
+  </motion.div>
+);
+
 // Components
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -315,7 +373,18 @@ const Footer = () => {
             <li className="flex items-center gap-4 group transition-colors hover:text-[#d81b60]"><div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-[#d81b60]/10"><Phone size={16} /></div> +91 95669 51629</li>
             <li className="flex items-center gap-4 group transition-colors hover:text-[#d81b60]"><div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-[#d81b60]/10"><Mail size={16} /></div> rivyaartsschool17@gmail.com</li>
             <li className="flex items-center gap-4 group transition-colors hover:text-[#d81b60]"><div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-[#d81b60]/10"><MapPin size={16} /></div> Perumanallur, Tiruppur, TN</li>
-            <li className="flex items-center gap-4 group transition-colors hover:text-[#d81b60]"><div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-[#d81b60]/10"><Clock size={16} /></div> Mon - Sat: 6:00 PM - 8:00 PM</li>
+            <li className="flex items-start gap-4 group transition-colors hover:text-[#d81b60]">
+              <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center shrink-0 group-hover:bg-[#d81b60]/10 mt-0.5">
+                <Clock size={16} />
+              </div>
+              <div className="text-xs leading-relaxed">
+                <div className="font-bold text-slate-800">Mon - Sat:</div>
+                <div>6:00 PM - 9:00 PM</div>
+                <div className="font-bold text-slate-800 mt-2">Sunday:</div>
+                <div>10:00 AM - 1:00 PM</div>
+                <div>5:00 PM - 7:00 PM</div>
+              </div>
+            </li>
           </ul>
         </div>
 
@@ -483,14 +552,9 @@ const Home = () => {
                   </button>
                 </div>
                 <div className="px-6 pb-12 md:px-12">
-                  <img
-                    src={getAsset('poster_summer.jpg')}
-                    alt="Summer Offer Poster"
-                    className="w-full h-auto rounded-[2rem] shadow-2xl border-4 border-white/10"
-                  />
+                  <SummerPoster />
                   <div className="mt-8 text-center">
-                    <h3 className="text-3xl font-serif text-[#f8bbd0] mb-2 tracking-tight">Special Summer Classes</h3>
-                    <p className="text-white/60 text-sm">Join RSA this summer to ignite your artistic potential!</p>
+                    <p className="text-white/60 text-sm italic">Join RSA this summer to ignite your artistic potential!</p>
                   </div>
                 </div>
               </motion.div>
@@ -733,8 +797,9 @@ const About = () => (
                 <p className="text-[9px] md:text-[11px] text-[#d81b60] font-bold uppercase tracking-widest opacity-60">Regd. Govt Institute</p>
               </div>
               <div>
-                <h3 className="text-xl md:text-2xl font-bold mb-1 text-[#ad1457] font-serif">6 PM - 8 PM</h3>
-                <p className="text-[9px] md:text-[11px] text-[#d81b60] font-bold uppercase tracking-widest opacity-60">Class Timings</p>
+                <h3 className="text-xl md:text-2xl font-bold mb-1 text-[#ad1457] font-serif">6 PM - 9 PM</h3>
+                <p className="text-[9px] md:text-[11px] text-[#d81b60] font-bold uppercase tracking-widest opacity-60">Mon - Sat</p>
+                <p className="text-[9px] md:text-[11px] text-[#ad1457]/70 font-bold mt-1 uppercase tracking-widest">Sunday Open</p>
               </div>
             </div>
           </motion.div>
@@ -901,11 +966,13 @@ const Commission = () => {
                   'template_commission',
                   form,
                   'Gg0xDxs9IK_aQQegv'
-                ).then(() => {
+                ).then((res) => {
+                  console.log('Commission SUCCESS!', res.status, res.text);
                   alert('Commission request sent! We will contact you soon.');
                   form.reset();
-                }).catch(() => {
-                  alert('Failed to send. Please call us directly at +91 95669 51629.');
+                }).catch((err) => {
+                  console.error('Commission FAILED...', err);
+                  alert(`Failed to send request. Error: ${err.text || 'Service error'}. Please call us at +91 95669 51629.`);
                 });
               }}>
                 {/* Artwork Category */}
@@ -1116,10 +1183,12 @@ const JoinNow = () => {
         to_email: 'rivyaartsschool17@gmail.com',
       },
       'Gg0xDxs9IK_aQQegv'
-    ).then(() => {
+    ).then((res) => {
+      console.log('Enrollment SUCCESS!', res.status, res.text);
       setSubmitted(true);
-    }).catch(() => {
-      alert('Submission failed. Please call us at +91 95669 51629.');
+    }).catch((err) => {
+      console.error('Enrollment FAILED...', err);
+      alert(`Submission failed. Error: ${err.text || 'Service error'}. Please call us at +91 95669 51629.`);
     });
   };
 

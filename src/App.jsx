@@ -205,8 +205,8 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={`relative text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105 ${isActive
-                    ? (useDark ? 'text-[#d81b60]' : 'text-white')
-                    : (useDark ? 'text-slate-800 hover:text-[#d81b60]' : 'text-white/70 hover:text-white')
+                  ? (useDark ? 'text-[#d81b60]' : 'text-white')
+                  : (useDark ? 'text-slate-800 hover:text-[#d81b60]' : 'text-white/70 hover:text-white')
                   }`}
               >
                 {link.name}
@@ -599,7 +599,7 @@ const Home = () => {
               },
               {
                 title: 'Vocational Art',
-                icon: <LayoutGrid size={20} />,
+                icon: <Palette size={20} />,
                 courses: ['Fashion Illustration', 'Jewelry Designing', 'Clay Modeling', 'Fabric Painting', 'Digital Art Basics'],
                 color: '#e65100'
               }
@@ -734,7 +734,7 @@ const Home = () => {
 };
 
 const About = () => (
-  <div className="bg-white min-h-screen" style={{ paddingTop: '220px' }}>
+  <div className="bg-white min-h-screen pt-32 lg:pt-48">
     <section className="container py-20 lg:py-32">
       <SectionReveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -770,7 +770,7 @@ const About = () => (
 const Courses = () => {
   const coursesList = [
     { name: 'Basic Drawing & Sketching', duration: '1–3 Months', level: 'Beginner', icon: <Palette size={24} />, desc: 'Learn fundamentals of drawing and sketching from scratch.' },
-    { name: 'Mandala Art', duration: '1 Month', level: 'Intermediate', icon: <LayoutGrid size={24} />, desc: 'Master the intricate patterns and geometric symmetry of Mandala.' },
+    { name: 'Mandala Art', duration: '1 Month', level: 'Intermediate', icon: <Sparkles size={24} />, desc: 'Master the intricate patterns and geometric symmetry of Mandala.' },
     { name: 'Glass Painting', duration: '1 Month', level: 'All Ages', icon: <Info size={24} />, desc: 'Vibrant techniques for painting on glass surfaces.' },
     { name: 'Pot Painting', duration: '1 Month', level: 'Creative', icon: <Palette size={24} />, desc: 'Traditional and modern pot decoration techniques.' },
     { name: 'Handwriting Improvement', duration: '1–2 Months', level: 'Kids/Adults', icon: <Users size={24} />, desc: 'Improve your handwriting and calligraphy skills.' },
@@ -785,7 +785,7 @@ const Courses = () => {
   ];
 
   return (
-    <div className="bg-[#fff5f8]" style={{ paddingTop: '220px' }}>
+    <div className="bg-[#fff5f8] pt-32 lg:pt-48">
       <section className="container px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24">
         <div className="text-center mb-12 sm:mb-16 md:mb-20 max-w-3xl mx-auto px-4">
           <h4 className="text-xs sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.3em] font-bold text-[#d81b60] mb-3 sm:mb-4">Enroll Today</h4>
@@ -833,7 +833,7 @@ const Gallery = () => {
     { src: 'founder.jpg', cat: 'Artist' }
   ];
   return (
-    <div className="bg-white" style={{ paddingTop: '220px' }}>
+    <div className="bg-white pt-32 lg:pt-48">
       <section className="container pb-24">
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <h4 className="text-sm uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-4">Visual Story</h4>
@@ -879,7 +879,7 @@ const Commission = () => {
     }
   };
   return (
-    <div className="bg-[#fffdfd]" style={{ paddingTop: '220px' }}>
+    <div className="bg-[#fffdfd] pt-32 lg:pt-48">
       <section className="container pb-24">
         <div className="grid lg:grid-cols-2 gap-24">
           <div>
@@ -969,7 +969,7 @@ const Commission = () => {
                   <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Reference Image (Optional)</label>
                   <label className={`flex flex-col items-center justify-center gap-3 sm:gap-4 rounded-2xl border-2 border-dashed cursor-pointer transition-all px-4 sm:px-6 py-6 sm:py-8 w-full ${refPreview ? 'border-[#d81b60] bg-[#fff5f8]' : 'border-[#ec407a]/20 bg-[#fff5f8]/50 hover:border-[#d81b60] hover:bg-[#fff5f8]'
                     } shadow-sm`}>
-                    <input type="file" accept="image/*" className="hidden" onChange={handleRefImage} />
+                    <input name="reference_image" type="file" accept="image/*" className="hidden" onChange={handleRefImage} />
                     {refPreview ? (
                       <div className="relative w-full">
                         <img src={refPreview} alt="Reference preview" className="w-full max-h-64 object-contain rounded-2xl mx-auto" />
@@ -1003,7 +1003,7 @@ const Commission = () => {
 };
 
 const Contact = () => (
-  <div className="bg-[#fff5f8] min-h-screen" style={{ paddingTop: '220px' }}>
+  <div className="bg-[#fff5f8] min-h-screen pt-32 lg:pt-48">
     <section className="container pb-24">
       <div className="text-center mb-20 max-w-2xl mx-auto">
         <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Get In Touch</h4>
@@ -1152,7 +1152,7 @@ const JoinNow = () => {
 
 
   return (
-    <div className="bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen" style={{ paddingTop: '220px' }}>
+    <div className="bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen pt-32 lg:pt-48">
       <section className="container px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 md:pb-24">
         <div className="text-center mb-8 sm:mb-12 md:mb-16 max-w-2xl mx-auto px-2 sm:px-4">
           <h4 className="text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold text-[#d81b60] mb-2 sm:mb-3 md:mb-4 flex items-center justify-center gap-2">

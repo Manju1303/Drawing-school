@@ -345,8 +345,8 @@ const Footer = () => {
       <div className="container pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center opacity-40 text-xs gap-4">
         <p>&copy; {new Date().getFullYear()} Rivya School of Arts. All Rights Reserved.</p>
         <div className="flex gap-8">
-          <Link to="#">Privacy Policy</Link>
-          <Link to="#">Terms of Service</Link>
+          <a href="https://wa.me/919566951629?text=Hi%2C%20I%20have%20a%20question%20about%20Rivya%20School%20of%20Arts" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+          <a href="mailto:rivyaartsschool17@gmail.com?subject=Terms%20Inquiry" target="_blank" rel="noopener noreferrer">Terms of Service</a>
         </div>
       </div>
     </footer>
@@ -774,7 +774,6 @@ const About = () => (
               </div>
             </div>
 
-            {/* MSME Official Registration Notice Box for Search Indexing */}
             <div className="mt-8 p-6 rounded-3xl bg-[#fff5f8] border-2 border-[#d81b60]/20 shadow-md">
               <div className="flex items-center gap-3 mb-2">
                 <Sparkles size={18} className="text-[#d81b60]" />
@@ -783,6 +782,15 @@ const About = () => (
               <p className="text-xs text-slate-600 leading-relaxed">
                 Rivya School of Arts (located in Perumanallur, Tiruppur, Tamil Nadu) is an officially registered fine arts training provider under the Ministry of Micro, Small and Medium Enterprises (MSME / Udyam Registration, Govt. of India). All qualifying students receive valid government-approved certificates upon course completion.
               </p>
+            </div>
+
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <Link to="/courses" className="btn-primary flex items-center justify-center gap-2 px-8 py-4 text-xs font-black tracking-widest uppercase group">
+                Explore Courses <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link to="/join" className="btn-secondary flex items-center justify-center gap-2 px-8 py-4 text-xs font-black tracking-widest uppercase border-[#d81b60] text-[#d81b60] hover:bg-[#d81b60] hover:text-white">
+                Enroll Now
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -793,19 +801,19 @@ const About = () => (
 
 const Courses = () => {
   const coursesList = [
-    { name: 'Basic Drawing & Sketching', duration: '1–3 Months', level: 'Beginner', icon: <Palette size={24} />, desc: 'Learn fundamentals of drawing and sketching from scratch.' },
-    { name: 'Mandala Art', duration: '1 Month', level: 'Intermediate', icon: <Sparkles size={24} />, desc: 'Master the intricate patterns and geometric symmetry of Mandala.' },
-    { name: 'Glass Painting', duration: '1 Month', level: 'All Ages', icon: <Info size={24} />, desc: 'Vibrant techniques for painting on glass surfaces.' },
-    { name: 'Pot Painting', duration: '1 Month', level: 'Creative', icon: <Palette size={24} />, desc: 'Traditional and modern pot decoration techniques.' },
-    { name: 'Handwriting Improvement', duration: '1–2 Months', level: 'Kids/Adults', icon: <Users size={24} />, desc: 'Improve your handwriting and calligraphy skills.' },
-    { name: 'Mehandi Design', duration: '1 Month', level: 'Specialized', icon: <Palette size={24} />, desc: 'Learn traditional and modern Henna/Mehandi patterns.' },
-    { name: 'Advanced Painting (Oil/Acrylic)', duration: '3+ Months', level: 'Advanced', icon: <Palette size={24} />, desc: 'Professional techniques in oil and acrylic mediums.' },
-    { name: 'Portrait Art (Pencil/Charcoal)', duration: '2–4 Months', level: 'Semi-Pro', icon: <Users size={24} />, desc: 'Master hyper-realistic portraiture with pencil and charcoal.' },
-    { name: 'Mural Design', duration: '2 Months', level: 'Expert', icon: <Palette size={24} />, desc: 'Learn to create large-scale artworks on walls and interiors.' },
-    { name: 'Certificate Course (Basic)', duration: '3 Months', level: 'Beginner', icon: <Star size={24} />, desc: 'Covers Glass Painting, Pot Painting, Basic Sketching, Water Color & Fabric Painting.' },
-    { name: 'Certificate Course (Intermediate)', duration: '6 Months', level: 'Intermediate', icon: <Star size={24} />, desc: 'Includes all Basic courses plus Illustration, Pen Drawing, and more advanced techniques.' },
-    { name: 'Certificate Course (Advance)', duration: '1 Year', level: 'Advanced', icon: <Star size={24} />, desc: 'Complete mastery including Portraits, Oil Painting, and Mural Painting.' },
-    { name: 'Spoken English Class', duration: '2–3 Months', level: 'All Ages', icon: <Users size={24} />, desc: 'Gain confidence and fluency with our comprehensive spoken English training.' }
+    { name: 'Basic Drawing & Sketching', duration: '1–3 Months', level: 'Beginner', icon: <Palette size={24} />, desc: 'Learn fundamentals of drawing and sketching from scratch.', price: '₹1,000/mo', isCert: false },
+    { name: 'Mandala Art', duration: '1 Month', level: 'Intermediate', icon: <Sparkles size={24} />, desc: 'Master the intricate patterns and geometric symmetry of Mandala.', price: '₹1,200/mo', isCert: false },
+    { name: 'Glass Painting', duration: '1 Month', level: 'All Ages', icon: <Info size={24} />, desc: 'Vibrant techniques for painting on glass surfaces.', price: '₹1,000/mo', isCert: false },
+    { name: 'Pot Painting', duration: '1 Month', level: 'Creative', icon: <Palette size={24} />, desc: 'Traditional and modern pot decoration techniques.', price: '₹1,000/mo', isCert: false },
+    { name: 'Handwriting Improvement', duration: '1–2 Months', level: 'Kids/Adults', icon: <Users size={24} />, desc: 'Improve your handwriting and calligraphy skills.', price: 'From ₹800', isCert: false },
+    { name: 'Mehandi Design', duration: '1 Month', level: 'Specialized', icon: <Palette size={24} />, desc: 'Learn traditional and modern Henna/Mehandi patterns.', price: '₹1,500/mo', isCert: false },
+    { name: 'Advanced Painting (Oil/Acrylic)', duration: '3+ Months', level: 'Advanced', icon: <Palette size={24} />, desc: 'Professional techniques in oil and acrylic mediums.', price: '₹1,000/mo', isCert: false },
+    { name: 'Portrait Art (Pencil/Charcoal)', duration: '2–4 Months', level: 'Semi-Pro', icon: <Users size={24} />, desc: 'Master hyper-realistic portraiture with pencil and charcoal.', price: '₹1,000/mo', isCert: false },
+    { name: 'Mural Design', duration: '2 Months', level: 'Expert', icon: <Palette size={24} />, desc: 'Learn to create large-scale artworks on walls and interiors.', price: '₹1,000/mo', isCert: false },
+    { name: 'Certificate Course (Basic)', duration: '3 Months', level: 'Govt. Certified', icon: <Star size={24} />, desc: 'Covers Glass Painting, Pot Painting, Basic Sketching, Water Color & Fabric Painting.', price: '₹5,000 total', isCert: true },
+    { name: 'Certificate Course (Intermediate)', duration: '6 Months', level: 'Govt. Certified', icon: <Star size={24} />, desc: 'Includes all Basic courses plus Illustration, Pen Drawing, and more advanced techniques.', price: '₹10,000 total', isCert: true },
+    { name: 'Certificate Course (Advance)', duration: '1 Year', level: 'Govt. Certified', icon: <Star size={24} />, desc: 'Complete mastery including Portraits, Oil Painting, and Mural Painting.', price: '₹15,000 total', isCert: true },
+    { name: 'Spoken English Class', duration: '2–3 Months', level: 'All Ages', icon: <Users size={24} />, desc: 'Gain confidence and fluency with our comprehensive spoken English training.', price: 'From ₹1,000', isCert: false }
   ];
 
   return (
@@ -828,20 +836,42 @@ const Courses = () => {
             <motion.div
               key={i}
               whileHover={{ y: -10 }}
-              className="h-full bg-white border border-[#ec407a]/15 rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] shadow-lg sm:shadow-xl hover:shadow-[#ec407a]/20 transition-all flex flex-col overflow-hidden group"
+              className={`h-full rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] shadow-lg sm:shadow-xl transition-all flex flex-col overflow-hidden group ${
+                course.isCert
+                  ? 'bg-gradient-to-br from-[#fff8e1] to-[#fffde7] border-2 border-[#d4af37]/40 hover:shadow-[#d4af37]/30'
+                  : 'bg-white border border-[#ec407a]/15 hover:shadow-[#ec407a]/20'
+              }`}
             >
+              {course.isCert && (
+                <div className="bg-gradient-to-r from-[#d4af37] to-[#f5c842] text-white text-[9px] font-black tracking-[0.2em] uppercase text-center py-2 px-4">
+                  ⭐ Govt. Certified Course — MSME Approved
+                </div>
+              )}
               <div className="p-5 sm:p-6 md:p-8 lg:p-10 flex-grow flex flex-col gap-4 sm:gap-5 h-full">
-                <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-xl sm:rounded-2xl bg-[#fff0f6] text-[#d81b60] flex items-center justify-center flex-shrink-0 border border-[#ec407a]/10 group-hover:bg-[#d81b60] group-hover:text-white transition-all transform group-hover:rotate-6">
+                <div className={`w-14 sm:w-16 h-14 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 border transition-all transform group-hover:rotate-6 ${
+                  course.isCert
+                    ? 'bg-[#fef9e7] text-[#d4af37] border-[#d4af37]/30 group-hover:bg-[#d4af37] group-hover:text-white'
+                    : 'bg-[#fff0f6] text-[#d81b60] border-[#ec407a]/10 group-hover:bg-[#d81b60] group-hover:text-white'
+                }`}>
                   {course.icon}
                 </div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-black text-[#ad1457] leading-snug line-clamp-3">{course.name}</h3>
+                <h3 className={`text-lg sm:text-xl md:text-2xl font-black leading-snug line-clamp-3 ${
+                  course.isCert ? 'text-[#8a6914]' : 'text-[#ad1457]'
+                }`}>{course.name}</h3>
                 <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 bg-[#fff5f8] px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full w-fit">
                   <span className="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-widest text-[#d81b60] whitespace-nowrap">{course.duration}</span>
                   <div className="w-0.5 h-0.5 bg-[#d81b60]/30 rounded-full shrink-0"></div>
                   <span className="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-widest text-[#d81b60] whitespace-nowrap">{course.level}</span>
                 </div>
                 <p className="text-slate-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] flex-grow">{course.desc}</p>
-                <Link to="/join" className="btn-primary w-full py-2.5 sm:py-3 md:py-3.5 lg:py-4 text-[8px] sm:text-[9px] md:text-[10px] font-black tracking-widest transition-all mt-auto">ENROLL NOW</Link>
+                <div className={`text-sm font-black mt-1 ${
+                  course.isCert ? 'text-[#8a6914]' : 'text-[#d81b60]'
+                }`}>{course.price}</div>
+                <Link to="/join" className={`w-full py-2.5 sm:py-3 md:py-3.5 lg:py-4 text-[8px] sm:text-[9px] md:text-[10px] font-black tracking-widest transition-all mt-auto text-center rounded-[3rem] uppercase ${
+                  course.isCert
+                    ? 'bg-gradient-to-r from-[#d4af37] to-[#c9a227] text-white hover:from-[#c9a227] hover:to-[#b8911e] shadow-lg'
+                    : 'btn-primary'
+                }`}>ENROLL NOW</Link>
               </div>
             </motion.div>
           ))}
@@ -851,7 +881,6 @@ const Courses = () => {
   );
 };
 
-// Lightbox Modal Component
 const LightboxModal = ({ image, onClose }) => {
   if (!image) return null;
   return (
@@ -902,7 +931,6 @@ const LightboxModal = ({ image, onClose }) => {
   );
 };
 
-// FAQ Accordion Section
 const FaqSection = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
@@ -988,7 +1016,6 @@ const FaqSection = () => {
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedImage, setSelectedImage] = useState(null);
-  // Helmet SEO injected inside return below
 
   const galleryImages = [
     { src: 'portrait_women.jpg', cat: 'Pencil', title: 'Hyper-Realistic Pencil Portrait' },
@@ -1022,7 +1049,6 @@ const Gallery = () => {
           <p className="text-base md:text-lg text-[#2d3436]/60">Explore our collection of commissioned works and student achievements across all age groups.</p>
         </div>
 
-        {/* Filter Pills */}
         <div className="flex flex-wrap justify-center items-center gap-2 md:gap-3 mb-16 px-4">
           {categories.map(cat => (
             <button
@@ -1063,7 +1089,6 @@ const Gallery = () => {
           ))}
         </div>
 
-        {/* Lightbox Modal */}
         <LightboxModal image={selectedImage} onClose={() => setSelectedImage(null)} />
       </section>
     </div>
@@ -1073,7 +1098,9 @@ const Gallery = () => {
 const Commission = () => {
   const [refImage, setRefImage] = useState(null);
   const [refPreview, setRefPreview] = useState(null);
-  // Commission page
+  const [commSubmitted, setCommSubmitted] = useState(false);
+  const [commLoading, setCommLoading] = useState(false);
+
   const handleRefImage = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -1114,6 +1141,20 @@ const Commission = () => {
                   <p className="text-sm text-slate-500">Transform your living spaces with elite, custom-painted wall murals.</p>
                 </div>
               </div>
+
+              <a
+                href="https://wa.me/919566951629?text=Hi%21%20I%20want%20to%20order%20a%20custom%20painting%20from%20Rivya%20School%20of%20Arts."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 bg-[#25D366] text-white px-8 py-5 rounded-[2rem] font-black text-sm tracking-wide hover:bg-[#1da851] transition-all shadow-lg hover:shadow-[#25D366]/40 group"
+              >
+                <span className="text-2xl">💬</span>
+                <div>
+                  <div className="text-xs tracking-widest uppercase opacity-80">Prefer WhatsApp?</div>
+                  <div>Order Directly via WhatsApp</div>
+                </div>
+                <ArrowRight size={20} className="ml-auto group-hover:translate-x-1 transition-transform" />
+              </a>
             </SectionReveal>
           </div>
 
@@ -1124,9 +1165,29 @@ const Commission = () => {
               viewport={{ once: true }}
               className="bg-white p-4 sm:p-8 md:p-12 lg:p-16 pb-12 sm:pb-16 md:pb-20 lg:pb-24 rounded-2xl sm:rounded-3xl md:rounded-4xl border border-slate-100 shadow-[0_40px_80px_-10px_rgba(0,0,0,0.08)] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] mb-6 sm:mb-8 md:mb-10"
             >
+              {commSubmitted ? (
+                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-12">
+                  <div className="text-6xl mb-6">🎨</div>
+                  <h3 className="text-3xl font-serif text-[#ad1457] mb-4">Order Received!</h3>
+                  <p className="text-slate-500 text-base mb-4">Thank you! We'll call you within 24 hours to discuss your artwork.</p>
+                  <div className="bg-[#fff5f8] rounded-2xl p-4 text-sm text-slate-600 text-left mb-6">
+                    <p className="font-bold text-[#d81b60] mb-2">What happens next?</p>
+                    <ol className="list-decimal list-inside space-y-1">
+                      <li>We call you to confirm the artwork details</li>
+                      <li>You pay a 50% advance to start</li>
+                      <li>We create and deliver within the agreed timeline</li>
+                    </ol>
+                  </div>
+                  <button onClick={() => setCommSubmitted(false)} className="btn-secondary border-[#d81b60] text-[#d81b60] hover:bg-[#d81b60] hover:text-white px-8 py-3 text-xs font-black tracking-widest uppercase">
+                    Place Another Order
+                  </button>
+                </motion.div>
+              ) : (
+              <>
               <h3 className="text-xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-10 text-[#ad1457] font-serif">Custom Order Request</h3>
               <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={(e) => {
                 e.preventDefault();
+                setCommLoading(true);
                 const form = e.target;
                 emailjs.sendForm(
                   'service_rivyaarts',
@@ -1135,14 +1196,16 @@ const Commission = () => {
                   'Gg0xDxs9IK_aQQegv'
                 ).then((res) => {
                   console.log('Commission SUCCESS!', res.status, res.text);
-                  alert('Commission request sent! We will contact you soon.');
+                  setCommSubmitted(true);
+                  setCommLoading(false);
                   form.reset();
+                  setRefPreview(null);
                 }).catch((err) => {
                   console.error('Commission FAILED...', err);
-                  alert(`Failed to send request. Error: ${err.text || 'Service error'}. Please call us at +91 95669 51629.`);
+                  setCommLoading(false);
+                  alert(`We couldn't send your request via email. Please WhatsApp us directly at +91 95669 51629 or call us — we're happy to help!`);
                 });
               }}>
-                {/* Artwork Category */}
                 <div className="flex flex-col gap-2.5 w-full">
                   <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Artwork Category</label>
                   <select name="artwork_type" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm">
@@ -1155,7 +1218,6 @@ const Commission = () => {
                   </select>
                 </div>
 
-                {/* Name + Phone */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Full Name *</label>
@@ -1163,20 +1225,22 @@ const Commission = () => {
                   </div>
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Contact Phone *</label>
-                    <input name="phone" required type="text" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400" placeholder="+91 ..." />
+                    <div className="flex">
+                      <span className="bg-[#fff5f8] border-2 border-r-0 border-[#ec407a]/10 px-3 py-3.5 sm:py-4 rounded-l-2xl text-slate-500 text-sm font-bold flex items-center">+91</span>
+                      <input name="phone" required type="tel" className="flex-1 bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 py-3.5 sm:py-4 rounded-r-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400" placeholder="XXXXX XXXXX" />
+                    </div>
                   </div>
                 </div>
 
-                {/* Vision & Requirements */}
                 <div className="flex flex-col gap-2.5 w-full">
                   <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Vision & Requirements</label>
-                  <textarea name="message" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all h-32 sm:h-40 resize-none shadow-sm placeholder:text-slate-400" placeholder="Describe size, medium and timeline..."></textarea>
+                  <textarea name="message" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all h-32 sm:h-40 resize-none shadow-sm placeholder:text-slate-400" placeholder="Describe size (e.g. 12x18 inches), medium (oil/pencil), and timeline..."></textarea>
                 </div>
 
-                {/* Reference Image */}
                 <div className="flex flex-col gap-2.5 w-full">
                   <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Reference Image (Optional)</label>
-                  <label className={`flex flex-col items-center justify-center gap-3 sm:gap-4 rounded-2xl border-2 border-dashed cursor-pointer transition-all px-4 sm:px-6 py-6 sm:py-8 w-full ${refPreview ? 'border-[#d81b60] bg-[#fff5f8]' : 'border-[#ec407a]/20 bg-[#fff5f8]/50 hover:border-[#d81b60] hover:bg-[#fff5f8]'
+                  <label className={`flex flex-col items-center justify-center gap-3 sm:gap-4 rounded-2xl border-2 border-dashed cursor-pointer transition-all px-4 sm:px-6 py-6 sm:py-8 w-full ${
+                    refPreview ? 'border-[#d81b60] bg-[#fff5f8]' : 'border-[#ec407a]/20 bg-[#fff5f8]/50 hover:border-[#d81b60] hover:bg-[#fff5f8]'
                     } shadow-sm`}>
                     <input name="reference_image" type="file" accept="image/*" className="hidden" onChange={handleRefImage} />
                     {refPreview ? (
@@ -1190,19 +1254,22 @@ const Commission = () => {
                           <Sparkles size={28} />
                         </div>
                         <div className="text-center px-4">
-                          <p className="font-bold text-slate-700 text-sm">Upload reference drawing</p>
-                          <p className="text-xs text-slate-400 mt-2">JPG, PNG or WEBP (Max 10MB)</p>
+                          <p className="font-bold text-slate-700 text-sm">Upload reference photo or drawing</p>
+                          <p className="text-xs text-slate-400 mt-2">JPG, PNG or WEBP (Max 10MB) — Optional</p>
                         </div>
                       </>
                     )}
                   </label>
                 </div>
 
-                {/* Submit Button */}
                 <div className="mt-4 sm:mt-6 md:mt-8 lg:mt-10">
-                  <button type="submit" className="btn-primary w-full py-4 sm:py-5 md:py-6 text-[9px] sm:text-[10px] md:text-[11px] font-black tracking-[0.2em] sm:tracking-[0.3em] shadow-[0_20px_40px_-10px_rgba(216,27,96,0.4)] hover:shadow-[0_30px_50px_-10px_rgba(216,27,96,0.5)] transition-all rounded-[2rem]">SUBMIT REQUEST →</button>
+                  <button type="submit" disabled={commLoading} className="btn-primary w-full py-4 sm:py-5 md:py-6 text-[9px] sm:text-[10px] md:text-[11px] font-black tracking-[0.2em] sm:tracking-[0.3em] shadow-[0_20px_40px_-10px_rgba(216,27,96,0.4)] hover:shadow-[0_30px_50px_-10px_rgba(216,27,96,0.5)] transition-all rounded-[2rem] disabled:opacity-60">
+                    {commLoading ? 'SENDING...' : 'SUBMIT REQUEST →'}
+                  </button>
                 </div>
               </form>
+              </>
+              )}
             </motion.div>
           </div>
         </div>
@@ -1410,8 +1477,21 @@ const JoinNow = () => {
             >
               <div className="text-6xl mb-6">🎨</div>
               <h3 className="text-3xl font-serif text-[#ad1457] mb-4">You're In!</h3>
-              <p className="text-slate-500 text-lg mb-8">Thank you for enrolling. Our team will contact you soon. Get ready to paint your story!</p>
-              <Link to="/" className="btn-primary px-10 py-4 text-xs font-black tracking-widest inline-block">Back to Home</Link>
+              <p className="text-slate-500 text-lg mb-6">Thank you for enrolling at Rivya School of Arts. Our team will reach out within 24 hours!</p>
+              <div className="bg-[#fff5f8] rounded-2xl p-5 text-sm text-slate-600 text-left mb-8">
+                <p className="font-bold text-[#d81b60] mb-3">📌 What Happens Next?</p>
+                <ol className="list-decimal list-inside space-y-2">
+                  <li>Our team calls you within <strong>24 hours</strong> to confirm your enrollment</li>
+                  <li>We guide you on the <strong>joining date and batch timing</strong></li>
+                  <li>Bring your enthusiasm — <strong>art materials are included</strong> in the course fee!</li>
+                </ol>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link to="/" className="btn-primary px-10 py-4 text-xs font-black tracking-widest inline-block">Back to Home</Link>
+                <a href="https://wa.me/919566951629?text=Hi%21%20I%20just%20enrolled%20at%20Rivya%20School%20of%20Arts%21" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 text-xs font-black tracking-widest uppercase border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white inline-flex items-center gap-2 justify-center">
+                  💬 WhatsApp Us
+                </a>
+              </div>
             </motion.div>
           ) : (
             <motion.div
@@ -1436,14 +1516,17 @@ const JoinNow = () => {
                   </div>
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Phone Number *</label>
-                    <input
-                      required
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => handleUpdate('phone', e.target.value)}
-                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400"
-                      placeholder="+91 XXXXX XXXXX"
-                    />
+                    <div className="flex">
+                      <span className="bg-[#fff5f8] border-2 border-r-0 border-[#ec407a]/10 px-3 py-3.5 sm:py-4 rounded-l-2xl text-slate-500 text-sm font-bold flex items-center select-none">+91</span>
+                      <input
+                        required
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => handleUpdate('phone', e.target.value)}
+                        className="flex-1 bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 py-3.5 sm:py-4 rounded-r-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400"
+                        placeholder="XXXXX XXXXX"
+                      />
+                    </div>
                   </div>
                 </div>
 

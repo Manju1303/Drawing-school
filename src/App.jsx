@@ -336,12 +336,13 @@ const Footer = () => {
           <ul className="flex flex-col gap-4 opacity-60 text-sm">
             <li><a href="https://www.instagram.com/_oeuvre_world_?igsh=MXBpMXludzM2dm16dg==" target="_blank">Instagram Portfolio</a></li>
             <li><a href="https://jsdl.in/RSL-EUI1775137878" target="_blank">Justdial Business</a></li>
-            <li><a href="#" target="_blank">Google Profile</a></li>
+            <li><a href="https://www.justdial.com/Tirupur/Rivya-School-Of-Arrs-Nesavalar-Colony/9999PX421-X421-250306140002-U6Q7_BZDET" target="_blank" rel="noopener noreferrer">Justdial Listing</a></li>
+            <li><a href="https://maps.app.goo.gl/wS22D68S899A6" target="_blank" rel="noopener noreferrer">Google Maps</a></li>
           </ul>
         </div>
       </div>
       <div className="container pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center opacity-40 text-xs gap-4">
-        <p>&copy; 2024 Rivya School of Arts. All Rights Reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Rivya School of Arts. All Rights Reserved.</p>
         <div className="flex gap-8">
           <Link to="#">Privacy Policy</Link>
           <Link to="#">Terms of Service</Link>
@@ -434,31 +435,24 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 items-center"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 items-start sm:items-center"
             >
               <Magnetic strength={0.3}>
-                <Link to="/courses" className="btn-primary group w-full sm:w-auto justify-center px-6 py-2.5 md:px-10 md:py-4 text-[10px] md:text-xs flex items-center">
-                  Begin Your Journey <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                <Link to="/join" className="btn-primary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-12 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase">
+                  Enroll Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Magnetic>
               <Magnetic strength={0.3}>
-                <Link to="/join" className="btn-primary w-full sm:w-auto justify-center flex items-center gap-2 px-6 py-2.5 md:px-10 md:py-4 text-[10px] md:text-xs font-black tracking-widest uppercase">
-                  Enroll Now
+                <Link to="/courses" className="btn-secondary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-12 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase !border-white !text-white hover:!bg-white hover:!text-slate-950">
+                  Explore Courses
                 </Link>
               </Magnetic>
-              <Magnetic strength={0.3}>
-                <Link to="/commission" className="btn-primary w-full sm:w-auto justify-center flex items-center gap-2 px-6 py-2.5 md:px-10 md:py-4 text-[10px] md:text-xs font-black tracking-widest uppercase !bg-slate-900 border-2 border-white/20">
-                  Order Now
-                </Link>
-              </Magnetic>
-              <Magnetic strength={0.3}>
-                <button
-                  onClick={() => setShowPoster(true)}
-                  className="btn-secondary w-full sm:w-auto justify-center !border-white !text-white hover:!bg-white hover:!text-slate-950 flex items-center gap-2 px-6 py-2.5 md:px-10 md:py-4 text-[10px] md:text-xs font-black tracking-widest uppercase"
-                >
-                  <Sparkles size={14} /> Summer Offer
-                </button>
-              </Magnetic>
+              <button
+                onClick={() => setShowPoster(true)}
+                className="text-white/60 hover:text-white flex items-center gap-2 text-[10px] font-black tracking-widest uppercase transition-colors"
+              >
+                <Sparkles size={14} className="text-[#f8bbd0]" /> View Summer Offer
+              </button>
             </motion.div>
           </motion.div>
         </div>
@@ -540,10 +534,10 @@ const Home = () => {
       <section className="bg-white border-y border-[#ec407a]/10 py-24">
         <div className="container grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
           {[
-            { tag: '500+', label: 'Students Taught' },
-            { tag: 'Kids-Adults', label: 'All Age Groups' },
-            { tag: 'Online', label: '& Offline Classes' },
-            { tag: 'MSME', label: 'Approved Institute' }
+            { tag: '500+', label: 'Students Trained' },
+            { tag: '5+', label: 'Years of Excellence' },
+            { tag: 'Online & Offline', label: 'Flexible Learning Modes' },
+            { tag: 'MSME Govt.', label: 'Registered Institute' }
           ].map((stat, i) => (
             <div key={i} className="glass-card !p-8 flex flex-col justify-center items-center min-h-[160px]">
               <h3 className="text-3xl md:text-4xl font-serif mb-2 font-bold gradient-text">{stat.tag}</h3>
@@ -749,7 +743,7 @@ const About = () => (
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Our Heritage</h4>
-            <h2 className="text-3xl md:text-6xl mb-6 md:mb-8 md:leading-snug text-[#ad1457] font-serif">Mastery in <br /><span className="italic font-normal">Every Stroke</span></h2>
+            <h2 className="text-3xl md:text-6xl mb-6 md:mb-8 md:leading-snug text-[#ad1457] font-serif">Drawing Classes in <br /><span className="italic font-normal">Tiruppur — RSA</span></h2>
             <p className="text-base md:text-lg text-[#2d3436]/80 mb-6 leading-relaxed">RIVYA SCHOOL OF ARTS is an MSME approved institute dedicated to providing professional drawing and painting training. Founded by our lead artist at Oeuvre World, we specialize in teaching students how to transform their imagination into masterpieces.</p>
             <p className="text-base md:text-lg text-[#2d3436]/80 mb-10 leading-relaxed">Located in Perumanallur, Tiruppur, we offer both offline and online classes for all age groups, from kids to adults. Our curriculum covers everything from basic sketching to specialized courses like Mandala and Pot Painting.</p>
             <div className="grid grid-cols-2 gap-4 md:gap-8 border-t border-[#ec407a]/10 pt-10">
@@ -977,14 +971,12 @@ const Gallery = () => {
     { src: 'portrait_women.jpg', cat: 'Pencil', title: 'Hyper-Realistic Pencil Portrait' },
     { src: 'painting_justice.jpg', cat: 'Artistic', title: 'Acrylic & Canvas Painting' },
     { src: 'portrait_couple.jpg', cat: 'Portrait', title: 'Charcoal Couple Artwork' },
-    { src: 'poster_summer.jpg', cat: 'Events', title: 'Summer Art Workshop Poster' },
-    { src: 'poster_regular.jpg', cat: 'Courses', title: 'Certified Art Curriculum' },
     { src: 'commission_delivery.jpg', cat: 'Commissions', title: 'Custom Painting Order Delivery' },
     { src: 'group_students.jpg', cat: 'Studio', title: 'RSA Studio Student Class Session' },
     { src: 'founder.jpg', cat: 'Artist', title: 'Lead Artist & Founder Thrinethraa D S' }
   ];
 
-  const categories = ['All', 'Pencil', 'Portrait', 'Artistic', 'Commissions', 'Studio'];
+  const categories = ['All', 'Pencil', 'Portrait', 'Artistic', 'Commissions', 'Studio', 'Artist'];
 
   const filteredImages = activeFilter === 'All'
     ? galleryImages

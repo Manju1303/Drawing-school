@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import logo from './logo.png';
@@ -371,6 +372,15 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Helmet>
+        <title>Rivya School of Arts – Best Drawing &amp; Painting Classes in Tiruppur | MSME Registered</title>
+        <meta name="description" content="Rivya School of Arts is Tiruppur's MSME Government-registered art institute. Certified courses: pencil art, oil painting, portrait, mandala & more. Offline & online classes for kids and adults in Perumanallur, Tiruppur, Tamil Nadu." />
+        <meta name="keywords" content="drawing school tirupur, drawing classes tirupur, painting classes tirupur, art school tirupur, best drawing institute tirupur, Rivya School of Arts, MSME art school tirupur, pencil art classes tirupur, portrait classes tirupur, online drawing classes tirupur, art classes for kids tirupur, drawing school perumanallur, painting school perumanallur, art institute tamil nadu, MSME certified drawing school, Udyam registered art school, fine art school tirupur" />
+        <link rel="canonical" href="https://rivyaschoolofarts.com/" />
+        <meta property="og:title" content="Rivya School of Arts – Drawing &amp; Painting in Tiruppur" />
+        <meta property="og:description" content="MSME Govt-registered fine art institute in Tiruppur. Drawing, painting, portrait & mandala courses for all ages." />
+        <meta property="og:url" content="https://rivyaschoolofarts.com/" />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-screen py-32 flex items-center overflow-hidden bg-slate-950">
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -732,6 +742,12 @@ const Home = () => {
 
 const About = () => (
   <div className="bg-white min-h-screen pt-32 lg:pt-48">
+    <Helmet>
+      <title>About Us – Rivya School of Arts | MSME Registered Art Institute, Tiruppur</title>
+      <meta name="description" content="Rivya School of Arts – officially MSME Government-registered art institute in Perumanallur, Tiruppur. Founded by artist Thrinethraa D S. 500+ students trained. Certified courses for all ages." />
+      <meta name="keywords" content="about Rivya School of Arts, Thrinethraa D S artist tirupur, Oeuvre World tirupur, MSME registered art institute tirupur, Udyam registration art school tirupur, government certified art school tirupur, fine arts institute perumanallur, best art teacher tirupur, art school history tirupur, who founded Rivya School of Arts" />
+      <link rel="canonical" href="https://rivyaschoolofarts.com/about" />
+    </Helmet>
     <section className="container py-20 lg:py-32">
       <SectionReveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -794,6 +810,12 @@ const Courses = () => {
 
   return (
     <div className="bg-[#fff5f8] pt-32 lg:pt-48">
+      <Helmet>
+        <title>Art Courses in Tiruppur | Drawing, Painting, Portrait &amp; More – Rivya School of Arts</title>
+        <meta name="description" content="Explore certified drawing & painting courses at Rivya School of Arts, Tiruppur. Pencil Art, Oil Painting, Portrait, Mandala, Glass Painting, Mural Design, Mehandi, Handwriting & Spoken English. Offline & online for kids to adults." />
+        <meta name="keywords" content="drawing courses tirupur, painting courses tirupur, mandala art classes tirupur, glass painting tirupur, portrait art tirupur, oil painting classes tirupur, art certificate course tirupur, children art classes tirupur, adult art courses tirupur, mural design tirupur, mehandi design course tirupur, handwriting improvement tirupur, spoken english tirupur, online art courses tamil nadu, acrylic painting tirupur, charcoal portrait tirupur, fabric painting tirupur, watercolor painting tirupur, pot painting tirupur" />
+        <link rel="canonical" href="https://rivyaschoolofarts.com/courses" />
+      </Helmet>
       <section className="container px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24">
         <div className="text-center mb-12 sm:mb-16 md:mb-20 max-w-3xl mx-auto px-4">
           <h4 className="text-xs sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.3em] font-bold text-[#d81b60] mb-3 sm:mb-4">Enroll Today</h4>
@@ -966,6 +988,7 @@ const FaqSection = () => {
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedImage, setSelectedImage] = useState(null);
+  // Helmet SEO injected inside return below
 
   const galleryImages = [
     { src: 'portrait_women.jpg', cat: 'Pencil', title: 'Hyper-Realistic Pencil Portrait' },
@@ -984,6 +1007,12 @@ const Gallery = () => {
 
   return (
     <div className="bg-white pt-32 lg:pt-48">
+      <Helmet>
+        <title>Art Gallery – Student Works &amp; Portraits | Rivya School of Arts, Tiruppur</title>
+        <meta name="description" content="View the art gallery of Rivya School of Arts – Tiruppur's MSME-registered drawing institute. Pencil portraits, oil paintings, charcoal art, mandala designs and custom commissions by our students and lead artist." />
+        <meta name="keywords" content="art gallery tirupur, pencil portrait tirupur, student art tirupur, oil painting gallery tirupur, charcoal art tirupur, mandala art gallery tirupur, commissioned portrait tirupur, Rivya School of Arts gallery, fine art works tirupur, portrait artist tirupur" />
+        <link rel="canonical" href="https://rivyaschoolofarts.com/gallery" />
+      </Helmet>
       <section className="container pb-24">
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <h4 className="text-xs uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-3 flex items-center justify-center gap-2">
@@ -1044,6 +1073,7 @@ const Gallery = () => {
 const Commission = () => {
   const [refImage, setRefImage] = useState(null);
   const [refPreview, setRefPreview] = useState(null);
+  // Commission page
   const handleRefImage = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -1053,6 +1083,12 @@ const Commission = () => {
   };
   return (
     <div className="bg-[#fffdfd] pt-32 lg:pt-48">
+      <Helmet>
+        <title>Order Custom Painting | Portrait Commission – Rivya School of Arts, Tiruppur</title>
+        <meta name="description" content="Order a custom hand-painted portrait or painting from Rivya School of Arts, Tiruppur. Pencil, charcoal, oil & acrylic commissions for gifts, family portraits, and art collectors. Delivered across Tamil Nadu and India." />
+        <meta name="keywords" content="custom portrait tirupur, painting commission tirupur, hand-painted portrait tirupur, portrait gift tirupur, custom painting order tirupur, oil painting commission tirupur, pencil portrait commission, charcoal portrait tirupur, art commission india, buy painting tirupur, Rivya School of Arts commission" />
+        <link rel="canonical" href="https://rivyaschoolofarts.com/commission" />
+      </Helmet>
       <section className="container pb-24">
         <div className="grid lg:grid-cols-2 gap-24">
           <div>
@@ -1177,6 +1213,12 @@ const Commission = () => {
 
 const Contact = () => (
   <div className="bg-[#fff5f8] min-h-screen pt-32 lg:pt-48">
+    <Helmet>
+      <title>Contact Rivya School of Arts – Drawing Classes in Perumanallur, Tiruppur</title>
+      <meta name="description" content="Contact Rivya School of Arts in Perumanallur, Tiruppur. Call +91 95669 51629 or email rivyaartsschool17@gmail.com. Located at KRK Complex, Perumanallur. Mon–Sat 6–9 PM, Sunday 10 AM–1 PM & 5–7 PM." />
+      <meta name="keywords" content="contact Rivya School of Arts, drawing classes contact tirupur, art school phone number tirupur, art school address tirupur, KRK complex perumanallur, Rivya School of Arts phone, art classes near me tirupur, drawing classes near perumanallur" />
+      <link rel="canonical" href="https://rivyaschoolofarts.com/contact" />
+    </Helmet>
     <section className="container pb-24">
       <div className="text-center mb-20 max-w-2xl mx-auto">
         <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Get In Touch</h4>
@@ -1253,6 +1295,7 @@ const FloatingWhatsApp = () => (
 
 export default function App() {
   return (
+    <HelmetProvider>
     <ReactLenis root>
       <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <ScrollToTop />
@@ -1273,6 +1316,7 @@ export default function App() {
         <FloatingWhatsApp />
       </Router>
     </ReactLenis>
+    </HelmetProvider>
   );
 }
 

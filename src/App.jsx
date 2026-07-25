@@ -729,6 +729,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Frequently Asked Questions */}
+      <FaqSection />
     </div>
   );
 };
@@ -821,36 +824,200 @@ const Courses = () => {
   );
 };
 
-const Gallery = () => {
-  const galleryImages = [
-    { src: 'portrait_women.jpg', cat: 'Pencil' },
-    { src: 'painting_justice.jpg', cat: 'Artistic' },
-    { src: 'portrait_couple.jpg', cat: 'Portrait' },
-    { src: 'poster_summer.jpg', cat: 'Events' },
-    { src: 'poster_regular.jpg', cat: 'Courses' },
-    { src: 'commission_delivery.jpg', cat: 'Commissions' },
-    { src: 'group_students.jpg', cat: 'Studio' },
-    { src: 'founder.jpg', cat: 'Artist' }
+// Lightbox Modal Component
+const LightboxModal = ({ image, onClose }) => {
+  if (!image) return null;
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[2000] bg-slate-950/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-8"
+        onClick={onClose}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-6 right-6 z-30 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 backdrop-blur-md transition-all border border-white/20"
+        >
+          <X size={28} />
+        </button>
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          className="relative max-w-4xl max-h-[85vh] overflow-hidden rounded-[2.5rem] border-4 border-white/20 shadow-2xl bg-slate-900 flex flex-col items-center"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <img
+            src={getAsset(image.src)}
+            alt={image.title || 'Artwork'}
+            className="w-full max-h-[70vh] object-contain bg-black/40"
+          />
+          <div className="w-full p-6 bg-slate-900 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div>
+              <span className="text-[10px] font-black uppercase tracking-widest text-[#f8bbd0] bg-[#d81b60]/30 px-3 py-1 rounded-full border border-[#d81b60]/40">
+                {image.cat}
+              </span>
+              <h4 className="text-xl font-serif text-white font-bold mt-2">{image.title || 'Masterpiece Artwork'}</h4>
+            </div>
+            <Link
+              to="/commission"
+              onClick={onClose}
+              className="btn-primary !py-3 !px-6 !text-[10px] !rounded-full shrink-0"
+            >
+              Order Similar Custom Art →
+            </Link>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
+// FAQ Accordion Section
+const FaqSection = () => {
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const faqs = [
+    {
+      q: "Are certificates government MSME recognized?",
+      a: "Yes! Rivya School of Arts is an officially MSME registered institute. Upon successful completion of any Certificate course (Basic, Intermediate, or Advanced), students receive an official MSME-approved certificate."
+    },
+    {
+      q: "Are art kits and practice materials provided in class?",
+      a: "Yes! For studio offline batches, practice materials and guidance are provided. Complete art kit guidance is provided for all students."
+    },
+    {
+      q: "What age groups can join the classes?",
+      a: "We welcome all age groups starting from 5+ years kids, teenagers, working adults, to senior citizens. Batches are customized according to skill levels."
+    },
+    {
+      q: "What are the class timings & weekend schedules?",
+      a: "Regular Monday to Saturday batches run from 6:00 PM to 9:00 PM. Sunday special batches run in the morning (10:00 AM - 1:00 PM) and evening (5:00 PM - 7:00 PM)."
+    },
+    {
+      q: "How do online classes work for students outside Tiruppur?",
+      a: "Online sessions are conducted live via video calls with step-by-step camera close-ups, personalized feedback on assignments, and continuous mentor support."
+    }
   ];
+
+  return (
+    <section className="bg-white py-24 border-t border-[#ec407a]/10">
+      <div className="container max-w-4xl">
+        <div className="text-center mb-16">
+          <h4 className="text-xs uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-3 flex items-center justify-center gap-2">
+            <Sparkles size={14} /> Clear Answers <Sparkles size={14} />
+          </h4>
+          <h2 className="text-4xl md:text-5xl font-serif text-[#ad1457]">Frequently Asked Questions</h2>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          {faqs.map((faq, i) => (
+            <div
+              key={i}
+              className={`rounded-3xl border transition-all duration-300 overflow-hidden ${
+                openIndex === i
+                  ? 'border-[#d81b60] bg-[#fff5f8] shadow-lg shadow-[#d81b60]/10'
+                  : 'border-slate-100 bg-white hover:border-[#ec407a]/30'
+              }`}
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
+                className="w-full p-6 md:p-8 flex items-center justify-between text-left gap-4 cursor-pointer"
+              >
+                <span className="text-base md:text-lg font-bold text-slate-800">{faq.q}</span>
+                <div
+                  className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                    openIndex === i ? 'bg-[#d81b60] text-white rotate-180' : 'bg-slate-100 text-slate-500'
+                  }`}
+                >
+                  <ArrowRight size={18} className="rotate-90" />
+                </div>
+              </button>
+              <AnimatePresence>
+                {openIndex === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6 md:px-8 md:pb-8 pt-0 text-slate-600 leading-relaxed text-sm md:text-base border-t border-[#d81b60]/10 mt-2">
+                      {faq.a}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Gallery = () => {
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const galleryImages = [
+    { src: 'portrait_women.jpg', cat: 'Pencil', title: 'Hyper-Realistic Pencil Portrait' },
+    { src: 'painting_justice.jpg', cat: 'Artistic', title: 'Acrylic & Canvas Painting' },
+    { src: 'portrait_couple.jpg', cat: 'Portrait', title: 'Charcoal Couple Artwork' },
+    { src: 'poster_summer.jpg', cat: 'Events', title: 'Summer Art Workshop Poster' },
+    { src: 'poster_regular.jpg', cat: 'Courses', title: 'Certified Art Curriculum' },
+    { src: 'commission_delivery.jpg', cat: 'Commissions', title: 'Custom Painting Order Delivery' },
+    { src: 'group_students.jpg', cat: 'Studio', title: 'RSA Studio Student Class Session' },
+    { src: 'founder.jpg', cat: 'Artist', title: 'Lead Artist & Founder Thrinethraa D S' }
+  ];
+
+  const categories = ['All', 'Pencil', 'Portrait', 'Artistic', 'Commissions', 'Studio'];
+
+  const filteredImages = activeFilter === 'All'
+    ? galleryImages
+    : galleryImages.filter(img => img.cat === activeFilter);
+
   return (
     <div className="bg-white pt-32 lg:pt-48">
       <section className="container pb-24">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
-          <h4 className="text-sm uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-4">Visual Story</h4>
-          <h2 className="text-6xl mb-4 text-[#ad1457]">Our Gallery</h2>
-          <p className="text-lg text-[#2d3436]/60">Explore our collection of commissioned works and student achievements across all age groups.</p>
+        <div className="text-center mb-12 max-w-2xl mx-auto">
+          <h4 className="text-xs uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-3 flex items-center justify-center gap-2">
+            <Sparkles size={14} /> Visual Masterpieces <Sparkles size={14} />
+          </h4>
+          <h2 className="text-5xl md:text-6xl mb-4 text-[#ad1457]">Our Gallery</h2>
+          <p className="text-base md:text-lg text-[#2d3436]/60">Explore our collection of commissioned works and student achievements across all age groups.</p>
+        </div>
+
+        {/* Filter Pills */}
+        <div className="flex flex-wrap justify-center items-center gap-2 md:gap-3 mb-16 px-4">
+          {categories.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setActiveFilter(cat)}
+              className={`px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all cursor-pointer ${
+                activeFilter === cat
+                  ? 'bg-[#d81b60] text-white shadow-lg shadow-[#d81b60]/30 scale-105'
+                  : 'bg-slate-100 text-slate-600 hover:bg-[#fff5f8] hover:text-[#d81b60]'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
         <div className="columns-1 sm:columns-2 lg:columns-4 gap-6 space-y-6">
-          {galleryImages.map((img, i) => (
+          {filteredImages.map((img, i) => (
             <SectionReveal key={i} delay={i * 0.05}>
               <motion.div
                 whileHover={{ y: -10 }}
+                onClick={() => setSelectedImage(img)}
                 className="break-inside-avoid relative overflow-hidden rounded-[2.5rem] group cursor-pointer border border-slate-100 shadow-xl"
               >
                 <img
                   src={getAsset(img.src)}
-                  alt={`Art ${i}`}
+                  alt={img.title}
                   className="w-full h-auto object-cover transition-transform duration-[1.5s] group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-8 text-center backdrop-blur-[2px]">
@@ -863,10 +1030,13 @@ const Gallery = () => {
             </SectionReveal>
           ))}
         </div>
+
+        {/* Lightbox Modal */}
+        <LightboxModal image={selectedImage} onClose={() => setSelectedImage(null)} />
       </section>
     </div>
   );
-}
+};
 
 const Commission = () => {
   const [refImage, setRefImage] = useState(null);

@@ -6,11 +6,14 @@
   --slate-100: #f1f5f9;
   --slate-900: #0f172a;
   
-  /* Primary Branding - Deep Pink Theme */
+  /* Primary Branding - Deep Pink & Gold Accent Theme */
   --primary: #d81b60; /* Vibrant Pink */
   --primary-dark: #ad1457;
   --secondary: #ec407a; /* Medium Pink */
   --accent: #f8bbd0; /* Soft Pink */
+  --gold: #d4af37; /* Champagne Gold */
+  --gold-light: #f59e0b;
+  --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #b8860b 100%);
   
   /* UI Context */
   --bg-main: #ffffff;
@@ -98,6 +101,13 @@ section {
   background-clip: text;
 }
 
+.gold-gradient-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .glass-card {
   background: var(--glass);
   backdrop-filter: blur(16px);
@@ -113,6 +123,12 @@ section {
   transform: translateY(-5px);
   box-shadow: var(--shadow-hover);
   border-color: var(--primary);
+}
+
+.gold-badge {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(243, 229, 171, 0.25));
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #b8860b;
 }
 
 /* Typography Fluidity */
@@ -201,3 +217,4 @@ h3 { font-size: clamp(1.5rem, 3.5vw, 3rem); line-height: 1.3; }
   width: 0%;
   transition: width 0.1s linear;
 }
+

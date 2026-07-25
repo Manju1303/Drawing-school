@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import logo from './logo.png';
@@ -1059,6 +1059,25 @@ function ScrollToTop() {
   return null;
 }
 
+const FloatingWhatsApp = () => (
+  <motion.a
+    href="https://wa.me/919566951629?text=Hello%20Rivya%20School%20of%20Arts!%20I%20would%20like%20to%20know%20more%20about%20your%20courses."
+    target="_blank"
+    rel="noopener noreferrer"
+    initial={{ scale: 0 }}
+    animate={{ scale: 1 }}
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.9 }}
+    className="fixed bottom-6 right-6 z-[999] bg-[#25D366] text-white p-3.5 sm:p-4 rounded-full shadow-[0_10px_25px_rgba(37,211,102,0.4)] flex items-center justify-center border-2 border-white cursor-pointer group"
+    title="Chat on WhatsApp"
+  >
+    <Phone size={22} className="group-hover:rotate-12 transition-transform" />
+    <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out text-xs font-bold pl-0 group-hover:pl-2">
+      WhatsApp Us
+    </span>
+  </motion.a>
+);
+
 export default function App() {
   return (
     <ReactLenis root>
@@ -1078,6 +1097,7 @@ export default function App() {
           <Route path="/join" element={<JoinNow />} />
         </Routes>
         <Footer />
+        <FloatingWhatsApp />
       </Router>
     </ReactLenis>
   );
@@ -1137,6 +1157,8 @@ const JoinNow = () => {
         email: formData.email,
         course: formData.course,
         duration: formData.duration,
+        mode: formData.mode,
+        age_group: formData.ageGroup,
         total_fees: `₹${totalFees}`,
         to_email: 'rivyaartsschool17@gmail.com',
       },
@@ -1212,11 +1234,17 @@ const JoinNow = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Age Group *</label>
-                    <select required className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm">
+                    <select
+                      required
+                      name="ageGroup"
+                      value={formData.ageGroup}
+                      onChange={(e) => handleUpdate('ageGroup', e.target.value)}
+                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm"
+                    >
                       <option value="">Select age group...</option>
-                      <option>Kids (5–10 yrs)</option>
-                      <option>Teens (11–17 yrs)</option>
-                      <option>Adults (18+ yrs)</option>
+                      <option value="Kids (5–10 yrs)">Kids (5–10 yrs)</option>
+                      <option value="Teens (11–17 yrs)">Teens (11–17 yrs)</option>
+                      <option value="Adults (18+ yrs)">Adults (18+ yrs)</option>
                     </select>
                   </div>
                   <div className="flex flex-col gap-2.5 w-full">

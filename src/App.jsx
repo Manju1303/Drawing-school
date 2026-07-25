@@ -189,9 +189,9 @@ const Navbar = () => {
           <motion.div whileHover={{ scale: 1.05 }} className="w-10 h-10 md:w-14 md:h-14 rounded-full overflow-hidden shrink-0 transition-all">
             <img src={logo} alt="RSA Logo" className="w-full h-full object-contain" />
           </motion.div>
-          <div className="flex flex-col">
-            <span className={`text-2xl md:text-4xl font-black font-serif italic tracking-normal transition-colors duration-500 leading-none ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#d81b60]' : 'text-white'}`}>RSA</span>
-            <span className={`text-[7px] md:text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-500 ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#ad1457]' : 'text-white/90'}`}>RIVYA SCHOOL OF ARTS</span>
+          <div className="flex flex-col leading-tight">
+            <span className={`text-sm md:text-base font-black tracking-[0.15em] uppercase transition-colors duration-500 ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#d81b60]' : 'text-white/90'}`}>Rivya School of Arts</span>
+            <span className={`text-[8px] md:text-[9px] font-medium tracking-[0.1em] uppercase transition-colors duration-500 ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#ad1457]/70' : 'text-white/50'}`}>Fine Arts & Painting Institute</span>
           </div>
         </Link>
 
@@ -241,8 +241,8 @@ const Navbar = () => {
               <div className="w-20 h-20 rounded-2xl bg-[#fff5f8] p-2 flex items-center justify-center mb-4">
                 <img src={logo} alt="Logo" className="w-full h-full object-contain" />
               </div>
-              <span className="text-3xl font-black text-[#d81b60] font-serif italic">RSA</span>
-              <span className="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-bold mb-10">Rivya School of Arts</span>
+              <span className="text-xl font-black text-[#d81b60] tracking-wide uppercase">Rivya School of Arts</span>
+              <span className="text-[9px] uppercase tracking-[0.3em] text-slate-400 font-bold mb-10">Fine Arts & Painting Institute</span>
             </div>
 
             <button
@@ -290,8 +290,8 @@ const Footer = () => {
     <footer className="footer bg-white pt-24 pb-12 border-t border-[#ec407a]/10">
       <div className="container grid md:grid-cols-4 gap-16 mb-20">
         <div className="col-span-1 md:col-span-1">
-          <Link to="/" className="text-3xl font-bold font-serif italic mb-8 block">
-            <span className="gradient-text">RSA</span>
+          <Link to="/" className="text-xl font-black tracking-wide uppercase mb-8 block text-[#d81b60]">
+            Rivya School of Arts
           </Link>
           <p className="text-[#2d3436]/70 mb-8 text-sm leading-relaxed">Founded by professional artists, RSA is dedicated to teaching fine arts and creating unique commission pieces for art lovers around the world.</p>
           <div className="flex gap-4">

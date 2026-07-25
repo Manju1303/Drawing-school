@@ -763,6 +763,17 @@ const About = () => (
                 <p className="text-[9px] md:text-[11px] text-[#ad1457]/70 font-bold mt-1 uppercase tracking-widest">Sunday Open</p>
               </div>
             </div>
+
+            {/* MSME Official Registration Notice Box for Search Indexing */}
+            <div className="mt-8 p-6 rounded-3xl bg-[#fff5f8] border-2 border-[#d81b60]/20 shadow-md">
+              <div className="flex items-center gap-3 mb-2">
+                <Sparkles size={18} className="text-[#d81b60]" />
+                <h4 className="font-bold text-slate-900 text-base">Government MSME Registered Institute</h4>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Rivya School of Arts (located in Perumanallur, Tiruppur, Tamil Nadu) is an officially registered fine arts training provider under the Ministry of Micro, Small and Medium Enterprises (MSME / Udyam Registration, Govt. of India). All qualifying students receive valid government-approved certificates upon course completion.
+              </p>
+            </div>
           </motion.div>
         </div>
       </SectionReveal>

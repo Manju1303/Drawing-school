@@ -184,15 +184,15 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full top-0 z-[1000] transition-all duration-700 ${(isScrolled || (location.pathname !== '/' && location.pathname !== '')) ? 'py-4 bg-white shadow-xl border-b border-[#ec407a]/10' : 'py-8 bg-transparent'}`}>
+    <nav className={`fixed w-full top-0 z-[1000] transition-all duration-500 ${(isScrolled || (location.pathname !== '/' && location.pathname !== '')) ? 'py-4 bg-white/95 backdrop-blur-md shadow-xl border-b border-[#ec407a]/15' : 'py-5 bg-slate-950/70 backdrop-blur-md border-b border-white/10'}`}>
       <div className="container flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3 group">
           <motion.div whileHover={{ scale: 1.05 }} className="w-10 h-10 md:w-14 md:h-14 rounded-full overflow-hidden shrink-0 transition-all">
             <img src={logo} alt="RSA Logo" className="w-full h-full object-contain" />
           </motion.div>
           <div className="flex flex-col leading-tight">
-            <span className={`text-sm md:text-base font-black tracking-[0.15em] uppercase transition-colors duration-500 ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#d81b60]' : 'text-white/90'}`}>Rivya School of Arts</span>
-            <span className={`text-[8px] md:text-[9px] font-medium tracking-[0.1em] uppercase transition-colors duration-500 ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#ad1457]/70' : 'text-white/50'}`}>Fine Arts & Painting Institute</span>
+            <span className={`text-sm md:text-base font-black tracking-[0.15em] uppercase transition-colors duration-500 ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#d81b60]' : 'text-white'}`}>Rivya School of Arts</span>
+            <span className={`text-[8px] md:text-[9px] font-medium tracking-[0.1em] uppercase transition-colors duration-500 ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#ad1457]/80' : 'text-white/70'}`}>Fine Arts & Painting Institute</span>
           </div>
         </Link>
 
@@ -206,13 +206,13 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={`relative text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105 ${isActive
-                  ? (useDark ? 'text-[#d81b60]' : 'text-white')
-                  : (useDark ? 'text-slate-800 hover:text-[#d81b60]' : 'text-white/70 hover:text-white')
+                  ? (useDark ? 'text-[#d81b60]' : 'text-white font-black')
+                  : (useDark ? 'text-slate-800 hover:text-[#d81b60]' : 'text-white/80 hover:text-white')
                   }`}
               >
                 {link.name}
                 {isActive && (
-                  <motion.div layoutId="nav-underline" className={`absolute -bottom-2 left-0 right-0 h-0.5 rounded-full ${useDark ? 'bg-[#d81b60]' : 'bg-white'}`} />
+                  <motion.div layoutId="nav-underline" className={`absolute -bottom-2 left-0 right-0 h-0.5 rounded-full ${useDark ? 'bg-[#d81b60]' : 'bg-[#ec407a]'}`} />
                 )}
               </Link>
             );
@@ -295,8 +295,10 @@ const Footer = () => {
             Rivya School of Arts
           </Link>
           <p className="text-[#2d3436]/70 mb-8 text-sm leading-relaxed">Founded by professional artists, RSA is dedicated to teaching fine arts and creating unique commission pieces for art lovers around the world.</p>
-          <div className="flex gap-4">
-            <a href="https://www.instagram.com/_oeuvre_world_?igsh=MXBpMXludzM2dm16dg==" target="_blank" className="p-2 glass-card hover:bg-[#6a1b9a] transition-all"><Instagram size={18} /></a>
+          <div className="flex gap-3">
+            <a href="https://www.instagram.com/_oeuvre_world_?igsh=MXBpMXludzM2dm16dg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 text-[#d81b60] flex items-center justify-center hover:bg-[#d81b60] hover:text-white transition-all shadow-sm">
+              <Instagram size={18} />
+            </a>
           </div>
         </div>
 
@@ -877,7 +879,7 @@ const Courses = () => {
                   ⭐ Govt. Certified Course — MSME Approved
                 </div>
               )}
-              <div className="p-5 sm:p-6 md:p-8 lg:p-10 flex-grow flex flex-col gap-4 sm:gap-5 h-full">
+              <div className="p-5 sm:p-6 md:p-8 flex-grow flex flex-col gap-4 sm:gap-5 justify-between relative w-full">
                 <div className={`w-14 sm:w-16 h-14 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 border transition-all transform group-hover:rotate-6 ${
                   course.isCert
                     ? 'bg-[#fef9e7] text-[#d4af37] border-[#d4af37]/30 group-hover:bg-[#d4af37] group-hover:text-white'
@@ -1027,9 +1029,9 @@ const FaqSection = () => {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
+                    className="relative w-full overflow-hidden"
                   >
-                    <div className="px-6 pb-6 md:px-8 md:pb-8 pt-0 text-slate-600 leading-relaxed text-sm md:text-base border-t border-[#d81b60]/10 mt-2">
+                    <div className="px-6 pb-6 md:px-8 md:pb-8 pt-4 text-slate-600 leading-relaxed text-sm md:text-base border-t border-[#d81b60]/10 mt-2 relative w-full">
                       {faq.a}
                     </div>
                   </motion.div>
@@ -1623,7 +1625,7 @@ const JoinNow = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="lg:col-span-7 bg-white p-4 sm:p-8 md:p-12 lg:p-14 pb-16 sm:pb-20 md:pb-24 lg:pb-28 rounded-2xl sm:rounded-3xl md:rounded-4xl lg:rounded-5xl border border-[#ec407a]/15 shadow-[0_40px_80px_-10px_rgba(216,27,96,0.1)] md:shadow-[0_60px_100px_-20px_rgba(216,27,96,0.15)] overflow-visible relative"
+                className="lg:col-span-7 bg-white p-6 sm:p-10 md:p-12 rounded-3xl md:rounded-[3rem] border border-[#ec407a]/15 shadow-[0_30px_70px_-15px_rgba(216,27,96,0.12)] overflow-hidden relative w-full"
               >
                 <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={handleSubmit}>
                 {/* Row 1: Name + Phone */}

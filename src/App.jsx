@@ -1227,23 +1227,38 @@ const Commission = () => {
                 e.preventDefault();
                 setCommLoading(true);
                 const form = e.target;
-                emailjs.sendForm(
-                  'service_rivyaarts',
-                  'template_commission',
-                  form,
-                  'Gg0xDxs9IK_aQQegv'
-                ).then((res) => {
-                  console.log('Commission SUCCESS!', res.status, res.text);
-                  setCommSubmitted(true);
-                  setCommLoading(false);
-                  form.reset();
-                  setRefPreview(null);
-                  setSelectedGalleryArt('');
-                }).catch((err) => {
-                  console.error('Commission FAILED...', err);
-                  setCommLoading(false);
-                  alert(`We couldn't send your request via email. Please WhatsApp us directly at +91 95669 51629 or call us — we're happy to help!`);
-                });
+                const data = new FormData(form);
+                
+                const artworkType = orderType === 'commission' 
+                  ? data.get('artwork_type') 
+                  : selectedGalleryArt;
+                  
+                const name = data.get('from_name');
+                const phone = data.get('phone');
+                const reqs = data.get('message') || 'None';
+
+                const message = `Hello Rivya School of Arts! I want to place an order:
+• Order Type: ${orderType === 'commission' ? 'Custom Commission Works' : 'Order Gallery Artwork'}
+• Artwork / Category: ${artworkType}
+• Name: ${name}
+• Phone: +91 ${phone}
+• Requirements: ${reqs}`;
+
+                const whatsappUrl = `https://wa.me/919566951629?text=${encodeURIComponent(message)}`;
+                
+                setCommSubmitted(true);
+                setCommLoading(false);
+                form.reset();
+                setRefPreview(null);
+                setSelectedGalleryArt('');
+
+                if (orderType === 'commission' && refImage) {
+                  alert("Redirecting to WhatsApp to complete your order. Please attach your reference image in the chat!");
+                }
+
+                setTimeout(() => {
+                  window.open(whatsappUrl, '_blank');
+                }, 1000);
               }}>
                 <input type="hidden" name="order_type" value={orderType === 'commission' ? 'Custom Commission Works' : 'Order Existing Gallery Painting'} />
                 
@@ -1539,28 +1554,24 @@ const JoinNow = () => {
       alert('Please select a course and duration.');
       return;
     }
-    emailjs.send(
-      'service_rivyaarts',
-      'template_enrollment',
-      {
-        from_name: formData.name || 'Student',
-        phone: formData.phone,
-        email: formData.email,
-        course: formData.course,
-        duration: formData.duration,
-        mode: formData.mode,
-        age_group: formData.ageGroup,
-        total_fees: `₹${totalFees}`,
-        to_email: 'rivyaartsschool17@gmail.com',
-      },
-      'Gg0xDxs9IK_aQQegv'
-    ).then((res) => {
-      console.log('Enrollment SUCCESS!', res.status, res.text);
-      setSubmitted(true);
-    }).catch((err) => {
-      console.error('Enrollment FAILED...', err);
-      alert(`Submission failed. Error: ${err.text || 'Service error'}. Please call us at +91 95669 51629.`);
-    });
+
+    const message = `Hello Rivya School of Arts! I want to enroll in a course:
+• Name: ${formData.name}
+• Phone: ${formData.phone}
+• Email: ${formData.email || 'N/A'}
+• Age Group: ${formData.ageGroup}
+• Selected Course: ${formData.course}
+• Selected Duration: ${formData.duration}
+• Preferred Mode: ${formData.mode}
+• Total Fees: ₹${totalFees}`;
+
+    const whatsappUrl = `https://wa.me/919566951629?text=${encodeURIComponent(message)}`;
+    
+    setSubmitted(true);
+    
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank');
+    }, 1000);
   };
 
 

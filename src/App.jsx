@@ -453,6 +453,11 @@ const Home = () => {
                 </Link>
               </Magnetic>
               <Magnetic strength={0.3}>
+                <Link to="/commission" className="btn-primary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-12 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase !bg-gradient-to-r !from-[#f59e0b] !to-[#d81b60] !shadow-[0_10px_25px_rgba(245,158,11,0.4)] hover:!shadow-[0_20px_35px_rgba(245,158,11,0.6)]">
+                  Order Now 🎨
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.3}>
                 <Link to="/courses" className="btn-secondary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-12 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase !border-white !text-white hover:!bg-white hover:!text-slate-950">
                   Explore Courses
                 </Link>
@@ -697,6 +702,34 @@ const Home = () => {
               </motion.div>
             </SectionReveal>
           </div>
+        </div>
+      </section>
+
+      {/* Order Custom Artwork Showcase Banner */}
+      <section className="bg-gradient-to-br from-slate-950 via-[#1a0b12] to-[#2d0a18] py-20 text-white relative overflow-hidden">
+        <div className="container relative z-10">
+          <SectionReveal>
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-14 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
+              <div className="max-w-2xl text-center lg:text-left">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#d81b60]/20 border border-[#d81b60]/40 text-[#f8bbd0] text-[10px] font-black uppercase tracking-widest mb-4">
+                  <Sparkles size={12} /> Custom Artwork Commissions
+                </span>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4 leading-tight">
+                  Want a Handcrafted Portrait or Custom Painting?
+                </h3>
+                <p className="text-white/70 text-sm sm:text-base font-light leading-relaxed">
+                  Order custom pencil sketches, hyper-realistic oil portraits, wall murals, or wedding pair paintings crafted by lead artist Thrinethraa D S. Direct delivery & framing available!
+                </p>
+              </div>
+              <div className="shrink-0">
+                <Magnetic strength={0.3}>
+                  <Link to="/commission" className="btn-primary group px-10 py-5 text-xs font-black tracking-widest uppercase flex items-center gap-3 !bg-gradient-to-r !from-[#f59e0b] !via-[#d81b60] !to-[#ad1457] shadow-[0_20px_40px_rgba(245,158,11,0.4)] hover:scale-105 transition-all">
+                    ORDER ARTWORK NOW 🎨 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Magnetic>
+              </div>
+            </div>
+          </SectionReveal>
         </div>
       </section>
 
@@ -1207,27 +1240,32 @@ const Commission = () => {
                 });
               }}>
                 <div className="flex flex-col gap-2.5 w-full">
-                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Artwork Category</label>
-                  <select name="artwork_type" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm">
-                    <option>Fine Art Portrait (Oil/Acrylic)</option>
-                    <option>Sketch Portrait (Pencil/Charcoal)</option>
-                    <option>Wall Mural Project</option>
-                    <option>Modern Abstract Canvas</option>
-                    <option>Wedding Pair Painting</option>
-                    <option>Custom Gift Collection</option>
-                  </select>
+                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Artwork Category *</label>
+                  <div className="relative w-full">
+                    <select name="artwork_type" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12 font-medium">
+                      <option>Fine Art Portrait (Oil/Acrylic)</option>
+                      <option>Sketch Portrait (Pencil/Charcoal)</option>
+                      <option>Wall Mural Project</option>
+                      <option>Modern Abstract Canvas</option>
+                      <option>Wedding Pair Painting</option>
+                      <option>Custom Gift Collection</option>
+                    </select>
+                    <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
+                      <ArrowRight size={18} className="rotate-90" />
+                    </div>
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Full Name *</label>
-                    <input name="from_name" required type="text" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400" placeholder="Enter full name" />
+                    <input name="from_name" required type="text" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400 font-medium" placeholder="Enter full name" />
                   </div>
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Contact Phone *</label>
-                    <div className="flex">
-                      <span className="bg-[#fff5f8] border-2 border-r-0 border-[#ec407a]/10 px-3 py-3.5 sm:py-4 rounded-l-2xl text-slate-500 text-sm font-bold flex items-center">+91</span>
-                      <input name="phone" required type="tel" className="flex-1 bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 py-3.5 sm:py-4 rounded-r-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400" placeholder="XXXXX XXXXX" />
+                    <div className="flex bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 rounded-2xl overflow-hidden focus-within:border-[#d81b60] focus-within:bg-white transition-all shadow-sm">
+                      <span className="bg-[#fff5f8] border-r-2 border-[#ec407a]/10 px-4 py-3.5 sm:py-4 text-slate-600 text-sm font-bold flex items-center select-none shrink-0">+91</span>
+                      <input name="phone" required type="tel" className="w-full bg-transparent px-4 py-3.5 sm:py-4 text-slate-900 text-sm sm:text-base outline-none placeholder:text-slate-400 font-medium" placeholder="XXXXX XXXXX" />
                     </div>
                   </div>
                 </div>
@@ -1510,20 +1548,20 @@ const JoinNow = () => {
                       type="text"
                       value={formData.name}
                       onChange={(e) => handleUpdate('name', e.target.value)}
-                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400"
+                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400 font-medium"
                       placeholder="Your full name"
                     />
                   </div>
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Phone Number *</label>
-                    <div className="flex">
-                      <span className="bg-[#fff5f8] border-2 border-r-0 border-[#ec407a]/10 px-3 py-3.5 sm:py-4 rounded-l-2xl text-slate-500 text-sm font-bold flex items-center select-none">+91</span>
+                    <div className="flex bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 rounded-2xl overflow-hidden focus-within:border-[#d81b60] focus-within:bg-white transition-all shadow-sm">
+                      <span className="bg-[#fff5f8] border-r-2 border-[#ec407a]/10 px-4 py-3.5 sm:py-4 text-slate-600 text-sm font-bold flex items-center select-none shrink-0">+91</span>
                       <input
                         required
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => handleUpdate('phone', e.target.value)}
-                        className="flex-1 bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 py-3.5 sm:py-4 rounded-r-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400"
+                        className="w-full bg-transparent px-4 py-3.5 sm:py-4 text-slate-900 text-sm sm:text-base outline-none placeholder:text-slate-400 font-medium"
                         placeholder="XXXXX XXXXX"
                       />
                     </div>
@@ -1534,18 +1572,23 @@ const JoinNow = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Age Group *</label>
-                    <select
-                      required
-                      name="ageGroup"
-                      value={formData.ageGroup}
-                      onChange={(e) => handleUpdate('ageGroup', e.target.value)}
-                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm"
-                    >
-                      <option value="">Select age group...</option>
-                      <option value="Kids (5–10 yrs)">Kids (5–10 yrs)</option>
-                      <option value="Teens (11–17 yrs)">Teens (11–17 yrs)</option>
-                      <option value="Adults (18+ yrs)">Adults (18+ yrs)</option>
-                    </select>
+                    <div className="relative w-full">
+                      <select
+                        required
+                        name="ageGroup"
+                        value={formData.ageGroup}
+                        onChange={(e) => handleUpdate('ageGroup', e.target.value)}
+                        className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12 font-medium"
+                      >
+                        <option value="">Select age group...</option>
+                        <option value="Kids (5–10 yrs)">Kids (5–10 yrs)</option>
+                        <option value="Teens (11–17 yrs)">Teens (11–17 yrs)</option>
+                        <option value="Adults (18+ yrs)">Adults (18+ yrs)</option>
+                      </select>
+                      <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
+                        <ArrowRight size={18} className="rotate-90" />
+                      </div>
+                    </div>
                   </div>
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Email Address</label>
@@ -1553,7 +1596,7 @@ const JoinNow = () => {
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleUpdate('email', e.target.value)}
-                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400"
+                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400 font-medium"
                       placeholder="Enter your email (optional)"
                     />
                   </div>

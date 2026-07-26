@@ -145,8 +145,8 @@ const ScrollProgress = () => {
   );
 };
 
-const SectionReveal = ({ children, delay = 0 }) => (
-  <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}>
+const SectionReveal = ({ children, delay = 0, className = "" }) => (
+  <motion.div className={className} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}>
     {children}
   </motion.div>
 );
@@ -297,7 +297,6 @@ const Footer = () => {
           <p className="text-[#2d3436]/70 mb-8 text-sm leading-relaxed">Founded by professional artists, RSA is dedicated to teaching fine arts and creating unique commission pieces for art lovers around the world.</p>
           <div className="flex gap-4">
             <a href="https://www.instagram.com/_oeuvre_world_?igsh=MXBpMXludzM2dm16dg==" target="_blank" className="p-2 glass-card hover:bg-[#6a1b9a] transition-all"><Instagram size={18} /></a>
-            <a href="https://jsdl.in/RSL-EUI1775137878" target="_blank" className="p-2 glass-card hover:bg-[#00bcd4] transition-all"><ExternalLink size={18} /></a>
           </div>
         </div>
 
@@ -336,8 +335,6 @@ const Footer = () => {
           <h4 className="text-lg font-bold mb-6">Socials</h4>
           <ul className="flex flex-col gap-4 opacity-60 text-sm">
             <li><a href="https://www.instagram.com/_oeuvre_world_?igsh=MXBpMXludzM2dm16dg==" target="_blank">Instagram Portfolio</a></li>
-            <li><a href="https://jsdl.in/RSL-EUI1775137878" target="_blank">Justdial Business</a></li>
-            <li><a href="https://www.justdial.com/Tirupur/Rivya-School-Of-Arrs-Nesavalar-Colony/9999PX421-X421-250306140002-U6Q7_BZDET" target="_blank" rel="noopener noreferrer">Justdial Listing</a></li>
             <li><a href="https://maps.app.goo.gl/wS22D68S899A6" target="_blank" rel="noopener noreferrer">Google Maps</a></li>
           </ul>
         </div>
@@ -616,7 +613,7 @@ const Home = () => {
               <SectionReveal key={i} delay={i * 0.1}>
                 <motion.div
                   whileHover={{ y: -8 }}
-                  className="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#ec407a]/15 flex flex-col h-full group transition-all duration-500 hover:shadow-[#ec407a]/20"
+                  className="bg-white rounded-3xl lg:rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#ec407a]/15 flex flex-col h-full group transition-all duration-500 hover:shadow-[#ec407a]/20"
                 >
                   <div className="flex flex-col items-center gap-3 px-10 py-10 text-white group-hover:scale-[1.02] transition-transform min-h-[160px] text-center justify-center relative overflow-hidden" style={{ backgroundColor: domain.color }}>
                     <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50"></div>
@@ -634,7 +631,7 @@ const Home = () => {
                     <ul className="space-y-5 flex flex-col items-start px-4">
                       {domain.courses.map((course, j) => (
                         <li key={j} className="flex items-center gap-4 text-[15px] font-semibold text-slate-700 group/item transition-colors hover:text-[#d81b60]">
-                          <div className="w-6 h-6 rounded-lg bg-[#d81b60]/10 flex items-center justify-center text-[#d81b60] group-hover/item:bg-[#d81b60] group-hover/item:text-white transition-all shrink-0 shadow-sm">
+                           <div className="w-6 h-6 rounded-lg bg-[#d81b60]/10 flex items-center justify-center text-[#d81b60] group-hover/item:bg-[#d81b60] group-hover/item:text-white transition-all shrink-0 shadow-sm">
                             <Star size={12} fill="currentColor" />
                           </div>
                           <span className="leading-tight">{course}</span>
@@ -667,7 +664,7 @@ const Home = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             <SectionReveal delay={0.2}>
-              <motion.div whileHover={{ y: -20 }} className="group relative overflow-hidden rounded-[4rem] aspect-[4/5] shadow-2xl">
+              <motion.div whileHover={{ y: -20 }} className="group relative overflow-hidden rounded-3xl md:rounded-[4rem] aspect-[4/5] shadow-2xl">
                 <img src={getAsset('portrait_women.jpg')} alt="Pencil Portrait" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 p-12 flex flex-col justify-end transform translate-y-10 group-hover:translate-y-0">
                   <span className="text-pink-400 text-[10px] font-black uppercase tracking-widest mb-4">Commissions</span>
@@ -679,7 +676,7 @@ const Home = () => {
             </SectionReveal>
 
             <SectionReveal delay={0.4}>
-              <motion.div whileHover={{ y: -20 }} className="group relative overflow-hidden rounded-[4rem] aspect-[4/5] shadow-2xl lg:translate-y-20">
+              <motion.div whileHover={{ y: -20 }} className="group relative overflow-hidden rounded-3xl md:rounded-[4rem] aspect-[4/5] shadow-2xl lg:translate-y-20">
                 <img src={getAsset('painting_justice.jpg')} alt="Acrylic Painting" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#ad1457] via-[#ad1457]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 p-12 flex flex-col justify-end transform translate-y-10 group-hover:translate-y-0">
                   <span className="text-white/60 text-[10px] font-black uppercase tracking-widest mb-4">Oil & Acrylic</span>
@@ -691,7 +688,7 @@ const Home = () => {
             </SectionReveal>
 
             <SectionReveal delay={0.6}>
-              <motion.div whileHover={{ y: -20 }} className="group relative overflow-hidden rounded-[4rem] aspect-[4/5] shadow-2xl">
+              <motion.div whileHover={{ y: -20 }} className="group relative overflow-hidden rounded-3xl md:rounded-[4rem] aspect-[4/5] shadow-2xl">
                 <img src={getAsset('portrait_couple.jpg')} alt="Couple Art" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 p-12 flex flex-col justify-end transform translate-y-10 group-hover:translate-y-0">
                   <span className="text-pink-400 text-[10px] font-black uppercase tracking-widest mb-4">Charcoal Art</span>
@@ -776,7 +773,7 @@ const Home = () => {
 const About = () => (
   <div className="bg-white min-h-screen pt-32 lg:pt-48">
     <Helmet>
-      <title>About Us – Rivya School of Arts | MSME Registered Art Institute, Tiruppur</title>
+      <title>Rivya School of Arts – About Us | MSME Registered Art Institute, Tiruppur</title>
       <meta name="description" content="Rivya School of Arts – officially MSME Government-registered art institute in Perumanallur, Tiruppur. Founded by artist Thrinethraa D S. 500+ students trained. Certified courses for all ages." />
       <meta name="keywords" content="about Rivya School of Arts, Thrinethraa D S artist tirupur, Oeuvre World tirupur, MSME registered art institute tirupur, Udyam registration art school tirupur, government certified art school tirupur, fine arts institute perumanallur, best art teacher tirupur, art school history tirupur, who founded Rivya School of Arts" />
       <link rel="canonical" href="https://rivyaschoolofarts.com/about" />
@@ -852,7 +849,7 @@ const Courses = () => {
   return (
     <div className="bg-[#fff5f8] pt-32 lg:pt-48">
       <Helmet>
-        <title>Art Courses in Tiruppur | Drawing, Painting, Portrait &amp; More – Rivya School of Arts</title>
+        <title>Rivya School of Arts – Art Courses in Tiruppur | Drawing, Painting, Portrait &amp; More</title>
         <meta name="description" content="Explore certified drawing & painting courses at Rivya School of Arts, Tiruppur. Pencil Art, Oil Painting, Portrait, Mandala, Glass Painting, Mural Design, Mehandi, Handwriting & Spoken English. Offline & online for kids to adults." />
         <meta name="keywords" content="drawing courses tirupur, painting courses tirupur, mandala art classes tirupur, glass painting tirupur, portrait art tirupur, oil painting classes tirupur, art certificate course tirupur, children art classes tirupur, adult art courses tirupur, mural design tirupur, mehandi design course tirupur, handwriting improvement tirupur, spoken english tirupur, online art courses tamil nadu, acrylic painting tirupur, charcoal portrait tirupur, fabric painting tirupur, watercolor painting tirupur, pot painting tirupur" />
         <link rel="canonical" href="https://rivyaschoolofarts.com/courses" />
@@ -889,7 +886,7 @@ const Courses = () => {
                   {course.icon}
                 </div>
                 <h3 className={`text-lg sm:text-xl md:text-2xl font-black leading-snug line-clamp-3 ${
-                  course.isCert ? 'text-[#8a6914]' : 'text-[#ad1457]'
+                  course.isCert ? 'text-[#5c4308]' : 'text-[#ad1457]'
                 }`}>{course.name}</h3>
                 <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 bg-[#fff5f8] px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full w-fit">
                   <span className="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-widest text-[#d81b60] whitespace-nowrap">{course.duration}</span>
@@ -898,7 +895,7 @@ const Courses = () => {
                 </div>
                 <p className="text-slate-600 leading-relaxed text-[13px] sm:text-[14px] md:text-[15px] flex-grow">{course.desc}</p>
                 <div className={`text-sm font-black mt-1 ${
-                  course.isCert ? 'text-[#8a6914]' : 'text-[#d81b60]'
+                  course.isCert ? 'text-[#5c4308]' : 'text-[#d81b60]'
                 }`}>{course.price}</div>
                 <Link to="/join" className={`w-full py-2.5 sm:py-3 md:py-3.5 lg:py-4 text-[8px] sm:text-[9px] md:text-[10px] font-black tracking-widest transition-all mt-auto text-center rounded-[3rem] uppercase ${
                   course.isCert
@@ -1068,7 +1065,7 @@ const Gallery = () => {
   return (
     <div className="bg-white pt-32 lg:pt-48">
       <Helmet>
-        <title>Art Gallery – Student Works &amp; Portraits | Rivya School of Arts, Tiruppur</title>
+        <title>Rivya School of Arts – Art Gallery | Student Works &amp; Portraits, Tiruppur</title>
         <meta name="description" content="View the art gallery of Rivya School of Arts – Tiruppur's MSME-registered drawing institute. Pencil portraits, oil paintings, charcoal art, mandala designs and custom commissions by our students and lead artist." />
         <meta name="keywords" content="art gallery tirupur, pencil portrait tirupur, student art tirupur, oil painting gallery tirupur, charcoal art tirupur, mandala art gallery tirupur, commissioned portrait tirupur, Rivya School of Arts gallery, fine art works tirupur, portrait artist tirupur" />
         <link rel="canonical" href="https://rivyaschoolofarts.com/gallery" />
@@ -1100,11 +1097,11 @@ const Gallery = () => {
 
         <div className="columns-1 sm:columns-2 lg:columns-4 gap-6 space-y-6">
           {filteredImages.map((img, i) => (
-            <SectionReveal key={i} delay={i * 0.05}>
+            <SectionReveal key={i} delay={i * 0.05} className="break-inside-avoid">
               <motion.div
                 whileHover={{ y: -10 }}
                 onClick={() => setSelectedImage(img)}
-                className="break-inside-avoid relative overflow-hidden rounded-[2.5rem] group cursor-pointer border border-slate-100 shadow-xl"
+                className="break-inside-avoid relative overflow-hidden rounded-3xl md:rounded-[2.5rem] group cursor-pointer border border-slate-100 shadow-xl"
               >
                 <img
                   src={getAsset(img.src)}
@@ -1144,7 +1141,7 @@ const Commission = () => {
   return (
     <div className="bg-[#fffdfd] pt-32 lg:pt-48">
       <Helmet>
-        <title>Order Custom Painting | Portrait Commission – Rivya School of Arts, Tiruppur</title>
+        <title>Rivya School of Arts – Order Custom Painting | Portrait Commission</title>
         <meta name="description" content="Order a custom hand-painted portrait or painting from Rivya School of Arts, Tiruppur. Pencil, charcoal, oil & acrylic commissions for gifts, family portraits, and art collectors. Delivered across Tamil Nadu and India." />
         <meta name="keywords" content="custom portrait tirupur, painting commission tirupur, hand-painted portrait tirupur, portrait gift tirupur, custom painting order tirupur, oil painting commission tirupur, pencil portrait commission, charcoal portrait tirupur, art commission india, buy painting tirupur, Rivya School of Arts commission" />
         <link rel="canonical" href="https://rivyaschoolofarts.com/commission" />
@@ -1319,7 +1316,7 @@ const Commission = () => {
 const Contact = () => (
   <div className="bg-[#fff5f8] min-h-screen pt-32 lg:pt-48">
     <Helmet>
-      <title>Contact Rivya School of Arts – Drawing Classes in Perumanallur, Tiruppur</title>
+      <title>Rivya School of Arts – Contact Us | Drawing Classes in Perumanallur, Tiruppur</title>
       <meta name="description" content="Contact Rivya School of Arts in Perumanallur, Tiruppur. Call +91 95669 51629 or email rivyaartsschool17@gmail.com. Located at KRK Complex, Perumanallur. Mon–Sat 6–9 PM, Sunday 10 AM–1 PM & 5–7 PM." />
       <meta name="keywords" content="contact Rivya School of Arts, drawing classes contact tirupur, art school phone number tirupur, art school address tirupur, KRK complex perumanallur, Rivya School of Arts phone, art classes near me tirupur, drawing classes near perumanallur" />
       <link rel="canonical" href="https://rivyaschoolofarts.com/contact" />
@@ -1331,26 +1328,26 @@ const Contact = () => (
         <p className="text-lg text-[#2d3436]/60">Have questions about courses or commissions? We're just a message away.</p>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-3xl lg:rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
           <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><Instagram size={32} /></div>
           <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Instagram</h4>
           <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">Follow us for daily artworks, student progress and school updates.</p>
           <a href="https://www.instagram.com/_oeuvre_world_?igsh=MXBpMXludzM2dm16dg==" target="_blank" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">Portfolio <ExternalLink size={12} className="inline ml-1" /></a>
         </motion.div>
-        <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
+        <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-3xl lg:rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
           <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><MapPin size={32} /></div>
           <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Our Studio</h4>
           <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">KRK COMPLEX, Bus Stop, Perumanallur, Tiruppur, Tamil Nadu 641666.</p>
           <a href="https://maps.app.goo.gl/wS22D68S899A6" target="_blank" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">Find Us <ExternalLink size={12} className="inline ml-1" /></a>
         </motion.div>
-        <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
+        <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-3xl lg:rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
           <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><Phone size={32} /></div>
           <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Call Us</h4>
           <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">Direct call for detailed enrollments and inquiries.</p>
           <a href="tel:+919566951629" className="btn-secondary inline-block px-5 py-2.5 text-xs border-[#ad1457] text-[#ad1457] hover:bg-[#ad1457] hover:text-white transition-all uppercase tracking-widest font-bold">+91 95669 51629</a>
         </motion.div>
-        <motion.div whileHover={{ y: -5 }} className="bg-white text-center p-8 rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
+        <motion.div whileHover={{ y: -5 }} className="bg-[#ffffff] text-center p-8 rounded-3xl lg:rounded-[3rem] border border-[#ec407a]/10 hover:shadow-2xl transition-all shadow-sm flex flex-col">
           <div className="w-16 h-16 rounded-full bg-[#fff5f8] mx-auto flex items-center justify-center mb-5 text-[#d81b60] shadow-sm"><Mail size={32} /></div>
           <h4 className="text-lg mb-2 font-serif text-[#ad1457]">Email Us</h4>
           <p className="text-[#2d3436]/60 mb-6 text-sm leading-relaxed flex-grow">Send us your queries and we'll respond within 24 hours.</p>
@@ -1358,7 +1355,7 @@ const Contact = () => (
         </motion.div>
       </div>
 
-      <div className="mt-20 h-[500px] rounded-[4rem] overflow-hidden border-8 border-white shadow-2xl relative">
+      <div className="mt-20 h-[500px] rounded-3xl md:rounded-[4rem] overflow-hidden border-8 border-white shadow-2xl relative">
         <iframe
           title="Google Maps"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.738488458704!2d77.35672057504823!3d11.206974388969199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba9059712892205%3A0x4c23f6fb17d1d67a!2sRIVYA%20SCHOOL%20OF%20ARTS!5e0!3m2!1sen!2sin!4v1712398000000!5m2!1sen!2sin"
@@ -1497,6 +1494,12 @@ const JoinNow = () => {
 
   return (
     <div className="bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen pt-32 lg:pt-48">
+      <Helmet>
+        <title>Rivya School of Arts – Enroll Now | Join RSA Today</title>
+        <meta name="description" content="Enroll now in Rivya School of Arts, Tiruppur's MSME government-registered fine arts institute. Complete the enrollment form to start your art journey." />
+        <meta name="keywords" content="enroll drawing classes tirupur, join art school perumanallur, art class registration tirupur, Rivya School of Arts admission" />
+        <link rel="canonical" href="https://rivyaschoolofarts.com/join" />
+      </Helmet>
       <section className="container px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 md:pb-24">
         <div className="text-center mb-8 sm:mb-12 md:mb-16 max-w-2xl mx-auto px-2 sm:px-4">
           <h4 className="text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold text-[#d81b60] mb-2 sm:mb-3 md:mb-4 flex items-center justify-center gap-2">
@@ -1706,17 +1709,4 @@ const JoinNow = () => {
 };
 
 
-const ParallaxHero = () => {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 800], [0, 400]);
-  const scale = useTransform(scrollY, [0, 800], [1.2, 1.4]);
 
-  return (
-    <motion.img
-      style={{ y, scale }}
-      src={getAsset('poster_main.jpg')}
-      alt="Rivya School of Arts"
-      className="w-full h-full object-cover opacity-60"
-    />
-  );
-};

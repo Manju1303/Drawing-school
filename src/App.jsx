@@ -1225,7 +1225,7 @@ const Commission = () => {
               ) : (
               <>
               <h3 className="text-xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-10 text-[#ad1457] font-serif">Custom Order Request</h3>
-              <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={(e) => {
+              <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={async (e) => {
                 e.preventDefault();
                 setCommLoading(true);
                 const form = e.target;
@@ -1238,6 +1238,21 @@ const Commission = () => {
                 const name = data.get('from_name');
                 const phone = data.get('phone');
                 const reqs = data.get('message') || 'None';
+
+                data.append('_subject', `New Painting Order (${orderType === 'commission' ? 'Custom Commission' : 'Gallery Artwork'}) - Rivya School of Arts`);
+                data.append('_replyto', 'rivyaartsschool17@gmail.com');
+
+                try {
+                  await fetch("https://formspree.io/f/rivyaartsschool17@gmail.com", {
+                    method: "POST",
+                    body: data,
+                    headers: {
+                      'Accept': 'application/json'
+                    }
+                  });
+                } catch (err) {
+                  console.error("Formspree submission error:", err);
+                }
 
                 const message = `Hello Rivya School of Arts! I want to place an order:
 • Order Type: ${orderType === 'commission' ? 'Custom Commission Works' : 'Order Gallery Artwork'}
@@ -1253,10 +1268,6 @@ const Commission = () => {
                 form.reset();
                 setRefPreview(null);
                 setSelectedGalleryArt('');
-
-                if (orderType === 'commission' && refImage) {
-                  alert("Redirecting to WhatsApp to complete your order. Please attach your reference image in the chat!");
-                }
 
                 setTimeout(() => {
                   window.open(whatsappUrl, '_blank');
@@ -1550,11 +1561,35 @@ const JoinNow = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.course || !formData.duration) {
       alert('Please select a course and duration.');
       return;
+    }
+
+    const data = new FormData();
+    data.append('_subject', 'New Course Application - Rivya School of Arts');
+    data.append('_replyto', formData.email || 'rivyaartsschool17@gmail.com');
+    data.append('Full Name', formData.name);
+    data.append('Phone Number', formData.phone);
+    data.append('Email Address', formData.email || 'N/A');
+    data.append('Age Group', formData.ageGroup);
+    data.append('Selected Course', formData.course);
+    data.append('Selected Duration', formData.duration);
+    data.append('Preferred Mode', formData.mode);
+    data.append('Total Fees', `₹${totalFees}`);
+
+    try {
+      await fetch("https://formspree.io/f/rivyaartsschool17@gmail.com", {
+        method: "POST",
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+    } catch (err) {
+      console.error("Formspree enrollment submit error:", err);
     }
 
     const message = `Hello Rivya School of Arts! I want to enroll in a course:

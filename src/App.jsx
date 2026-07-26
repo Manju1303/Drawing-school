@@ -1130,6 +1130,14 @@ const Commission = () => {
   const [refPreview, setRefPreview] = useState(null);
   const [commSubmitted, setCommSubmitted] = useState(false);
   const [commLoading, setCommLoading] = useState(false);
+  const [orderType, setOrderType] = useState('commission'); // 'commission' or 'gallery'
+  const [selectedGalleryArt, setSelectedGalleryArt] = useState('');
+
+  const galleryPreviews = {
+    'Hyper-Realistic Pencil Portrait': 'portrait_women.jpg',
+    'Acrylic & Canvas Painting': 'painting_justice.jpg',
+    'Charcoal Couple Artwork': 'portrait_couple.jpg'
+  };
 
   const handleRefImage = (e) => {
     const file = e.target.files[0];
@@ -1230,28 +1238,75 @@ const Commission = () => {
                   setCommLoading(false);
                   form.reset();
                   setRefPreview(null);
+                  setSelectedGalleryArt('');
                 }).catch((err) => {
                   console.error('Commission FAILED...', err);
                   setCommLoading(false);
                   alert(`We couldn't send your request via email. Please WhatsApp us directly at +91 95669 51629 or call us — we're happy to help!`);
                 });
               }}>
-                <div className="flex flex-col gap-2.5 w-full">
-                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Artwork Category *</label>
-                  <div className="relative w-full">
-                    <select name="artwork_type" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12 font-medium">
-                      <option>Fine Art Portrait (Oil/Acrylic)</option>
-                      <option>Sketch Portrait (Pencil/Charcoal)</option>
-                      <option>Wall Mural Project</option>
-                      <option>Modern Abstract Canvas</option>
-                      <option>Wedding Pair Painting</option>
-                      <option>Custom Gift Collection</option>
-                    </select>
-                    <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
-                      <ArrowRight size={18} className="rotate-90" />
-                    </div>
+                <input type="hidden" name="order_type" value={orderType === 'commission' ? 'Custom Commission Works' : 'Order Existing Gallery Painting'} />
+                
+                <div className="flex flex-col gap-3.5 w-full">
+                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Select Service Type *</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                    <label className={`flex flex-col items-center justify-center text-center px-4 py-4 rounded-2xl cursor-pointer border-2 transition-all shadow-sm ${
+                      orderType === 'commission'
+                        ? 'border-[#d81b60] bg-[#fff5f8]'
+                        : 'border-[#ec407a]/10 bg-white hover:border-[#d81b60]/50'
+                    }`} onClick={() => setOrderType('commission')}>
+                      <span className="font-bold text-slate-700 text-sm">Commission Custom Painting</span>
+                      <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-wider text-[#d81b60] mt-1">From your photo reference</span>
+                    </label>
+                    <label className={`flex flex-col items-center justify-center text-center px-4 py-4 rounded-2xl cursor-pointer border-2 transition-all shadow-sm ${
+                      orderType === 'gallery'
+                        ? 'border-[#d81b60] bg-[#fff5f8]'
+                        : 'border-[#ec407a]/10 bg-white hover:border-[#d81b60]/50'
+                    }`} onClick={() => setOrderType('gallery')}>
+                      <span className="font-bold text-slate-700 text-sm">Order Gallery Artwork</span>
+                      <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-wider text-[#d81b60] mt-1">Existing gallery paintings</span>
+                    </label>
                   </div>
                 </div>
+                {orderType === 'commission' ? (
+                  <div className="flex flex-col gap-2.5 w-full">
+                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Artwork Category *</label>
+                    <div className="relative w-full">
+                      <select name="artwork_type" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12 font-medium">
+                        <option>Fine Art Portrait (Oil/Acrylic)</option>
+                        <option>Sketch Portrait (Pencil/Charcoal)</option>
+                        <option>Wall Mural Project</option>
+                        <option>Modern Abstract Canvas</option>
+                        <option>Wedding Pair Painting</option>
+                        <option>Custom Gift Collection</option>
+                      </select>
+                      <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
+                        <ArrowRight size={18} className="rotate-90" />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-2.5 w-full">
+                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Select Gallery Artwork *</label>
+                    <div className="relative w-full">
+                      <select
+                        required
+                        name="artwork_type"
+                        value={selectedGalleryArt}
+                        onChange={(e) => setSelectedGalleryArt(e.target.value)}
+                        className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12 font-medium"
+                      >
+                        <option value="">Choose a gallery masterpiece...</option>
+                        <option value="Hyper-Realistic Pencil Portrait">Hyper-Realistic Pencil Portrait (Pencil Art)</option>
+                        <option value="Acrylic & Canvas Painting">Acrylic & Canvas Painting (Artistic Painting)</option>
+                        <option value="Charcoal Couple Artwork">Charcoal Couple Artwork (Pencil/Charcoal)</option>
+                      </select>
+                      <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
+                        <ArrowRight size={18} className="rotate-90" />
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
                   <div className="flex flex-col gap-2.5 w-full">
@@ -1272,30 +1327,47 @@ const Commission = () => {
                   <textarea name="message" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all h-32 sm:h-40 resize-none shadow-sm placeholder:text-slate-400" placeholder="Describe size (e.g. 12x18 inches), medium (oil/pencil), and timeline..."></textarea>
                 </div>
 
-                <div className="flex flex-col gap-2.5 w-full">
-                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Reference Image (Optional)</label>
-                  <label className={`flex flex-col items-center justify-center gap-3 sm:gap-4 rounded-2xl border-2 border-dashed cursor-pointer transition-all px-4 sm:px-6 py-6 sm:py-8 w-full ${
-                    refPreview ? 'border-[#d81b60] bg-[#fff5f8]' : 'border-[#ec407a]/20 bg-[#fff5f8]/50 hover:border-[#d81b60] hover:bg-[#fff5f8]'
-                    } shadow-sm`}>
-                    <input name="reference_image" type="file" accept="image/*" className="hidden" onChange={handleRefImage} />
-                    {refPreview ? (
-                      <div className="relative w-full">
-                        <img src={refPreview} alt="Reference preview" className="w-full max-h-64 object-contain rounded-2xl mx-auto" />
-                        <p className="text-xs text-[#d81b60] font-bold mt-4 text-center">{refImage?.name}</p>
+                {orderType === 'commission' ? (
+                  <div className="flex flex-col gap-2.5 w-full">
+                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Reference Image (Optional)</label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center bg-[#fff5f8]/30 p-4 rounded-3xl border border-[#ec407a]/10">
+                      <label className={`flex flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed cursor-pointer transition-all p-5 w-full ${
+                        refPreview ? 'border-[#d81b60] bg-[#fff5f8]' : 'border-[#ec407a]/20 bg-[#fff5f8]/50 hover:border-[#d81b60] hover:bg-[#fff5f8]'
+                        } shadow-sm`}>
+                        <input name="reference_image" type="file" accept="image/*" className="hidden" onChange={handleRefImage} />
+                        {refPreview ? (
+                          <div className="relative w-full">
+                            <img src={refPreview} alt="Reference preview" className="w-full max-h-32 object-contain rounded-xl mx-auto" />
+                            <p className="text-[10px] text-[#d81b60] font-black mt-2 text-center truncate">{refImage?.name}</p>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="w-10 h-10 bg-[#d81b60]/10 rounded-xl flex items-center justify-center text-[#d81b60] mb-1">
+                              <Sparkles size={18} />
+                            </div>
+                            <p className="font-bold text-slate-700 text-xs text-center">Click to upload photo</p>
+                          </>
+                         )}
+                      </label>
+                      <div className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                        <span className="text-[8px] font-black text-[#d81b60] uppercase tracking-widest mb-2">Example Finished Art</span>
+                        <img src={getAsset('portrait_women.jpg')} alt="Sample custom art" className="h-28 object-contain rounded-xl border border-slate-100 shadow-sm" />
                       </div>
-                    ) : (
-                      <>
-                        <div className="w-16 h-16 bg-[#d81b60]/10 rounded-2xl flex items-center justify-center text-[#d81b60]">
-                          <Sparkles size={28} />
-                        </div>
-                        <div className="text-center px-4">
-                          <p className="font-bold text-slate-700 text-sm">Upload reference photo or drawing</p>
-                          <p className="text-xs text-slate-400 mt-2">JPG, PNG or WEBP (Max 10MB) — Optional</p>
-                        </div>
-                      </>
-                    )}
-                  </label>
-                </div>
+                    </div>
+                  </div>
+                ) : (
+                  selectedGalleryArt && galleryPreviews[selectedGalleryArt] && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="p-5 rounded-3xl bg-[#fff5f8] border-2 border-[#d81b60]/10 flex flex-col items-center shadow-inner gap-2"
+                    >
+                      <p className="text-[9px] font-black text-[#d81b60] uppercase tracking-widest">Selected Masterpiece Preview</p>
+                      <img src={getAsset(galleryPreviews[selectedGalleryArt])} alt={selectedGalleryArt} className="max-h-56 rounded-2xl object-contain shadow-md border-4 border-white" />
+                      <span className="text-xs font-bold text-slate-700">{selectedGalleryArt}</span>
+                    </motion.div>
+                  )
+                )}
 
                 <div className="mt-4 sm:mt-6 md:mt-8 lg:mt-10">
                   <button type="submit" disabled={commLoading} className="btn-primary w-full py-4 sm:py-5 md:py-6 text-[9px] sm:text-[10px] md:text-[11px] font-black tracking-[0.2em] sm:tracking-[0.3em] shadow-[0_20px_40px_-10px_rgba(216,27,96,0.4)] hover:shadow-[0_30px_50px_-10px_rgba(216,27,96,0.5)] transition-all rounded-[2rem] disabled:opacity-60">
@@ -1509,12 +1581,12 @@ const JoinNow = () => {
           <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-500 leading-relaxed">Take the first step on your artistic journey. Fill in your details below and our team will get back to you within 24 hours.</p>
         </div>
 
-        <div className="max-w-3xl mx-auto px-2 sm:px-4">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4">
           {submitted ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white rounded-[4rem] p-16 text-center shadow-2xl border border-[#ec407a]/10"
+              className="bg-white rounded-[4rem] p-16 text-center shadow-2xl border border-[#ec407a]/10 max-w-3xl mx-auto"
             >
               <div className="text-6xl mb-6">🎨</div>
               <h3 className="text-3xl font-serif text-[#ad1457] mb-4">You're In!</h3>
@@ -1535,13 +1607,14 @@ const JoinNow = () => {
               </div>
             </motion.div>
           ) : (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white p-4 sm:p-8 md:p-12 lg:p-16 pb-16 sm:pb-20 md:pb-24 lg:pb-28 rounded-2xl sm:rounded-3xl md:rounded-4xl lg:rounded-5xl border border-[#ec407a]/15 shadow-[0_40px_80px_-10px_rgba(216,27,96,0.1)] md:shadow-[0_60px_100px_-20px_rgba(216,27,96,0.15)] overflow-visible relative"
-            >
-              <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="lg:col-span-7 bg-white p-4 sm:p-8 md:p-12 lg:p-14 pb-16 sm:pb-20 md:pb-24 lg:pb-28 rounded-2xl sm:rounded-3xl md:rounded-4xl lg:rounded-5xl border border-[#ec407a]/15 shadow-[0_40px_80px_-10px_rgba(216,27,96,0.1)] md:shadow-[0_60px_100px_-20px_rgba(216,27,96,0.15)] overflow-visible relative"
+              >
+                <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={handleSubmit}>
                 {/* Row 1: Name + Phone */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
                   <div className="flex flex-col gap-2.5 w-full">
@@ -1701,6 +1774,32 @@ const JoinNow = () => {
                 </div>
               </form>
             </motion.div>
+            <div className="lg:col-span-5 bg-white p-8 rounded-[2.5rem] border border-[#ec407a]/15 shadow-xl relative overflow-hidden flex flex-col gap-6 lg:sticky lg:top-28">
+              <div className="absolute top-0 right-0 bg-[#d81b60] text-white text-[9px] font-black uppercase tracking-widest px-5 py-2 rounded-bl-2xl">
+                RSA TIRUPPUR
+              </div>
+              <img src={getAsset('poster_regular.jpg')} alt="Drawing Class Session" className="w-full h-56 sm:h-64 object-cover rounded-3xl border border-slate-100 shadow-sm" />
+              <div>
+                <h3 className="text-xl sm:text-2xl font-serif text-[#ad1457] mb-2">Start Your Art Journey</h3>
+                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">Join Tiruppur's government-approved fine arts institute. Our courses are structured to build skills from fundamental shapes to professional portrait creations.</p>
+              </div>
+              <div className="flex flex-col gap-3.5 border-t border-[#ec407a]/10 pt-6">
+                {[
+                  'Official Government MSME Certificate',
+                  'Professional 1-on-1 Artist Mentorship',
+                  'Complete Art Material Kits Provided',
+                  'Flexible Weekday & Weekend Batches'
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full bg-[#d81b60]/10 flex items-center justify-center text-[#d81b60] shrink-0">
+                      <Star size={10} fill="currentColor" />
+                    </div>
+                    <span className="text-xs font-bold text-slate-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
           )}
         </div>
       </section>

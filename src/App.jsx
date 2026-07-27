@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 import logo from './logo.png';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
 import { ReactLenis } from '@studio-freight/react-lenis';
-import { Instagram, MapPin, Phone, Mail, Clock, LayoutGrid, Palette, Users, Info, ExternalLink, Menu, X, ArrowRight, Star, Sparkles } from 'lucide-react';
+import { Instagram, MapPin, Phone, Mail, Clock, LayoutGrid, Palette, Users, Info, ExternalLink, Menu, X, ArrowRight, Star, Sparkles, User, Calendar, MessageSquare } from 'lucide-react';
 
 // Asset Helper
 const getAsset = (name) => {
@@ -773,7 +773,7 @@ const Home = () => {
 };
 
 const About = () => (
-  <div className="bg-white min-h-screen pt-32 lg:pt-48">
+  <div className="bg-white min-h-screen pt-36 sm:pt-44 lg:pt-52">
     <Helmet>
       <title>Rivya School of Arts – About Us | MSME Registered Art Institute, Tiruppur</title>
       <meta name="description" content="Rivya School of Arts – officially MSME Government-registered art institute in Perumanallur, Tiruppur. Founded by artist Thrinethraa D S. 500+ students trained. Certified courses for all ages." />
@@ -849,7 +849,7 @@ const Courses = () => {
   ];
 
   return (
-    <div className="bg-[#fff5f8] pt-32 lg:pt-48">
+    <div className="bg-[#fff5f8] min-h-screen pt-36 sm:pt-44 lg:pt-52">
       <Helmet>
         <title>Rivya School of Arts – Art Courses in Tiruppur | Drawing, Painting, Portrait &amp; More</title>
         <meta name="description" content="Explore certified drawing & painting courses at Rivya School of Arts, Tiruppur. Pencil Art, Oil Painting, Portrait, Mandala, Glass Painting, Mural Design, Mehandi, Handwriting & Spoken English. Offline & online for kids to adults." />
@@ -1065,7 +1065,7 @@ const Gallery = () => {
     : galleryImages.filter(img => img.cat === activeFilter);
 
   return (
-    <div className="bg-white pt-32 lg:pt-48">
+    <div className="bg-white min-h-screen pt-36 sm:pt-44 lg:pt-52">
       <Helmet>
         <title>Rivya School of Arts – Art Gallery | Student Works &amp; Portraits, Tiruppur</title>
         <meta name="description" content="View the art gallery of Rivya School of Arts – Tiruppur's MSME-registered drawing institute. Pencil portraits, oil paintings, charcoal art, mandala designs and custom commissions by our students and lead artist." />
@@ -1077,7 +1077,7 @@ const Gallery = () => {
           <h4 className="text-xs uppercase tracking-[0.3em] font-bold text-[#d81b60] mb-3 flex items-center justify-center gap-2">
             <Sparkles size={14} /> Visual Masterpieces <Sparkles size={14} />
           </h4>
-          <h2 className="text-5xl md:text-6xl mb-4 text-[#ad1457]">Our Gallery</h2>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl mb-4 text-[#ad1457]">Our Gallery</h2>
           <p className="text-base md:text-lg text-[#2d3436]/60">Explore our collection of commissioned works and student achievements across all age groups.</p>
         </div>
 
@@ -1149,7 +1149,7 @@ const Commission = () => {
     }
   };
   return (
-    <div className="bg-[#fffdfd] pt-32 lg:pt-48">
+    <div className="bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen pt-36 sm:pt-44 lg:pt-52">
       <Helmet>
         <title>Rivya School of Arts – Order Custom Painting | Portrait Commission</title>
         <meta name="description" content="Order a custom hand-painted portrait or painting from Rivya School of Arts, Tiruppur. Pencil, charcoal, oil & acrylic commissions for gifts, family portraits, and art collectors. Delivered across Tamil Nadu and India." />
@@ -1157,12 +1157,12 @@ const Commission = () => {
         <link rel="canonical" href="https://rivyaschoolofarts.com/commission" />
       </Helmet>
       <section className="container pb-24">
-        <div className="grid lg:grid-cols-2 gap-24">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           <div>
             <SectionReveal>
-              <h4 className="text-sm uppercase tracking-[0.5em] font-black text-[#d81b60] mb-6">Custom Orders</h4>
-              <h2 className="text-5xl md:text-7xl mb-10 text-slate-900 leading-tight">Bring Your <span className="italic font-normal serif">Vision</span> To Life.</h2>
-              <p className="text-2xl text-slate-500 mb-12 leading-relaxed font-light">Looking for a personalized gift or a stunning wall painting? We accept commissions for high-quality custom artworks tailored to your exact desires.</p>
+              <h4 className="text-sm uppercase tracking-[0.5em] font-black text-[#d81b60] mb-4">Custom Orders</h4>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl mb-6 text-slate-900 leading-tight">Bring Your <span className="italic font-normal serif">Vision</span> To Life.</h2>
+              <p className="text-base sm:text-lg md:text-xl text-slate-500 mb-8 leading-relaxed font-light">Looking for a personalized gift or a stunning wall painting? We accept commissions for high-quality custom artworks tailored to your exact desires.</p>
 
               <div className="relative group mb-16">
                 <div className="absolute -inset-6 bg-[#d81b60]/5 rounded-[4rem] blur-3xl"></div>
@@ -1224,8 +1224,11 @@ const Commission = () => {
                 </motion.div>
               ) : (
               <>
-              <h3 className="text-xl sm:text-3xl md:text-4xl mb-6 sm:mb-8 md:mb-10 text-[#ad1457] font-serif">Custom Order Request</h3>
-              <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={async (e) => {
+              <div className="border-b border-slate-100 pb-4 mb-2">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Custom Order Request</h3>
+                <p className="text-xs sm:text-sm text-slate-500 mt-1">Select your artwork type and specify your custom requirements.</p>
+              </div>
+              <form className="flex flex-col gap-5 sm:gap-6" onSubmit={async (e) => {
                 e.preventDefault();
                 setCommLoading(true);
                 const form = e.target;
@@ -1275,32 +1278,38 @@ const Commission = () => {
               }}>
                 <input type="hidden" name="order_type" value={orderType === 'commission' ? 'Custom Commission Works' : 'Order Existing Gallery Painting'} />
                 
-                <div className="flex flex-col gap-3.5 w-full">
-                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Select Service Type *</label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-                    <label className={`flex flex-col items-center justify-center text-center px-4 py-4 rounded-2xl cursor-pointer border-2 transition-all shadow-sm ${
+                {/* Select Service Type */}
+                <div className="flex flex-col w-full">
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    <Palette size={14} className="text-[#d81b60]" /> Select Service Type *
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+                    <label className={`flex flex-col items-center justify-center text-center px-4 py-3.5 rounded-xl cursor-pointer border transition-all shadow-sm ${
                       orderType === 'commission'
                         ? 'border-[#d81b60] bg-[#fff5f8]'
-                        : 'border-[#ec407a]/10 bg-white hover:border-[#d81b60]/50'
+                        : 'border-slate-200 bg-[#f8fafc] hover:border-[#d81b60]/50'
                     }`} onClick={() => setOrderType('commission')}>
                       <span className="font-bold text-slate-700 text-sm">Commission Custom Painting</span>
-                      <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-wider text-[#d81b60] mt-1">From your photo reference</span>
+                      <span className="text-[9px] font-black uppercase text-[#d81b60] mt-0.5">From photo reference</span>
                     </label>
-                    <label className={`flex flex-col items-center justify-center text-center px-4 py-4 rounded-2xl cursor-pointer border-2 transition-all shadow-sm ${
+                    <label className={`flex flex-col items-center justify-center text-center px-4 py-3.5 rounded-xl cursor-pointer border transition-all shadow-sm ${
                       orderType === 'gallery'
                         ? 'border-[#d81b60] bg-[#fff5f8]'
-                        : 'border-[#ec407a]/10 bg-white hover:border-[#d81b60]/50'
+                        : 'border-slate-200 bg-[#f8fafc] hover:border-[#d81b60]/50'
                     }`} onClick={() => setOrderType('gallery')}>
                       <span className="font-bold text-slate-700 text-sm">Order Gallery Artwork</span>
-                      <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-wider text-[#d81b60] mt-1">Existing gallery paintings</span>
+                      <span className="text-[9px] font-black uppercase text-[#d81b60] mt-0.5">Existing gallery paintings</span>
                     </label>
                   </div>
                 </div>
+
                 {orderType === 'commission' ? (
-                  <div className="flex flex-col gap-2.5 w-full">
-                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Artwork Category *</label>
+                  <div className="flex flex-col w-full">
+                    <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      <Sparkles size={14} className="text-[#d81b60]" /> Artwork Category *
+                    </label>
                     <div className="relative w-full">
-                      <select name="artwork_type" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12 font-medium">
+                      <select name="artwork_type" className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium">
                         <option>Fine Art Portrait (Oil/Acrylic)</option>
                         <option>Sketch Portrait (Pencil/Charcoal)</option>
                         <option>Wall Mural Project</option>
@@ -1308,78 +1317,98 @@ const Commission = () => {
                         <option>Wedding Pair Painting</option>
                         <option>Custom Gift Collection</option>
                       </select>
-                      <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
-                        <ArrowRight size={18} className="rotate-90" />
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                        <ArrowRight size={16} className="rotate-90" />
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-col gap-2.5 w-full">
-                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Select Gallery Artwork *</label>
+                  <div className="flex flex-col w-full">
+                    <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      <Sparkles size={14} className="text-[#d81b60]" /> Select Gallery Artwork *
+                    </label>
                     <div className="relative w-full">
                       <select
                         required
                         name="artwork_type"
                         value={selectedGalleryArt}
                         onChange={(e) => setSelectedGalleryArt(e.target.value)}
-                        className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12 font-medium"
+                        className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium"
                       >
                         <option value="">Choose a gallery masterpiece...</option>
                         <option value="Hyper-Realistic Pencil Portrait">Hyper-Realistic Pencil Portrait (Pencil Art)</option>
                         <option value="Acrylic & Canvas Painting">Acrylic & Canvas Painting (Artistic Painting)</option>
                         <option value="Charcoal Couple Artwork">Charcoal Couple Artwork (Pencil/Charcoal)</option>
                       </select>
-                      <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
-                        <ArrowRight size={18} className="rotate-90" />
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                        <ArrowRight size={16} className="rotate-90" />
                       </div>
                     </div>
                   </div>
                 )}
 
-                <div className="flex flex-col gap-5 sm:gap-6 w-full">
-                  <div className="flex flex-col gap-2.5 w-full">
-                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Full Name *</label>
-                    <input name="from_name" required type="text" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400 font-medium" placeholder="Enter full name" />
-                  </div>
-                  <div className="flex flex-col gap-2.5 w-full">
-                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Contact Phone *</label>
-                    <div className="flex bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 rounded-2xl overflow-hidden focus-within:border-[#d81b60] focus-within:bg-white transition-all shadow-sm">
-                      <span className="bg-[#fff5f8] border-r-2 border-[#ec407a]/10 px-4 py-3.5 sm:py-4 text-slate-600 text-sm font-bold flex items-center select-none shrink-0">+91</span>
-                      <input name="phone" required type="tel" className="w-full bg-transparent px-4 py-3.5 sm:py-4 text-slate-900 text-sm sm:text-base outline-none placeholder:text-slate-400 font-medium" placeholder="XXXXX XXXXX" />
+                {/* Your Name (Full Width) */}
+                <div className="flex flex-col w-full">
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    <User size={14} className="text-[#d81b60]" /> Your Name *
+                  </label>
+                  <input name="from_name" required type="text" className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none shadow-sm font-medium placeholder:text-slate-400" placeholder="Enter your full name" />
+                </div>
+
+                {/* Phone Number & Email (2 Columns Side-by-Side like reference image) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full">
+                  <div className="flex flex-col w-full">
+                    <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      <Phone size={14} className="text-[#d81b60]" /> Phone Number *
+                    </label>
+                    <div className="flex bg-[#f8fafc] border border-slate-200 rounded-xl overflow-hidden focus-within:border-[#d81b60] focus-within:bg-white transition-all shadow-sm">
+                      <span className="bg-slate-100 border-r border-slate-200 px-3.5 py-3.5 text-slate-600 text-sm font-bold flex items-center select-none shrink-0">+91</span>
+                      <input name="phone" required type="tel" className="w-full bg-transparent px-4 py-3.5 text-slate-900 text-sm outline-none font-medium placeholder:text-slate-400" placeholder="XXXXX XXXXX" />
                     </div>
+                  </div>
+                  <div className="flex flex-col w-full">
+                    <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      <Mail size={14} className="text-[#d81b60]" /> Email Address
+                    </label>
+                    <input name="email" type="email" className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none shadow-sm font-medium placeholder:text-slate-400" placeholder="Your email for confirmation" />
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2.5 w-full">
-                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Vision & Requirements</label>
-                  <textarea name="message" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all h-32 sm:h-40 resize-none shadow-sm placeholder:text-slate-400" placeholder="Describe size (e.g. 12x18 inches), medium (oil/pencil), and timeline..."></textarea>
+                {/* Vision & Requirements */}
+                <div className="flex flex-col w-full">
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    <MessageSquare size={14} className="text-[#d81b60]" /> Vision & Requirements
+                  </label>
+                  <textarea name="message" className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none h-32 resize-none shadow-sm font-medium placeholder:text-slate-400" placeholder="Describe size (e.g. 12x18 inches), medium (oil/pencil), and timeline..."></textarea>
                 </div>
 
                 {orderType === 'commission' ? (
-                  <div className="flex flex-col gap-2.5 w-full">
-                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Reference Image (Optional)</label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center bg-[#fff5f8]/30 p-4 rounded-3xl border border-[#ec407a]/10">
-                      <label className={`flex flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed cursor-pointer transition-all p-5 w-full ${
-                        refPreview ? 'border-[#d81b60] bg-[#fff5f8]' : 'border-[#ec407a]/20 bg-[#fff5f8]/50 hover:border-[#d81b60] hover:bg-[#fff5f8]'
+                  <div className="flex flex-col w-full">
+                    <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      <Sparkles size={14} className="text-[#d81b60]" /> Reference Image (Optional)
+                    </label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center bg-[#f8fafc] p-4 rounded-2xl border border-slate-200">
+                      <label className={`flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed cursor-pointer transition-all p-4 w-full ${
+                        refPreview ? 'border-[#d81b60] bg-[#fff5f8]' : 'border-slate-300 bg-white hover:border-[#d81b60]'
                         } shadow-sm`}>
                         <input name="reference_image" type="file" accept="image/*" className="hidden" onChange={handleRefImage} />
                         {refPreview ? (
                           <div className="relative w-full">
-                            <img src={refPreview} alt="Reference preview" className="w-full max-h-32 object-contain rounded-xl mx-auto" />
+                            <img src={refPreview} alt="Reference preview" className="w-full max-h-28 object-contain rounded-lg mx-auto" />
                             <p className="text-[10px] text-[#d81b60] font-black mt-2 text-center truncate">{refImage?.name}</p>
                           </div>
                         ) : (
                           <>
-                            <div className="w-10 h-10 bg-[#d81b60]/10 rounded-xl flex items-center justify-center text-[#d81b60] mb-1">
-                              <Sparkles size={18} />
+                            <div className="w-8 h-8 bg-[#d81b60]/10 rounded-lg flex items-center justify-center text-[#d81b60]">
+                              <Sparkles size={16} />
                             </div>
                             <p className="font-bold text-slate-700 text-xs text-center">Click to upload photo</p>
                           </>
                          )}
                       </label>
-                      <div className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
-                        <span className="text-[8px] font-black text-[#d81b60] uppercase tracking-widest mb-2">Example Finished Art</span>
-                        <img src={getAsset('portrait_women.jpg')} alt="Sample custom art" className="h-28 object-contain rounded-xl border border-slate-100 shadow-sm" />
+                      <div className="flex flex-col items-center justify-center p-3 bg-white rounded-xl border border-slate-200 shadow-sm text-center">
+                        <span className="text-[8px] font-black text-[#d81b60] uppercase tracking-widest mb-1.5">Example Finished Art</span>
+                        <img src={getAsset('portrait_women.jpg')} alt="Sample custom art" className="h-24 object-contain rounded-lg border border-slate-100 shadow-sm" />
                       </div>
                     </div>
                   </div>
@@ -1388,18 +1417,18 @@ const Commission = () => {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="p-5 rounded-3xl bg-[#fff5f8] border-2 border-[#d81b60]/10 flex flex-col items-center shadow-inner gap-2"
+                      className="p-4 rounded-2xl bg-[#fff5f8] border border-[#d81b60]/20 flex flex-col items-center shadow-sm gap-2"
                     >
                       <p className="text-[9px] font-black text-[#d81b60] uppercase tracking-widest">Selected Masterpiece Preview</p>
-                      <img src={getAsset(galleryPreviews[selectedGalleryArt])} alt={selectedGalleryArt} className="max-h-56 rounded-2xl object-contain shadow-md border-4 border-white" />
+                      <img src={getAsset(galleryPreviews[selectedGalleryArt])} alt={selectedGalleryArt} className="max-h-48 rounded-xl object-contain shadow-md border-2 border-white" />
                       <span className="text-xs font-bold text-slate-700">{selectedGalleryArt}</span>
                     </motion.div>
                   )
                 )}
 
-                <div className="mt-4 sm:mt-6 md:mt-8 lg:mt-10">
-                  <button type="submit" disabled={commLoading} className="btn-primary w-full py-4 sm:py-5 md:py-6 text-[9px] sm:text-[10px] md:text-[11px] font-black tracking-[0.2em] sm:tracking-[0.3em] shadow-[0_20px_40px_-10px_rgba(216,27,96,0.4)] hover:shadow-[0_30px_50px_-10px_rgba(216,27,96,0.5)] transition-all rounded-[2rem] disabled:opacity-60">
-                    {commLoading ? 'SENDING...' : 'SUBMIT REQUEST →'}
+                <div className="mt-2">
+                  <button type="submit" disabled={commLoading} className="w-full py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#d81b60] to-[#ad1457] hover:from-[#ad1457] hover:to-[#d81b60] shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60">
+                    <Sparkles size={16} /> {commLoading ? 'SENDING...' : 'Submit Custom Order Request →'}
                   </button>
                 </div>
               </form>
@@ -1414,7 +1443,7 @@ const Commission = () => {
 };
 
 const Contact = () => (
-  <div className="bg-[#fff5f8] min-h-screen pt-32 lg:pt-48">
+  <div className="bg-[#fff5f8] min-h-screen pt-36 sm:pt-44 lg:pt-52">
     <Helmet>
       <title>Rivya School of Arts – Contact Us | Drawing Classes in Perumanallur, Tiruppur</title>
       <meta name="description" content="Contact Rivya School of Arts in Perumanallur, Tiruppur. Call +91 95669 51629 or email rivyaartsschool17@gmail.com. Located at KRK Complex, Perumanallur. Mon–Sat 6–9 PM, Sunday 10 AM–1 PM & 5–7 PM." />
@@ -1422,10 +1451,10 @@ const Contact = () => (
       <link rel="canonical" href="https://rivyaschoolofarts.com/contact" />
     </Helmet>
     <section className="container pb-24">
-      <div className="text-center mb-20 max-w-2xl mx-auto">
-        <h4 className="text-sm uppercase tracking-[0.1em] font-bold text-[#d81b60] mb-4">Get In Touch</h4>
-        <h2 className="text-6xl mb-6 text-[#ad1457] font-serif">Let's Talk Art</h2>
-        <p className="text-lg text-[#2d3436]/60">Have questions about courses or commissions? We're just a message away.</p>
+      <div className="text-center mb-10 sm:mb-14 md:mb-16 max-w-2xl mx-auto px-4">
+        <h4 className="text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold text-[#d81b60] mb-2 sm:mb-3">Get In Touch</h4>
+        <h2 className="text-3xl sm:text-5xl md:text-6xl mb-3 sm:mb-4 text-[#ad1457] font-serif leading-tight">Let's Talk <span className="italic font-normal">Art</span></h2>
+        <p className="text-xs sm:text-sm md:text-base text-slate-500 leading-relaxed">Have questions about courses or commissions? We're just a message away.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1657,96 +1686,112 @@ const JoinNow = () => {
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
               <div className="lg:col-span-7 bg-white p-6 sm:p-10 md:p-12 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-2xl overflow-hidden relative w-full">
-                <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={handleSubmit}>
-                {/* Row 1: Name + Phone */}
-                <div className="flex flex-col gap-5 sm:gap-6 w-full">
-                  <div className="flex flex-col gap-2.5 w-full">
-                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Full Name *</label>
-                    <input
-                      required
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => handleUpdate('name', e.target.value)}
-                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400 font-medium"
-                      placeholder="Your full name"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2.5 w-full">
-                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Phone Number *</label>
-                    <div className="flex bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 rounded-2xl overflow-hidden focus-within:border-[#d81b60] focus-within:bg-white transition-all shadow-sm">
-                      <span className="bg-[#fff5f8] border-r-2 border-[#ec407a]/10 px-4 py-3.5 sm:py-4 text-slate-600 text-sm font-bold flex items-center select-none shrink-0">+91</span>
+                <div className="border-b border-slate-100 pb-4 mb-2">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Enrollment Application</h3>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1">Fill out your details to secure your RSA course slot.</p>
+                </div>
+                <form className="flex flex-col gap-5 sm:gap-6" onSubmit={handleSubmit}>
+                {/* Row 1: Your Name (Full Width) */}
+                <div className="flex flex-col w-full">
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    <User size={14} className="text-[#d81b60]" /> Your Name *
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => handleUpdate('name', e.target.value)}
+                    className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none shadow-sm font-medium placeholder:text-slate-400"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                {/* Row 2: Email Address (Full Width) */}
+                <div className="flex flex-col w-full">
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    <Mail size={14} className="text-[#d81b60]" /> Email Address
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleUpdate('email', e.target.value)}
+                    className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none shadow-sm font-medium placeholder:text-slate-400"
+                    placeholder="Your email for confirmation"
+                  />
+                </div>
+
+                {/* Row 3: Phone Number + Age Group (2 Columns Side-by-Side like reference image) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full">
+                  <div className="flex flex-col w-full">
+                    <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      <Phone size={14} className="text-[#d81b60]" /> Phone Number *
+                    </label>
+                    <div className="flex bg-[#f8fafc] border border-slate-200 rounded-xl overflow-hidden focus-within:border-[#d81b60] focus-within:bg-white transition-all shadow-sm">
+                      <span className="bg-slate-100 border-r border-slate-200 px-3.5 py-3.5 text-slate-600 text-sm font-bold flex items-center select-none shrink-0">+91</span>
                       <input
                         required
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => handleUpdate('phone', e.target.value)}
-                        className="w-full bg-transparent px-4 py-3.5 sm:py-4 text-slate-900 text-sm sm:text-base outline-none placeholder:text-slate-400 font-medium"
+                        className="w-full bg-transparent px-4 py-3.5 text-slate-900 text-sm outline-none font-medium placeholder:text-slate-400"
                         placeholder="XXXXX XXXXX"
                       />
                     </div>
                   </div>
-                </div>
-
-                {/* Row 2: Age Group + Email */}
-                <div className="flex flex-col gap-5 sm:gap-6 w-full">
-                  <div className="flex flex-col gap-2.5 w-full">
-                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Age Group *</label>
+                  <div className="flex flex-col w-full">
+                    <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      <Calendar size={14} className="text-[#d81b60]" /> Age Group *
+                    </label>
                     <div className="relative w-full">
                       <select
                         required
                         name="ageGroup"
                         value={formData.ageGroup}
                         onChange={(e) => handleUpdate('ageGroup', e.target.value)}
-                        className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12 font-medium"
+                        className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium"
                       >
                         <option value="">Select age group...</option>
                         <option value="Kids (5–10 yrs)">Kids (5–10 yrs)</option>
                         <option value="Teens (11–17 yrs)">Teens (11–17 yrs)</option>
                         <option value="Adults (18+ yrs)">Adults (18+ yrs)</option>
                       </select>
-                      <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
-                        <ArrowRight size={18} className="rotate-90" />
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                        <ArrowRight size={16} className="rotate-90" />
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-2.5 w-full">
-                    <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Email Address</label>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => handleUpdate('email', e.target.value)}
-                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400 font-medium"
-                      placeholder="Enter your email (optional)"
-                    />
-                  </div>
                 </div>
 
-                {/* Row 3: Course Selection */}
-                <div className="flex flex-col gap-2.5 w-full">
-                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Select Course *</label>
+                {/* Row 4: Select Course (Full Width) */}
+                <div className="flex flex-col w-full">
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    <Palette size={14} className="text-[#d81b60]" /> Select Course *
+                  </label>
                   <div className="relative w-full">
                     <select
                       required
-                      className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all appearance-none cursor-pointer shadow-sm pr-12"
+                      className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium"
                       value={formData.course}
                       onChange={(e) => handleUpdate('course', e.target.value)}
                     >
                       <option value="">Choose your art course...</option>
                       {Object.keys(feesMap).map(course => <option key={course} value={course}>{course}</option>)}
                     </select>
-                    <div className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 pointer-events-none text-[#d81b60]">
-                      <ArrowRight size={18} className="rotate-90" />
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                      <ArrowRight size={16} className="rotate-90" />
                     </div>
                   </div>
                 </div>
 
-                {/* Row 4: Duration Selection */}
-                <div className="flex flex-col gap-3 w-full">
-                  <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Select Duration *</label>
+                {/* Row 5: Select Duration (Full Width) */}
+                <div className="flex flex-col w-full">
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    <Clock size={14} className="text-[#d81b60]" /> Select Duration *
+                  </label>
                   {formData.course && feesMap[formData.course] ? (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-auto gap-2.5 md:gap-3 w-full">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 w-full">
                       {Object.keys(feesMap[formData.course]).map(dur => (
-                        <label key={dur} className="relative group cursor-pointer flex-1 min-w-[100px]">
+                        <label key={dur} className="relative group cursor-pointer">
                           <input
                             type="radio"
                             name="duration"
@@ -1755,26 +1800,28 @@ const JoinNow = () => {
                             onChange={() => handleUpdate('duration', dur)}
                             checked={formData.duration === dur}
                           />
-                          <div className="w-full px-3 py-3 sm:py-3.5 rounded-2xl border-2 border-[#ec407a]/10 bg-white peer-checked:border-[#d81b60] peer-checked:bg-[#fff5f8] text-center transition-all shadow-sm group-hover:border-[#d81b60]/50">
-                            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-[#ad1457] peer-checked:text-[#d81b60] whitespace-nowrap block">{dur}</span>
+                          <div className="w-full px-3.5 py-3 rounded-xl border border-slate-200 bg-[#f8fafc] peer-checked:border-[#d81b60] peer-checked:bg-[#fff5f8] text-center transition-all shadow-sm group-hover:border-[#d81b60]/50">
+                            <span className="text-xs font-bold uppercase tracking-wider text-slate-700 peer-checked:text-[#d81b60] block truncate">{dur}</span>
                           </div>
                         </label>
                       ))}
                     </div>
                   ) : (
-                    <div className="w-full py-3.5 text-center border-2 border-dashed border-[#ec407a]/20 rounded-2xl bg-slate-50">
+                    <div className="w-full py-3.5 text-center border border-dashed border-slate-200 rounded-xl bg-slate-50">
                       <p className="text-xs text-slate-400 italic">Please select a course first</p>
                     </div>
                   )}
                 </div>
 
-                {/* Preferred Mode */}
-                <div className="flex flex-col gap-4 w-full">
-                  <label className="text-[11px] font-black text-[#d81b60] uppercase tracking-[0.1em]">Preferred Mode *</label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                {/* Row 6: Preferred Mode */}
+                <div className="flex flex-col w-full">
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    <Sparkles size={14} className="text-[#d81b60]" /> Preferred Mode *
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
                     {['Online', 'Offline (Studio)'].map(mode => (
-                      <label key={mode} className="flex items-center gap-4 bg-[#fff5f8]/50 px-5 sm:px-6 py-4 rounded-2xl cursor-pointer hover:bg-[#fff5f8] transition-all border-2 border-[#ec407a]/10 has-[:checked]:border-[#d81b60] has-[:checked]:bg-[#fff5f8] shadow-sm">
-                        <input type="radio" name="mode" value={mode} className="accent-[#d81b60] w-5 h-5 shrink-0" required />
+                      <label key={mode} className="flex items-center gap-3 bg-[#f8fafc] px-4 py-3.5 rounded-xl cursor-pointer hover:bg-slate-100 transition-all border border-slate-200 has-[:checked]:border-[#d81b60] has-[:checked]:bg-[#fff5f8] shadow-sm">
+                        <input type="radio" name="mode" value={mode} className="accent-[#d81b60] w-4 h-4 shrink-0" required />
                         <span className="font-bold text-slate-700 text-sm">{mode}</span>
                       </label>
                     ))}
@@ -1783,37 +1830,30 @@ const JoinNow = () => {
 
                 {/* Inline Fee Summary */}
                 {totalFees > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="bg-gradient-to-r from-[#fff5f8] to-[#fff0f6] p-6 md:p-8 rounded-3xl border border-[#d81b60]/15 w-full"
-                  >
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5 pb-5 border-b border-[#d81b60]/10">
-                      <div className="flex items-start sm:items-center gap-4 flex-1">
-                        <div className="w-12 h-12 rounded-2xl bg-[#d81b60]/10 flex items-center justify-center shrink-0">
-                          <Palette size={22} className="text-[#d81b60]" />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="text-sm font-bold text-slate-700 line-clamp-2">{formData.course}</p>
-                          <p className="text-xs text-slate-400 font-medium whitespace-nowrap">{formData.duration} • One-time Payment</p>
+                  <div className="bg-gradient-to-r from-[#fff5f8] to-[#fff0f6] p-5 rounded-2xl border border-[#d81b60]/15 w-full">
+                    <div className="flex justify-between items-center pb-3 border-b border-[#d81b60]/10">
+                      <div className="flex items-center gap-3">
+                        <Palette size={20} className="text-[#d81b60]" />
+                        <div>
+                          <p className="text-sm font-bold text-slate-800 truncate max-w-[200px]">{formData.course}</p>
+                          <p className="text-xs text-slate-500">{formData.duration}</p>
                         </div>
                       </div>
-                      <div className="text-right shrink-0">
-                        <span className="text-2xl sm:text-3xl md:text-4xl font-black text-[#d81b60]">₹{totalFees}</span>
-                      </div>
+                      <span className="text-2xl font-black text-[#d81b60]">₹{totalFees}</span>
                     </div>
-                    <div className="flex flex-wrap gap-3 md:gap-4">
-                      <span className="flex items-center gap-2 text-[10px] sm:text-[11px] font-bold text-slate-600"><Star size={12} className="text-[#d81b60] shrink-0" /> Professional Mentorship</span>
-                      <span className="flex items-center gap-2 text-[10px] sm:text-[11px] font-bold text-slate-600"><Star size={12} className="text-[#d81b60] shrink-0" /> MSME Certificate</span>
-                      <span className="flex items-center gap-2 text-[10px] sm:text-[11px] font-bold text-slate-600"><Star size={12} className="text-[#d81b60] shrink-0" /> Art Kits Included</span>
+                    <div className="flex flex-wrap gap-3 mt-3">
+                      <span className="text-[11px] font-semibold text-slate-600">✓ Professional Mentorship</span>
+                      <span className="text-[11px] font-semibold text-slate-600">✓ MSME Certificate</span>
+                      <span className="text-[11px] font-semibold text-slate-600">✓ Art Kits Included</span>
                     </div>
-                    <p className="text-[9px] text-slate-400 mt-4 pt-4 border-t border-[#d81b60]/10">* Fees may vary based on age group. Final pricing confirmed during intro call.</p>
-                  </motion.div>
+                  </div>
                 )}
 
-                <div className="mt-6 md:mt-10">
-                  <button type="submit" className="btn-primary w-full py-5 md:py-6 text-[10px] sm:text-[11px] font-black tracking-[0.3em] shadow-[0_25px_50px_-12px_rgba(216,27,96,0.4)] hover:shadow-[0_40px_60px_-12px_rgba(216,27,96,0.5)] transition-all rounded-[2rem]">SUBMIT ENROLLMENT →</button>
+                {/* Row 7: Submit Button (Matching reference image) */}
+                <div className="mt-2">
+                  <button type="submit" className="w-full py-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#d81b60] to-[#ad1457] hover:from-[#ad1457] hover:to-[#d81b60] shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer">
+                    <Sparkles size={16} /> Submit Enrollment Application →
+                  </button>
                 </div>
               </form>
             </div>

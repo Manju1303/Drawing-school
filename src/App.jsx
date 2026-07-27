@@ -412,8 +412,23 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen py-32 flex items-center overflow-hidden bg-slate-950">
         <div className="absolute inset-0 z-0 overflow-hidden">
-          {/* Enhanced Background Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-[#1a0b12] to-[#2d0a18] z-0" />
+          {/* Background Image Slideshow with smooth crossfade */}
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentSlide}
+              src={getAsset(heroSlides[currentSlide].image)}
+              alt="Rivya School of Arts Fine Art Background"
+              initial={{ opacity: 0, scale: 1.15 }}
+              animate={{ opacity: 0.35, scale: 1.05 }}
+              exit={{ opacity: 0, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover z-0 filter brightness-[0.7] contrast-[1.1]"
+            />
+          </AnimatePresence>
+
+          {/* Wine Red & Slate Dark Gradient Overlays for High Text Contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-[#1a0b12]/90 to-[#2d0a18]/85 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/60 z-10" />
 
           {/* Animated Background Mesh/Glow */}
           <motion.div
@@ -423,7 +438,7 @@ const Home = () => {
               rotate: [0, 45, 0]
             }}
             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute top-[-20%] right-[-10%] w-[80%] h-[80%] bg-[#d81b60]/10 rounded-full blur-[120px]"
+            className="absolute top-[-20%] right-[-10%] w-[80%] h-[80%] bg-[#d81b60]/20 rounded-full blur-[120px] z-10"
           />
           <motion.div
             animate={{
@@ -432,7 +447,7 @@ const Home = () => {
               rotate: [0, -45, 0]
             }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#ad1457]/10 rounded-full blur-[100px]"
+            className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#ad1457]/20 rounded-full blur-[100px] z-10"
           />
         </div>
         <div className="container relative z-20">

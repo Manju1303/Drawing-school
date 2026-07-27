@@ -454,24 +454,24 @@ const Home = () => {
           />
         </div>
         <div className="container relative z-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-12 items-center">
             {/* Left Content Column */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="lg:col-span-7">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="md:col-span-7 lg:col-span-7">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.1em] mb-8"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.1em] mb-6"
               >
                 <Sparkles size={12} className="text-[#f8bbd0]" /> MSME Certified Art Institute
               </motion.div>
 
-              <div className="overflow-hidden mb-4 md:mb-6">
+              <div className="overflow-hidden mb-4 md:mb-5">
                 <motion.h1
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0.5 }}
-                  className="leading-[1.1] text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl"
+                  className="leading-[1.05] text-white text-3xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold"
                 >
                   Elevate Your <br />
                   <span className="italic font-normal text-[#f8bbd0]">Artistic</span><br />
@@ -483,7 +483,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-                className="text-lg sm:text-xl md:text-2xl text-white/70 mb-10 leading-relaxed font-light max-w-xl"
+                className="text-base sm:text-lg md:text-xl text-white/70 mb-6 md:mb-8 leading-relaxed font-light max-w-lg"
               >
                 From curious beginners to skilled artists,
                 <span className="text-white font-medium"> RSA</span> provides the canvas for your imagination to flourish with world-class mentorship.
@@ -496,23 +496,23 @@ const Home = () => {
                 className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 items-start sm:items-center"
               >
                 <Magnetic strength={0.3}>
-                  <Link to="/join" className="btn-primary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-10 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase">
+                  <Link to="/join" className="btn-primary group w-full sm:w-auto justify-center flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5 text-[11px] md:text-xs font-black tracking-widest uppercase">
                     Enroll Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Magnetic>
                 <Magnetic strength={0.3}>
-                  <Link to="/commission" className="btn-primary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-10 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase !bg-gradient-to-r !from-[#f59e0b] !to-[#d81b60] !shadow-[0_10px_25px_rgba(245,158,11,0.4)] hover:!shadow-[0_20px_35px_rgba(245,158,11,0.6)]">
+                  <Link to="/commission" className="btn-primary group w-full sm:w-auto justify-center flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5 text-[11px] md:text-xs font-black tracking-widest uppercase !bg-gradient-to-r !from-[#f59e0b] !to-[#d81b60] !shadow-[0_10px_25px_rgba(245,158,11,0.4)] hover:!shadow-[0_20px_35px_rgba(245,158,11,0.6)]">
                     Order Now 🎨
                   </Link>
                 </Magnetic>
                 <Magnetic strength={0.3}>
-                  <Link to="/courses" className="btn-secondary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-10 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase !border-white !text-white hover:!bg-white hover:!text-slate-950">
+                  <Link to="/courses" className="btn-secondary group w-full sm:w-auto justify-center flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5 text-[11px] md:text-xs font-black tracking-widest uppercase !border-white !text-white hover:!bg-white hover:!text-slate-950">
                     Explore Courses
                   </Link>
                 </Magnetic>
                 <button
                   onClick={() => setShowPoster(true)}
-                  className="text-white/60 hover:text-white flex items-center gap-2 text-[10px] font-black tracking-widest uppercase transition-colors"
+                  className="text-white/60 hover:text-white flex items-center gap-2 text-[10px] font-black tracking-widest uppercase transition-colors mt-1"
                 >
                   <Sparkles size={14} className="text-[#f8bbd0]" /> View Summer Offer
                 </button>
@@ -524,12 +524,12 @@ const Home = () => {
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="lg:col-span-5 relative w-full max-w-md mx-auto lg:max-w-none mt-8 lg:mt-0"
+              className="md:col-span-5 lg:col-span-5 relative w-full max-w-sm sm:max-w-md md:max-w-none mx-auto mt-6 md:mt-0"
             >
               <div className="absolute -inset-4 bg-gradient-to-r from-[#d81b60]/30 to-[#f59e0b]/20 rounded-[3rem] blur-2xl opacity-70"></div>
               
-              <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/15 rounded-[2.5rem] overflow-hidden shadow-2xl">
-                <div className="relative aspect-[4/5] sm:aspect-[4/4] lg:aspect-[4/5] overflow-hidden">
+              <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/15 rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl">
+                <div className="relative aspect-[4/5] sm:aspect-[4/4] md:aspect-[4/5] max-h-[380px] sm:max-h-[440px] md:max-h-[460px] overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={currentSlide}

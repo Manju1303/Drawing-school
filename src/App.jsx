@@ -6,6 +6,9 @@ import logo from './logo.png';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
 import { ReactLenis } from '@studio-freight/react-lenis';
 import { Instagram, MapPin, Phone, Mail, Clock, LayoutGrid, Palette, Users, Info, ExternalLink, Menu, X, ArrowRight, Star, Sparkles, User, Calendar, MessageSquare } from 'lucide-react';
+import heroSlide1 from './hero_slide_1.jpg';
+import heroSlide2 from './hero_slide_2.jpg';
+import heroSlide3 from './hero_slide_3.jpg';
 
 // Asset Helper
 const getAsset = (name) => {
@@ -359,19 +362,19 @@ const Home = () => {
 
   const heroSlides = [
     {
-      image: 'hero_slide_1.jpg',
+      image: heroSlide1,
       tag: 'STUDIO CLASSES',
       title: 'Professional Oil & Canvas Painting',
       desc: 'Guided by lead artist Thrinethraa D S for all age groups.'
     },
     {
-      image: 'hero_slide_2.jpg',
+      image: heroSlide2,
       tag: 'FINE ART COMMISSIONS',
       title: 'Hyper-Realistic Pencil Portraits',
       desc: 'Handcrafted custom portrait commissions delivered worldwide.'
     },
     {
-      image: 'hero_slide_3.jpg',
+      image: heroSlide3,
       tag: 'TRADITIONAL & MODERN',
       title: 'Mandala & Lippan Masterpieces',
       desc: 'Intricate patterns, mirror work, and specialized craft courses.'
@@ -416,7 +419,7 @@ const Home = () => {
           <AnimatePresence mode="wait">
             <motion.img
               key={currentSlide}
-              src={getAsset(heroSlides[currentSlide].image)}
+              src={heroSlides[currentSlide].image}
               alt="Rivya School of Arts Fine Art Background"
               initial={{ opacity: 0, scale: 1.15 }}
               animate={{ opacity: 0.35, scale: 1.05 }}
@@ -530,7 +533,7 @@ const Home = () => {
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={currentSlide}
-                      src={getAsset(heroSlides[currentSlide].image)}
+                      src={heroSlides[currentSlide].image}
                       alt={heroSlides[currentSlide].title}
                       initial={{ opacity: 0, scale: 1.1 }}
                       animate={{ opacity: 1, scale: 1 }}

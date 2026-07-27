@@ -1203,7 +1203,7 @@ const Commission = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-4 sm:p-8 md:p-12 lg:p-16 pb-12 sm:pb-16 md:pb-20 lg:pb-24 rounded-2xl sm:rounded-3xl md:rounded-4xl border border-slate-100 shadow-[0_40px_80px_-10px_rgba(0,0,0,0.08)] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] mb-6 sm:mb-8 md:mb-10"
+              className="bg-white p-6 sm:p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-2xl overflow-hidden relative w-full mb-6 sm:mb-8 md:mb-10"
             >
               {commSubmitted ? (
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-12">
@@ -1336,7 +1336,7 @@ const Commission = () => {
                   </div>
                 )}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
+                <div className="flex flex-col gap-5 sm:gap-6 w-full">
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Full Name *</label>
                     <input name="from_name" required type="text" className="w-full bg-[#fff5f8]/50 border-2 border-[#ec407a]/10 px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl text-slate-900 text-sm sm:text-base outline-none focus:border-[#d81b60] focus:bg-white transition-all shadow-sm placeholder:text-slate-400 font-medium" placeholder="Enter full name" />
@@ -1664,7 +1664,7 @@ const JoinNow = () => {
               >
                 <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={handleSubmit}>
                 {/* Row 1: Name + Phone */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
+                <div className="flex flex-col gap-5 sm:gap-6 w-full">
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Full Name *</label>
                     <input
@@ -1693,7 +1693,7 @@ const JoinNow = () => {
                 </div>
 
                 {/* Row 2: Age Group + Email */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
+                <div className="flex flex-col gap-5 sm:gap-6 w-full">
                   <div className="flex flex-col gap-2.5 w-full">
                     <label className="text-[10px] font-black text-[#d81b60] uppercase tracking-[0.15em]">Age Group *</label>
                     <div className="relative w-full">

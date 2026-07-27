@@ -1613,7 +1613,7 @@ const JoinNow = () => {
 
 
   return (
-    <div className="bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen pt-32 lg:pt-48">
+    <div className="bg-gradient-to-br from-[#fff5f8] via-white to-[#fff0f6] min-h-screen pt-36 sm:pt-44 lg:pt-52">
       <Helmet>
         <title>Rivya School of Arts – Enroll Now | Join RSA Today</title>
         <meta name="description" content="Enroll now in Rivya School of Arts, Tiruppur's MSME government-registered fine arts institute. Complete the enrollment form to start your art journey." />
@@ -1656,12 +1656,7 @@ const JoinNow = () => {
             </motion.div>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="lg:col-span-7 bg-white p-6 sm:p-10 md:p-12 rounded-3xl md:rounded-[3rem] border border-[#ec407a]/15 shadow-[0_30px_70px_-15px_rgba(216,27,96,0.12)] overflow-hidden relative w-full"
-              >
+              <div className="lg:col-span-7 bg-white p-6 sm:p-10 md:p-12 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-2xl overflow-hidden relative w-full">
                 <form className="flex flex-col gap-5 sm:gap-6 md:gap-8 lg:gap-10" onSubmit={handleSubmit}>
                 {/* Row 1: Name + Phone */}
                 <div className="flex flex-col gap-5 sm:gap-6 w-full">
@@ -1821,12 +1816,12 @@ const JoinNow = () => {
                   <button type="submit" className="btn-primary w-full py-5 md:py-6 text-[10px] sm:text-[11px] font-black tracking-[0.3em] shadow-[0_25px_50px_-12px_rgba(216,27,96,0.4)] hover:shadow-[0_40px_60px_-12px_rgba(216,27,96,0.5)] transition-all rounded-[2rem]">SUBMIT ENROLLMENT →</button>
                 </div>
               </form>
-            </motion.div>
-            <div className="lg:col-span-5 bg-white p-8 rounded-[2.5rem] border border-[#ec407a]/15 shadow-xl relative overflow-hidden flex flex-col gap-6 lg:sticky lg:top-28">
+            </div>
+            <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-xl relative flex flex-col gap-6 lg:sticky lg:top-32 w-full">
               <div className="absolute top-0 right-0 bg-[#d81b60] text-white text-[9px] font-black uppercase tracking-widest px-5 py-2 rounded-bl-2xl">
                 RSA TIRUPPUR
               </div>
-              <img src={getAsset('poster_regular.jpg')} alt="Drawing Class Session" className="w-full h-56 sm:h-64 object-cover rounded-3xl border border-slate-100 shadow-sm" />
+              <img src={getAsset('poster_regular.jpg')} alt="Drawing Class Session" className="w-full h-auto max-h-64 object-cover rounded-3xl border border-slate-100 shadow-sm" />
               <div>
                 <h3 className="text-xl sm:text-2xl font-serif text-[#ad1457] mb-2">Start Your Art Journey</h3>
                 <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">Join Tiruppur's government-approved fine arts institute. Our courses are structured to build skills from fundamental shapes to professional portrait creations.</p>

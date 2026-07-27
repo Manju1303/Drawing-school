@@ -355,6 +355,35 @@ const Footer = () => {
 // Pages
 const Home = () => {
   const [showPoster, setShowPoster] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroSlides = [
+    {
+      image: 'hero_slide_1.jpg',
+      tag: 'STUDIO CLASSES',
+      title: 'Professional Oil & Canvas Painting',
+      desc: 'Guided by lead artist Thrinethraa D S for all age groups.'
+    },
+    {
+      image: 'hero_slide_2.jpg',
+      tag: 'FINE ART COMMISSIONS',
+      title: 'Hyper-Realistic Pencil Portraits',
+      desc: 'Handcrafted custom portrait commissions delivered worldwide.'
+    },
+    {
+      image: 'hero_slide_3.jpg',
+      tag: 'TRADITIONAL & MODERN',
+      title: 'Mandala & Lippan Masterpieces',
+      desc: 'Intricate patterns, mirror work, and specialized craft courses.'
+    }
+  ];
+
+  useEffect(() => {
+    const slideTimer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4500);
+    return () => clearInterval(slideTimer);
+  }, []);
 
   useEffect(() => {
     // Show the summer poster only once per session
@@ -407,68 +436,132 @@ const Home = () => {
           />
         </div>
         <div className="container relative z-20">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.1em] mb-8"
-            >
-              <Sparkles size={12} className="text-[#f8bbd0]" /> MSME Certified Art Institute
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Left Content Column */}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="lg:col-span-7">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.1em] mb-8"
+              >
+                <Sparkles size={12} className="text-[#f8bbd0]" /> MSME Certified Art Institute
+              </motion.div>
+
+              <div className="overflow-hidden mb-4 md:mb-6">
+                <motion.h1
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0.5 }}
+                  className="leading-[1.1] text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl"
+                >
+                  Elevate Your <br />
+                  <span className="italic font-normal text-[#f8bbd0]">Artistic</span><br />
+                  <span className="gradient-text drop-shadow-2xl">Vision.</span>
+                </motion.h1>
+              </div>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+                className="text-lg sm:text-xl md:text-2xl text-white/70 mb-10 leading-relaxed font-light max-w-xl"
+              >
+                From curious beginners to skilled artists,
+                <span className="text-white font-medium"> RSA</span> provides the canvas for your imagination to flourish with world-class mentorship.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+                className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 items-start sm:items-center"
+              >
+                <Magnetic strength={0.3}>
+                  <Link to="/join" className="btn-primary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-10 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase">
+                    Enroll Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Magnetic>
+                <Magnetic strength={0.3}>
+                  <Link to="/commission" className="btn-primary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-10 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase !bg-gradient-to-r !from-[#f59e0b] !to-[#d81b60] !shadow-[0_10px_25px_rgba(245,158,11,0.4)] hover:!shadow-[0_20px_35px_rgba(245,158,11,0.6)]">
+                    Order Now 🎨
+                  </Link>
+                </Magnetic>
+                <Magnetic strength={0.3}>
+                  <Link to="/courses" className="btn-secondary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-10 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase !border-white !text-white hover:!bg-white hover:!text-slate-950">
+                    Explore Courses
+                  </Link>
+                </Magnetic>
+                <button
+                  onClick={() => setShowPoster(true)}
+                  className="text-white/60 hover:text-white flex items-center gap-2 text-[10px] font-black tracking-widest uppercase transition-colors"
+                >
+                  <Sparkles size={14} className="text-[#f8bbd0]" /> View Summer Offer
+                </button>
+              </motion.div>
             </motion.div>
 
-            <div className="overflow-hidden mb-4 md:mb-6">
-              <motion.h1
-                initial={{ y: "100%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0.5 }}
-                className="leading-[1.1] text-white text-4xl sm:text-6xl md:text-8xl"
-              >
-                Elevate Your <br />
-                <span className="italic font-normal text-[#f8bbd0]">Artistic</span><br />
-                <span className="gradient-text drop-shadow-2xl">Vision.</span>
-              </motion.h1>
-            </div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-              className="text-xl md:text-2xl text-white/70 mb-12 leading-relaxed font-light max-w-xl"
-            >
-              From curious beginners to skilled artists,
-              <span className="text-white font-medium"> RSA</span> provides the canvas for your imagination to flourish with world-class mentorship.
-            </motion.p>
-
+            {/* Right Slideshow Column in Wine Red Space */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 items-start sm:items-center"
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="lg:col-span-5 relative w-full max-w-md mx-auto lg:max-w-none mt-8 lg:mt-0"
             >
-              <Magnetic strength={0.3}>
-                <Link to="/join" className="btn-primary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-12 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase">
-                  Enroll Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Magnetic>
-              <Magnetic strength={0.3}>
-                <Link to="/commission" className="btn-primary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-12 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase !bg-gradient-to-r !from-[#f59e0b] !to-[#d81b60] !shadow-[0_10px_25px_rgba(245,158,11,0.4)] hover:!shadow-[0_20px_35px_rgba(245,158,11,0.6)]">
-                  Order Now 🎨
-                </Link>
-              </Magnetic>
-              <Magnetic strength={0.3}>
-                <Link to="/courses" className="btn-secondary group w-full sm:w-auto justify-center flex items-center gap-2 px-8 py-3 md:px-12 md:py-4 text-[11px] md:text-xs font-black tracking-widest uppercase !border-white !text-white hover:!bg-white hover:!text-slate-950">
-                  Explore Courses
-                </Link>
-              </Magnetic>
-              <button
-                onClick={() => setShowPoster(true)}
-                className="text-white/60 hover:text-white flex items-center gap-2 text-[10px] font-black tracking-widest uppercase transition-colors"
-              >
-                <Sparkles size={14} className="text-[#f8bbd0]" /> View Summer Offer
-              </button>
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#d81b60]/30 to-[#f59e0b]/20 rounded-[3rem] blur-2xl opacity-70"></div>
+              
+              <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/15 rounded-[2.5rem] overflow-hidden shadow-2xl">
+                <div className="relative aspect-[4/5] sm:aspect-[4/4] lg:aspect-[4/5] overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentSlide}
+                      src={getAsset(heroSlides[currentSlide].image)}
+                      alt={heroSlides[currentSlide].title}
+                      initial={{ opacity: 0, scale: 1.1 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.8 }}
+                      className="w-full h-full object-cover"
+                    />
+                  </AnimatePresence>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none" />
+
+                  <div className="absolute top-5 left-5 z-10">
+                    <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-950/70 backdrop-blur-md border border-white/20 text-[#f8bbd0] text-[9px] font-black uppercase tracking-widest shadow-lg">
+                      <Sparkles size={11} className="text-[#f8bbd0]" /> {heroSlides[currentSlide].tag}
+                    </span>
+                  </div>
+
+                  <div className="absolute bottom-6 left-6 right-6 z-10">
+                    <h4 className="text-xl sm:text-2xl font-serif text-white mb-1.5 leading-snug drop-shadow-md">
+                      {heroSlides[currentSlide].title}
+                    </h4>
+                    <p className="text-xs text-white/70 font-light leading-relaxed mb-4">
+                      {heroSlides[currentSlide].desc}
+                    </p>
+
+                    <div className="flex items-center justify-between pt-3 border-t border-white/15">
+                      <div className="flex items-center gap-2">
+                        {heroSlides.map((_, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentSlide(idx)}
+                            className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
+                              currentSlide === idx ? 'w-8 bg-[#d81b60]' : 'w-2 bg-white/40 hover:bg-white/70'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      <span className="text-[10px] font-mono text-white/60 tracking-widest">
+                        0{currentSlide + 1} / 0{heroSlides.length}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Poster Pop-up Modal */}
@@ -1203,7 +1296,7 @@ const Commission = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-6 sm:p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-2xl overflow-hidden relative w-full mb-6 sm:mb-8 md:mb-10"
+              className="bg-white p-6 sm:p-10 md:p-14 px-6 sm:px-10 md:px-14 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-2xl overflow-hidden relative w-full mb-6 sm:mb-8 md:mb-10"
             >
               {commSubmitted ? (
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-12">
@@ -1224,11 +1317,11 @@ const Commission = () => {
                 </motion.div>
               ) : (
               <>
-              <div className="border-b border-slate-100 pb-4 mb-2">
+              <div className="border-b border-slate-100 pb-4 mb-4">
                 <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Custom Order Request</h3>
                 <p className="text-xs sm:text-sm text-slate-500 mt-1">Select your artwork type and specify your custom requirements.</p>
               </div>
-              <form className="flex flex-col gap-5 sm:gap-6" onSubmit={async (e) => {
+              <form className="flex flex-col gap-5 sm:gap-6 px-1 sm:px-3 w-full" onSubmit={async (e) => {
                 e.preventDefault();
                 setCommLoading(true);
                 const form = e.target;
@@ -1685,12 +1778,12 @@ const JoinNow = () => {
             </motion.div>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              <div className="lg:col-span-7 bg-white p-6 sm:p-10 md:p-12 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-2xl overflow-hidden relative w-full">
-                <div className="border-b border-slate-100 pb-4 mb-2">
+              <div className="lg:col-span-7 bg-white p-6 sm:p-10 md:p-14 px-6 sm:px-10 md:px-14 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-2xl overflow-hidden relative w-full">
+                <div className="border-b border-slate-100 pb-4 mb-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Enrollment Application</h3>
                   <p className="text-xs sm:text-sm text-slate-500 mt-1">Fill out your details to secure your RSA course slot.</p>
                 </div>
-                <form className="flex flex-col gap-5 sm:gap-6" onSubmit={handleSubmit}>
+                <form className="flex flex-col gap-5 sm:gap-6 px-1 sm:px-3 w-full" onSubmit={handleSubmit}>
                 {/* Row 1: Your Name (Full Width) */}
                 <div className="flex flex-col w-full">
                   <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">

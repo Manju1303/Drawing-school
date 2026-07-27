@@ -1634,22 +1634,22 @@ const JoinNow = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white rounded-[4rem] p-16 text-center shadow-2xl border border-[#ec407a]/10 max-w-3xl mx-auto"
+              className="bg-white rounded-3xl sm:rounded-[2.5rem] md:rounded-[3rem] p-6 sm:p-10 md:p-12 text-center shadow-2xl border border-[#ec407a]/15 max-w-2xl mx-auto overflow-hidden relative w-full"
             >
-              <div className="text-6xl mb-6">🎨</div>
-              <h3 className="text-3xl font-serif text-[#ad1457] mb-4">You're In!</h3>
-              <p className="text-slate-500 text-lg mb-6">Thank you for enrolling at Rivya School of Arts. Our team will reach out within 24 hours!</p>
-              <div className="bg-[#fff5f8] rounded-2xl p-5 text-sm text-slate-600 text-left mb-8">
-                <p className="font-bold text-[#d81b60] mb-3">📌 What Happens Next?</p>
-                <ol className="list-decimal list-inside space-y-2">
+              <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">🎨</div>
+              <h3 className="text-2xl sm:text-3xl font-serif text-[#ad1457] mb-3 sm:mb-4">You're In!</h3>
+              <p className="text-slate-500 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 max-w-lg mx-auto">Thank you for enrolling at Rivya School of Arts. Our team will reach out within 24 hours!</p>
+              <div className="bg-[#fff5f8] rounded-2xl p-4 sm:p-6 text-xs sm:text-sm text-slate-600 text-left mb-6 sm:mb-8 border border-[#ec407a]/10 w-full">
+                <p className="font-bold text-[#d81b60] mb-3 flex items-center gap-2">📌 What Happens Next?</p>
+                <ol className="list-decimal list-inside space-y-2 leading-relaxed">
                   <li>Our team calls you within <strong>24 hours</strong> to confirm your enrollment</li>
                   <li>We guide you on the <strong>joining date and batch timing</strong></li>
                   <li>Bring your enthusiasm — <strong>art materials are included</strong> in the course fee!</li>
                 </ol>
               </div>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link to="/" className="btn-primary px-10 py-4 text-xs font-black tracking-widest inline-block">Back to Home</Link>
-                <a href="https://wa.me/919566951629?text=Hi%21%20I%20just%20enrolled%20at%20Rivya%20School%20of%20Arts%21" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 text-xs font-black tracking-widest uppercase border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white inline-flex items-center gap-2 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center items-center w-full max-w-md mx-auto">
+                <Link to="/" className="btn-primary w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 text-xs font-black tracking-widest uppercase text-center">Back to Home</Link>
+                <a href="https://wa.me/919566951629?text=Hi%21%20I%20just%20enrolled%20at%20Rivya%20School%20of%20Arts%21" target="_blank" rel="noopener noreferrer" className="btn-secondary w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 text-xs font-black tracking-widest uppercase border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white inline-flex items-center gap-2 justify-center text-center">
                   💬 WhatsApp Us
                 </a>
               </div>

@@ -1,0 +1,21 @@
+{
+  "name": "Rivya School of Arts",
+  "short_name": "Rivya Art School",
+  "description": "Government MSME Registered fine arts institute in Perumanallur, Tiruppur offering certified drawing, oil painting, and portrait courses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d81b60",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

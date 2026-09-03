@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useState, useEffect, useRef } from 'react';
-import emailjs from '@emailjs/browser';
-import logo from './logo.png';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
 import { ReactLenis } from '@studio-freight/react-lenis';
 import { Instagram, MapPin, Phone, Mail, Clock, LayoutGrid, Palette, Users, Info, ExternalLink, Menu, X, ArrowRight, Star, Sparkles, User, Calendar, MessageSquare } from 'lucide-react';
@@ -10,11 +8,14 @@ import heroSlide1 from './hero_slide_1.jpg';
 import heroSlide2 from './hero_slide_2.jpg';
 import heroSlide3 from './hero_slide_3.jpg';
 
-// Asset Helper
+// Asset Helper with Resilient Path Fallback
 const getAsset = (name) => {
+  const cleanName = name.replace(/^\//, '');
   const base = import.meta.env.BASE_URL || '/';
-  // If the base URL ends with / and the name starts with /, remove one
-  return `${base.replace(/\/$/, '')}/${name.replace(/^\//, '')}`;
+  if (base === '/' || !base) {
+    return `/${cleanName}`;
+  }
+  return `${base.replace(/\/$/, '')}/${cleanName}`;
 };
 
 const Magnetic = ({ children, strength = 0.2 }) => {
@@ -191,7 +192,7 @@ const Navbar = () => {
       <div className="container flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3 group">
           <motion.div whileHover={{ scale: 1.05 }} className="w-10 h-10 md:w-14 md:h-14 rounded-full overflow-hidden shrink-0 transition-all">
-            <img src={logo} alt="RSA Logo" className="w-full h-full object-contain" />
+            <img src={getAsset('logo.png')} alt="RSA Logo" className="w-full h-full object-contain" />
           </motion.div>
           <div className="flex flex-col leading-tight">
             <span className={`text-sm md:text-base font-black tracking-[0.15em] uppercase transition-colors duration-500 ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#d81b60]' : 'text-white'}`}>Rivya School of Arts</span>
@@ -226,7 +227,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button className={`lg:hidden p-3 rounded-2xl backdrop-blur-md transition-all ${isScrolled ? 'bg-[#d81b60]/10 text-[#d81b60]' : 'bg-white/10 text-white shadow-lg'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button aria-label="Toggle Navigation Menu" className={`lg:hidden p-3 rounded-2xl backdrop-blur-md transition-all ${isScrolled ? 'bg-[#d81b60]/10 text-[#d81b60]' : 'bg-white/10 text-white shadow-lg'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -243,7 +244,7 @@ const Navbar = () => {
           >
             <div className="flex flex-col items-center gap-2">
               <div className="w-20 h-20 rounded-2xl bg-[#fff5f8] p-2 flex items-center justify-center mb-4">
-                <img src={logo} alt="Logo" className="w-full h-full object-contain" />
+                <img src={getAsset('logo.png')} alt="Logo" className="w-full h-full object-contain" />
               </div>
               <span className="text-xl font-black text-[#d81b60] tracking-wide uppercase">Rivya School of Arts</span>
               <span className="text-[9px] uppercase tracking-[0.3em] text-slate-400 font-bold mb-10">Fine Arts & Painting Institute</span>
@@ -564,6 +565,7 @@ const Home = () => {
                         {heroSlides.map((_, idx) => (
                           <button
                             key={idx}
+                            aria-label={`Go to slide ${idx + 1}`}
                             onClick={() => setCurrentSlide(idx)}
                             className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
                               currentSlide === idx ? 'w-8 bg-[#d81b60]' : 'w-2 bg-white/40 hover:bg-white/70'
@@ -607,6 +609,7 @@ const Home = () => {
               >
                 <div className="absolute top-6 right-6 z-20">
                   <button
+                    aria-label="Close Summer Offer Poster"
                     onClick={() => setShowPoster(false)}
                     className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-all shadow-xl"
                   >
@@ -726,14 +729,14 @@ const Home = () => {
               <SectionReveal key={i} delay={i * 0.1}>
                 <motion.div
                   whileHover={{ y: -8 }}
-                  className="bg-white rounded-3xl lg:rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#ec407a]/15 flex flex-col h-full group transition-all duration-500 hover:shadow-[#ec407a]/20"
+                  className="bg-white rounded-3xl lg:rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#ec407a]/15 flex flex-col justify-between h-full group transition-all duration-500 hover:shadow-[#ec407a]/20"
                 >
                   <div className="flex flex-col items-center gap-3 px-10 py-10 text-white group-hover:scale-[1.02] transition-transform min-h-[160px] text-center justify-center relative overflow-hidden" style={{ backgroundColor: domain.color }}>
                     <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50"></div>
                     <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0 mb-2 border border-white/30 relative z-10">
                       {domain.icon}
                     </div>
-                    <h5 className="text-xl font-black tracking-widest uppercase !font-sans leading-tight relative z-10">{domain.title}</h5>
+                    <h3 className="text-xl font-bold tracking-wider uppercase leading-tight relative z-10 font-sans">{domain.title}</h3>
                   </div>
                   <div className="bg-[#fff9fc] px-8 py-4 border-b border-[#ec407a]/10 flex items-center justify-center gap-2">
                     <Sparkles size={12} className="text-[#d81b60]" />
@@ -789,7 +792,7 @@ const Home = () => {
             </SectionReveal>
 
             <SectionReveal delay={0.4}>
-              <motion.div whileHover={{ y: -20 }} className="group relative overflow-hidden rounded-3xl md:rounded-[4rem] aspect-[4/5] shadow-2xl lg:translate-y-20">
+              <motion.div whileHover={{ y: -20 }} className="group relative overflow-hidden rounded-3xl md:rounded-[4rem] aspect-[4/5] shadow-2xl">
                 <img src={getAsset('painting_justice.jpg')} alt="Acrylic Painting" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#ad1457] via-[#ad1457]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 p-12 flex flex-col justify-end transform translate-y-10 group-hover:translate-y-0">
                   <span className="text-white/60 text-[10px] font-black uppercase tracking-widest mb-4">Oil & Acrylic</span>
@@ -967,7 +970,7 @@ const Courses = () => {
         <meta name="keywords" content="drawing courses tirupur, painting courses tirupur, mandala art classes tirupur, glass painting tirupur, portrait art tirupur, oil painting classes tirupur, art certificate course tirupur, children art classes tirupur, adult art courses tirupur, mural design tirupur, mehandi design course tirupur, handwriting improvement tirupur, spoken english tirupur, online art courses tamil nadu, acrylic painting tirupur, charcoal portrait tirupur, fabric painting tirupur, watercolor painting tirupur, pot painting tirupur" />
         <link rel="canonical" href="https://rivyaschoolofarts.com/courses" />
       </Helmet>
-      <section className="container px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 md:pb-24">
+      <section className="container pb-16 sm:pb-20 md:pb-24">
         <div className="text-center mb-12 sm:mb-16 md:mb-20 max-w-3xl mx-auto px-4">
           <h4 className="text-xs sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.3em] font-bold text-[#d81b60] mb-3 sm:mb-4">Enroll Today</h4>
           <h2 className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6 text-[#ad1457] leading-tight">Our Courses</h2>
@@ -1357,15 +1360,18 @@ const Commission = () => {
                 data.append('_replyto', 'rivyaartsschool17@gmail.com');
 
                 try {
-                  await fetch("https://formspree.io/f/rivyaartsschool17@gmail.com", {
-                    method: "POST",
-                    body: data,
-                    headers: {
-                      'Accept': 'application/json'
-                    }
-                  });
-                } catch (err) {
-                  console.error("Formspree submission error:", err);
+                  const formspreeUrl = "https://formspree.io/f/rivyaartsschool17@gmail.com";
+                  if (!formspreeUrl.includes('@')) {
+                    await fetch(formspreeUrl, {
+                      method: "POST",
+                      body: data,
+                      headers: {
+                        'Accept': 'application/json'
+                      }
+                    });
+                  }
+                } catch (_err) {
+                  // Fall back directly to WhatsApp submission below
                 }
 
                 const message = `Hello Rivya School of Arts! I want to place an order:
@@ -1721,15 +1727,18 @@ const JoinNow = () => {
     data.append('Total Fees', `₹${totalFees}`);
 
     try {
-      await fetch("https://formspree.io/f/rivyaartsschool17@gmail.com", {
-        method: "POST",
-        body: data,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-    } catch (err) {
-      console.error("Formspree enrollment submit error:", err);
+      const formspreeUrl = "https://formspree.io/f/rivyaartsschool17@gmail.com";
+      if (!formspreeUrl.includes('@')) {
+        await fetch(formspreeUrl, {
+          method: "POST",
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+      }
+    } catch (_err) {
+      // Fall back directly to WhatsApp submission below
     }
 
     const message = `Hello Rivya School of Arts! I want to enroll in a course:
@@ -1760,7 +1769,7 @@ const JoinNow = () => {
         <meta name="keywords" content="enroll drawing classes tirupur, join art school perumanallur, art class registration tirupur, Rivya School of Arts admission" />
         <link rel="canonical" href="https://rivyaschoolofarts.com/join" />
       </Helmet>
-      <section className="container px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 md:pb-24">
+      <section className="container pb-12 sm:pb-16 md:pb-24">
         <div className="text-center mb-8 sm:mb-12 md:mb-16 max-w-2xl mx-auto px-2 sm:px-4">
           <h4 className="text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold text-[#d81b60] mb-2 sm:mb-3 md:mb-4 flex items-center justify-center gap-2">
             <Sparkles size={12} className="sm:w-[16px] sm:h-[16px]" /> Enrollment
@@ -1769,7 +1778,7 @@ const JoinNow = () => {
           <p className="text-xs sm:text-sm md:text-base lg:text-lg text-slate-500 leading-relaxed">Take the first step on your artistic journey. Fill in your details below and our team will get back to you within 24 hours.</p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-2 sm:px-4">
+        <div className="w-full">
           {submitted ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}

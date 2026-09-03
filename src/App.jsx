@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useState, useEffect, useRef } from 'react';
+import logo from './logo.png';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
 import { ReactLenis } from '@studio-freight/react-lenis';
 import { Instagram, MapPin, Phone, Mail, Clock, LayoutGrid, Palette, Users, Info, ExternalLink, Menu, X, ArrowRight, ChevronDown, Star, Sparkles, User, Calendar, MessageSquare } from 'lucide-react';
@@ -192,7 +193,7 @@ const Navbar = () => {
       <div className="container flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3 group">
           <motion.div whileHover={{ scale: 1.05 }} className="w-10 h-10 md:w-14 md:h-14 rounded-full overflow-hidden shrink-0 transition-all">
-            <img src={getAsset('logo.png')} alt="RSA Logo" className="w-full h-full object-contain" />
+            <img src={logo} alt="RSA Logo" className="w-full h-full object-contain" />
           </motion.div>
           <div className="flex flex-col leading-tight">
             <span className={`text-sm md:text-base font-black tracking-[0.15em] uppercase transition-colors duration-500 ${isScrolled || (location.pathname !== '/' && location.pathname !== '') ? 'text-[#d81b60]' : 'text-white'}`}>Rivya School of Arts</span>
@@ -244,7 +245,7 @@ const Navbar = () => {
           >
             <div className="flex flex-col items-center gap-2">
               <div className="w-20 h-20 rounded-2xl bg-[#fff5f8] p-2 flex items-center justify-center mb-4">
-                <img src={getAsset('logo.png')} alt="Logo" className="w-full h-full object-contain" />
+                <img src={logo} alt="Logo" className="w-full h-full object-contain" />
               </div>
               <span className="text-xl font-black text-[#d81b60] tracking-wide uppercase">Rivya School of Arts</span>
               <span className="text-[9px] uppercase tracking-[0.3em] text-slate-400 font-bold mb-10">Fine Arts & Painting Institute</span>

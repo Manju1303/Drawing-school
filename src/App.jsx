@@ -3,7 +3,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
 import { ReactLenis } from '@studio-freight/react-lenis';
-import { Instagram, MapPin, Phone, Mail, Clock, LayoutGrid, Palette, Users, Info, ExternalLink, Menu, X, ArrowRight, Star, Sparkles, User, Calendar, MessageSquare } from 'lucide-react';
+import { Instagram, MapPin, Phone, Mail, Clock, LayoutGrid, Palette, Users, Info, ExternalLink, Menu, X, ArrowRight, ChevronDown, Star, Sparkles, User, Calendar, MessageSquare } from 'lucide-react';
 import heroSlide1 from './hero_slide_1.jpg';
 import heroSlide2 from './hero_slide_2.jpg';
 import heroSlide3 from './hero_slide_3.jpg';
@@ -622,7 +622,7 @@ const Home = () => {
                     alt="Summer Offer Poster"
                     className="w-full h-auto rounded-[2rem] shadow-2xl border-4 border-white/10"
                   />
-                  <div className="mt-8 text-center bg-white/5 p-6 rounded-3xl border border-white/10 backdrop-blur-sm">
+                  <div className="mt-8 text-center bg-slate-800/80 p-6 rounded-3xl border border-white/20 backdrop-blur-md">
                     <h3 className="text-3xl font-serif text-[#f8bbd0] mb-3 tracking-tight">Special Summer Classes</h3>
                     <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-white/80 text-sm font-medium">
                       <div className="flex items-center gap-2">
@@ -822,8 +822,9 @@ const Home = () => {
       <section className="bg-gradient-to-br from-slate-950 via-[#1a0b12] to-[#2d0a18] py-20 text-white relative overflow-hidden">
         <div className="container relative z-10">
           <SectionReveal>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-14 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
-              <div className="max-w-2xl text-center lg:text-left">
+            <div className="bg-slate-900/90 backdrop-blur-2xl border border-white/20 rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-12 lg:p-14 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#d81b60]/15 via-transparent to-[#f59e0b]/10 pointer-events-none" />
+              <div className="max-w-2xl text-center lg:text-left relative z-10">
                 <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#d81b60]/20 border border-[#d81b60]/40 text-[#f8bbd0] text-[10px] font-black uppercase tracking-widest mb-4">
                   <Sparkles size={12} /> Custom Artwork Commissions
                 </span>
@@ -834,7 +835,7 @@ const Home = () => {
                   Order custom pencil sketches, hyper-realistic oil portraits, wall murals, or wedding pair paintings crafted by lead artist Thrinethraa D S. Direct delivery & framing available!
                 </p>
               </div>
-              <div className="shrink-0">
+              <div className="shrink-0 relative z-10">
                 <Magnetic strength={0.3}>
                   <Link to="/commission" className="btn-primary group px-10 py-5 text-xs font-black tracking-widest uppercase flex items-center gap-3 !bg-gradient-to-r !from-[#f59e0b] !via-[#d81b60] !to-[#ad1457] shadow-[0_20px_40px_rgba(245,158,11,0.4)] hover:scale-105 transition-all">
                     ORDER ARTWORK NOW 🎨 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -1317,7 +1318,7 @@ const Commission = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-6 sm:p-10 md:p-14 px-6 sm:px-10 md:px-14 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-2xl overflow-hidden relative w-full mb-6 sm:mb-8 md:mb-10"
+              className="bg-white p-6 sm:p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-2xl overflow-hidden relative w-full mb-6 sm:mb-8 md:mb-10"
             >
               {commSubmitted ? (
                 <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-12">
@@ -1342,7 +1343,7 @@ const Commission = () => {
                 <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Custom Order Request</h3>
                 <p className="text-xs sm:text-sm text-slate-500 mt-1">Select your artwork type and specify your custom requirements.</p>
               </div>
-              <form className="flex flex-col gap-5 sm:gap-6 px-1 sm:px-3 w-full" onSubmit={async (e) => {
+              <form className="flex flex-col gap-5 sm:gap-6 w-full" onSubmit={async (e) => {
                 e.preventDefault();
                 setCommLoading(true);
                 const form = e.target;
@@ -1426,7 +1427,7 @@ const Commission = () => {
                       <Sparkles size={14} className="text-[#d81b60]" /> Artwork Category *
                     </label>
                     <div className="relative w-full">
-                      <select name="artwork_type" className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium">
+                      <select name="artwork_type" id="artwork_type" className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:ring-2 focus:ring-[#d81b60]/20 focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium">
                         <option>Fine Art Portrait (Oil/Acrylic)</option>
                         <option>Sketch Portrait (Pencil/Charcoal)</option>
                         <option>Wall Mural Project</option>
@@ -1435,22 +1436,23 @@ const Commission = () => {
                         <option>Custom Gift Collection</option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                        <ArrowRight size={16} className="rotate-90" />
+                        <ChevronDown size={18} />
                       </div>
                     </div>
                   </div>
                 ) : (
                   <div className="flex flex-col w-full">
-                    <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    <label htmlFor="gallery_artwork_type" className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                       <Sparkles size={14} className="text-[#d81b60]" /> Select Gallery Artwork *
                     </label>
                     <div className="relative w-full">
                       <select
                         required
+                        id="gallery_artwork_type"
                         name="artwork_type"
                         value={selectedGalleryArt}
                         onChange={(e) => setSelectedGalleryArt(e.target.value)}
-                        className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium"
+                        className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:ring-2 focus:ring-[#d81b60]/20 focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium"
                       >
                         <option value="">Choose a gallery masterpiece...</option>
                         <option value="Hyper-Realistic Pencil Portrait">Hyper-Realistic Pencil Portrait (Pencil Art)</option>
@@ -1458,7 +1460,7 @@ const Commission = () => {
                         <option value="Charcoal Couple Artwork">Charcoal Couple Artwork (Pencil/Charcoal)</option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                        <ArrowRight size={16} className="rotate-90" />
+                        <ChevronDown size={18} />
                       </div>
                     </div>
                   </div>
@@ -1805,12 +1807,12 @@ const JoinNow = () => {
             </motion.div>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              <div className="lg:col-span-7 bg-white p-6 sm:p-10 md:p-14 px-6 sm:px-10 md:px-14 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-2xl overflow-hidden relative w-full">
+              <div className="lg:col-span-7 bg-white p-6 sm:p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] border border-[#ec407a]/15 shadow-2xl overflow-hidden relative w-full">
                 <div className="border-b border-slate-100 pb-4 mb-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Enrollment Application</h3>
                   <p className="text-xs sm:text-sm text-slate-500 mt-1">Fill out your details to secure your RSA course slot.</p>
                 </div>
-                <form className="flex flex-col gap-5 sm:gap-6 px-1 sm:px-3 w-full" onSubmit={handleSubmit}>
+                <form className="flex flex-col gap-5 sm:gap-6 w-full" onSubmit={handleSubmit}>
                 {/* Row 1: Your Name (Full Width) */}
                 <div className="flex flex-col w-full">
                   <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
@@ -1865,10 +1867,11 @@ const JoinNow = () => {
                     <div className="relative w-full">
                       <select
                         required
+                        id="enrollment_age_group"
                         name="ageGroup"
                         value={formData.ageGroup}
                         onChange={(e) => handleUpdate('ageGroup', e.target.value)}
-                        className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium"
+                        className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:ring-2 focus:ring-[#d81b60]/20 focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium"
                       >
                         <option value="">Select age group...</option>
                         <option value="Kids (5–10 yrs)">Kids (5–10 yrs)</option>
@@ -1876,7 +1879,7 @@ const JoinNow = () => {
                         <option value="Adults (18+ yrs)">Adults (18+ yrs)</option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                        <ArrowRight size={16} className="rotate-90" />
+                        <ChevronDown size={18} />
                       </div>
                     </div>
                   </div>
@@ -1884,13 +1887,14 @@ const JoinNow = () => {
 
                 {/* Row 4: Select Course (Full Width) */}
                 <div className="flex flex-col w-full">
-                  <label className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                  <label htmlFor="enrollment_course" className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                     <Palette size={14} className="text-[#d81b60]" /> Select Course *
                   </label>
                   <div className="relative w-full">
                     <select
                       required
-                      className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium"
+                      id="enrollment_course"
+                      className="w-full bg-[#f8fafc] border border-slate-200 focus:border-[#d81b60] focus:ring-2 focus:ring-[#d81b60]/20 focus:bg-white text-slate-900 rounded-xl px-4 py-3.5 text-sm transition-all outline-none appearance-none cursor-pointer shadow-sm pr-10 font-medium"
                       value={formData.course}
                       onChange={(e) => handleUpdate('course', e.target.value)}
                     >
@@ -1898,7 +1902,7 @@ const JoinNow = () => {
                       {Object.keys(feesMap).map(course => <option key={course} value={course}>{course}</option>)}
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                      <ArrowRight size={16} className="rotate-90" />
+                      <ChevronDown size={18} />
                     </div>
                   </div>
                 </div>
